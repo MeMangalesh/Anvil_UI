@@ -7,7 +7,29 @@ components:
   properties: {col_widths: '{}'}
   name: content_panel
   layout_properties: {slot: default}
-  components: []
+  components:
+  - name: outlined_card_1
+    properties: {role: outlined-card}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'KOBTRE,DFBGCL'}
+    components:
+    - name: image_byuser
+      properties: {}
+      type: Image
+      layout_properties: {grid_position: 'YGNDYW,SABCIW'}
+    - name: file_loader_1
+      properties: {}
+      type: FileLoader
+      layout_properties: {grid_position: 'KSAJDC,NLLAGS'}
+    - name: button_submit
+      properties: {text: SUBMIT, role: filled-button}
+      type: Button
+      layout_properties: {grid_position: 'GOXVPF,XOAKKS'}
+      event_bindings: {click: button_submit_click}
+    - name: button_reset
+      properties: {text: RESET}
+      type: Button
+      layout_properties: {grid_position: 'NJMARC,FTXCZZ'}
 - type: FlowPanel
   properties: {}
   name: navbar_links

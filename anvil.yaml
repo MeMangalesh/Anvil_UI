@@ -13,3 +13,4 @@ services:
 - source: /runtime/services/tables.yml
   client_config: {}
   server_config: {}
+uplink_visible: true
