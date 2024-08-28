@@ -28,6 +28,7 @@ class Form1(Form1Template):
 
       # Encode the file in base64
       encoded_image = base64.b64encode(file_data).decode('utf-8')
+      print("image encoded")
 
       # Call the Anvil server function to save the image
       result = anvil.server.call('save_image', encoded_image, filename)
