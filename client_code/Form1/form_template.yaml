@@ -21,6 +21,12 @@ components:
       properties: {}
       type: FileLoader
       layout_properties: {grid_position: 'KSAJDC,NLLAGS'}
+      event_bindings: {change: file_loader_1_change}
+    - name: button_upload_img
+      properties: {text: button_1}
+      type: Button
+      layout_properties: {grid_position: 'MHPPMJ,PYCPBD'}
+      event_bindings: {click: button_upload_img_click}
     - name: button_submit
       properties: {text: SUBMIT, role: filled-button}
       type: Button
