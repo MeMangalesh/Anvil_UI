@@ -16,9 +16,9 @@ class Form1(Form1Template):
     alert(result)  # This should display "Hello, Anvil User from FastAPI!"
 
   def file_loader_1_change(self, file, **event_args):
-    """This method is called when a new file is loaded into this FileLoader"""
-    pass
-
+   # Display this file in an Image component
+    self.image_byuser.source = file
+  
   def button_upload_img_click(self, **event_args):
    # Get the uploaded file from the FileLoader component
     file = self.file_loader_1.file
@@ -32,10 +32,10 @@ class Form1(Form1Template):
       # Call the Anvil server function to save the image
       result = anvil.server.call('save_image', encoded_image, filename)
             
-            # Display the result message
-            if result['status'] == 'success':
-                self.label_status.text = "Image uploaded and saved successfully!"
-            else:
-                self.label_status.text = "Failed to save image."
-        else:
-
+      # Display the result message
+      if result['status'] == 'success':
+          self.label_status.text = "Image uploaded and saved successfully!"
+      else:
+          self.label_status.text = "Failed to save image."
+    else:
+      self.label_status.text = "No file selected."
