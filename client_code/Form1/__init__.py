@@ -42,5 +42,4 @@ class Form1(Form1Template):
       self.label_status.text = "No file selected."
 
   def button_detect_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass
+    save_image_to_db(image_base64, filename, pothole_detected, potholes_count)
