@@ -37,6 +37,6 @@ class Form1(Form1Template):
       if result['status'] == 'success':
           self.label_status.text = "Image uploaded and saved successfully!"
       else:
-          self.label_status.text = "Failed to save image."
+          self.label_status.text = f"Failed to save image: {result['message']}"
     else:
       self.label_status.text = "No file selected."
