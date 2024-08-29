@@ -17,7 +17,13 @@ import requests
 def save_image(image_base64, filename):
     # Define the URL of your FastAPI endpoint
     fastapi_endpoint = "http://127.0.0.1:8000/save_image"
-    
+  # Line added to trobleshoot  
+    # Print the FastAPI endpoint to verify the URL
+    print(fastapi_endpoint)  # Check the endpoint URL
+
+    # Print the first 50 characters of the Base64-encoded image to verify encoding
+    print(image_base64[:50])  # Preview the Base64 encoding
+      
     # Send the data to your FastAPI app
     response = requests.post(fastapi_endpoint, json={
         "image_base64": image_base64,
