@@ -23,6 +23,11 @@ components:
       name: button_submit
       properties: {role: filled-button, text: SUBMIT}
       type: Button
+    - event_bindings: {click: button_detect_click}
+      layout_properties: {grid_position: 'GBQQYJ,PRARON'}
+      name: button_detect
+      properties: {text: DETECT}
+      type: Button
     - layout_properties: {grid_position: 'NJMARC,FTXCZZ'}
       name: button_reset
       properties: {text: RESET}

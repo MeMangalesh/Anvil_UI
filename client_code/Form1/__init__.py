@@ -40,3 +40,7 @@ class Form1(Form1Template):
           self.label_status.text = f"Failed to save image: {result['message']}"
     else:
       self.label_status.text = "No file selected."
+
+  def button_detect_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
