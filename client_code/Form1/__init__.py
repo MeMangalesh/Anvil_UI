@@ -42,4 +42,25 @@ class Form1(Form1Template):
       self.label_status.text = "No file selected."
 
   def button_detect_click(self, **event_args):
-    save_image_to_db(image_base64, filename, pothole_detected, potholes_count)
+      # Assuming the image has already been uploaded and saved,
+      # now call the YOLO model to detect potholes
+      file = self.file_loader_1.file
+      if file:
+          filename = file.name
+          file_data = file.get_bytes()
+
+          # Encode the file in base64
+          encoded_image = base64.b64encode(file_data).decode('utf-8')
+          print("Image encoded for detection")
+
+          # Call the Anvil server function to detect potholes
+          result = anvil.server.call('detect_potholes', encoded_image, filename)
+          
+          # Unpack and display the result from the tuple 
+          if result:
+            pothole_detected, potholes_count = result  # Unpacking tuple/list
+            self.label_status.text = f"Potholes detected: {potholes_count}"
+          else:
+              self.label_status.text = "Failed to detect potholes."
+      else:
+          self.label_status.text = "No file selected."

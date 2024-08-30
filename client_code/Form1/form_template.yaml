@@ -23,26 +23,44 @@ components:
       name: button_submit
       properties: {role: filled-button, text: SUBMIT}
       type: Button
-    - event_bindings: {click: button_detect_click}
-      layout_properties: {grid_position: 'GBQQYJ,PRARON'}
-      name: button_detect
-      properties: {role: outlined-button, text: DETECT}
-      type: Button
     - layout_properties: {grid_position: 'NJMARC,FTXCZZ'}
       name: button_reset
       properties: {text: RESET}
       type: Button
-    - layout_properties: {grid_position: 'KOTCQX,KVSLXF'}
-      name: label_status
-      properties: {}
-      type: Label
     layout_properties: {grid_position: 'KOBTRE,DFBGCL'}
     name: outlined_card_1
     properties: {role: outlined-card}
     type: ColumnPanel
+  - components:
+    - event_bindings: {click: button_detect_click}
+      layout_properties: {grid_position: 'LHYLMZ,IRFLMS'}
+      name: button_detect
+      properties: {role: elevated-button, text: DETECT}
+      type: Button
+    layout_properties: {grid_position: 'KOBTRE,UHLOMU'}
+    name: outlined_card_2
+    properties: {role: outlined-card}
+    type: ColumnPanel
+  - components:
+    - layout_properties: {grid_position: 'OGLDNC,OGFOAS'}
+      name: image_detection
+      properties: {}
+      type: Image
+    layout_properties: {grid_position: 'KOBTRE,CNBCMK ZWJYOV,YZEVPQ'}
+    name: outlined_card_3
+    properties: {role: outlined-card}
+    type: ColumnPanel
+  - layout_properties: {grid_position: 'KOBTRE,CNBCMK TALLVQ,HYFIPO'}
+    name: label_result
+    properties: {bold: true, text: RESULT}
+    type: Label
+  - layout_properties: {grid_position: 'KOBTRE,CNBCMK PQKTQJ,BKEQHK'}
+    name: label_status
+    properties: {}
+    type: Label
   layout_properties: {slot: default}
   name: content_panel
-  properties: {col_widths: '{}'}
+  properties: {col_widths: '{"DFBGCL":30,"UHLOMU":10,"CNBCMK":20}'}
   type: ColumnPanel
 - layout_properties: {slot: nav-right}
   name: navbar_links

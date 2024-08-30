@@ -16,3 +16,15 @@ import anvil.server
 def save_image(image_base64, filename):
     # The call to Uplink function
     return anvil.server.call('save_image', image_base64, filename)
+
+@anvil.server.callable
+def detect_potholes(image_base64, filename):
+   # The call to Uplink function
+   # Call the function in your VSCode environment that runs the YOLO model
+   # return anvil.server.call('detect_potholes', image_base64, filename)
+   try:
+        pothole_detected, potholes_count = anvil.server.call('detect_potholes', image_base64, filename)
+        return pothole_detected, potholes_count
+  except Exception as e:
+        # Handle any errors during the call
+        return None
