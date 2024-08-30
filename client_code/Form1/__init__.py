@@ -58,9 +58,11 @@ class Form1(Form1Template):
           
           # Unpack and display the result from the tuple 
           if result:
+             # Display the processed image with bounding boxes
             pothole_detected, potholes_count = result  # Unpacking tuple/list
             self.label_status.text = f"Potholes detected: {potholes_count}"
+            self.image_detection.source = f"data:image/png;base64,{result_image_base64}"
           else:
-              self.label_status.text = "Failed to detect potholes."
+              self.label_status.text = "No potholes detected."
       else:
           self.label_status.text = "No file selected."
