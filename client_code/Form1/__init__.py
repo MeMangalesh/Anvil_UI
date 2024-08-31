@@ -67,3 +67,10 @@ class Form1(Form1Template):
               self.label_status.text = "No potholes detected."
       else:
           self.label_status.text = "No file selected."
+
+  def button_reset_click(self, **event_args):
+    # Clear the image displayed in the Image component
+    self.image_byuser.source = None  
+    # Clear the uploaded file from the file loader
+    self.file_loader.clear()
+    self.button_show_image.enabled = True
