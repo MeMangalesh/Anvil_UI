@@ -6,11 +6,6 @@ import anvil.server
 # To allow anvil.server.call() to call functions here, we mark
 # them with @anvil.server.callable.
 # Here is an example - you can replace it with your own:
-#
-# @anvil.server.callable
-# def say_hello(name):
-#   print("Hello, " + name + "!")
-#   return 42
 
 @anvil.server.callable
 def save_image(image_base64, filename):
@@ -22,7 +17,7 @@ def detect_potholes(image_base64, filename):
    # The call to Uplink function
    # Call the function in your VSCode environment that runs the YOLO model
    # return anvil.server.call('detect_potholes', image_base64, filename)
-   try:
+  try:
         pothole_detected, potholes_count = anvil.server.call('detect_potholes', image_base64, filename)
         return pothole_detected, potholes_count
   except Exception as e:

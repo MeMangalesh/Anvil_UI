@@ -10,22 +10,17 @@ components:
       name: file_loader_1
       properties: {}
       type: FileLoader
-    - event_bindings: {click: button_submit_click}
-      layout_properties: {grid_position: 'JYYFDJ,MBGKUF'}
-      name: button_submit
-      properties: {role: filled-button, text: SUBMIT}
-      type: Button
     - event_bindings: {click: button_upload_img_click}
       layout_properties: {grid_position: 'MHPPMJ,PYCPBD'}
       name: button_upload_img
       properties:
         role: tonal-button
         text: |
-          UPLOAD
+          SAVE
       type: Button
     - layout_properties: {grid_position: 'NJMARC,FTXCZZ'}
       name: button_reset
-      properties: {text: RESET}
+      properties: {role: outlined-button, text: RESET}
       type: Button
     layout_properties: {grid_position: 'KOBTRE,DFBGCL MQPSIK,FYWOJX'}
     name: outlined_card_1
@@ -34,7 +29,7 @@ components:
   - event_bindings: {click: button_detect_click}
     layout_properties: {grid_position: 'KOBTRE,DFBGCL PUMOND,TZXXTM'}
     name: button_detect
-    properties: {role: elevated-button, text: DETECT}
+    properties: {role: filled-button, text: DETECT}
     type: Button
   - components:
     - layout_properties: {grid_position: 'OGLDNC,OGFOAS'}
