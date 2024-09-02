@@ -10,6 +10,4 @@ class RowTemplate1(RowTemplate1Template):
 
     # Any code you write here will run before the form opens.
 
-  def label_col_id_show(self, **event_args):
-    """This method is called when the Label is shown on the screen"""
-    pass
+ 
