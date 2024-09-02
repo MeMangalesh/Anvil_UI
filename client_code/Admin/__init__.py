@@ -14,14 +14,14 @@ class Admin(AdminTemplate):
    # Display this file in an Image component
     self.image_upload.source = file
     # self.button_activate(self)
-    
+
   def button_save_click(self, **event_args):
-   # Get the uploaded file from the FileLoader component
+     # Get the uploaded file from the FileLoader component
     file = self.file_loader_1.file
     if file:
       filename = file.name
       file_data = file.get_bytes()
-     
+      
       # Encode the file in base64
       encoded_image = base64.b64encode(file_data).decode('utf-8')
       print("image encoded")
@@ -36,4 +36,14 @@ class Admin(AdminTemplate):
           self.label_message.text = f"Failed to save image: {result['message']}"
     else:
       self.label_message.text = "No file selected."
+
+  def outlined_button_reset_click(self, **event_args):
+    # Clear the image displayed in the Image component
+    self.image_upload.source = None 
+    # # Clear the image displayed in the Image component
+    # self.image_detection.source = None 
+    # Clear the uploaded file from the file loader
+    self.file_loader_1.clear()
+   
+
 
