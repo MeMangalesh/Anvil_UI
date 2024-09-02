@@ -8,17 +8,15 @@ class Admin(AdminTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
-    # Any code you write here will run before the form opens.
-    # Call Anvil server function to display the data from image_data table
-    self.repeating_panel_image_data.items = anvil.server.call('get_data')
-    # Display the result message
-    #   if result['status'] == 'success':
-    #       self.label_message.text = "Records from Image Data table displayed successfully!"
-    #   else:
-    #       self.label_message.text = f"Failed to display records from Image Data: {result['message']}"
-
-
-  
+  # Any code you write here will run before the form opens.
+   # Fetch data from the server and set it to the repeating panel
+    data = anvil.server.call('display_data')
+    
+    if data['status'] == 'success':
+        self.repeating_panel_image_data.items = data['data']
+    else:
+        anvil.Notification("Failed to load data").show()
+   
   def file_loader_1_change(self, file, **event_args):
    # Display this file in an Image component
     self.image_upload.source = file

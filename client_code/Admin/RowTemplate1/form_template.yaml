@@ -40,9 +40,12 @@ components:
   type: Label
 - data_bindings:
   - {code: 'self.item[''potholes_count'']', property: tag, writeback: false}
+  - {code: '', property: text, writeback: false}
   layout_properties: {column: XEIIBA}
   name: label_col_potholes_count
   properties: {}
   type: Label
-container: {type: DataRowPanel}
+container:
+  event_bindings: {}
+  type: DataRowPanel
 is_package: true
