@@ -6,27 +6,27 @@ components:
   properties: {}
   type: Label
 - layout_properties: {column: VJQQOR}
-  name: label_2
+  name: label_col_filename
   properties: {}
   type: Label
 - layout_properties: {column: OJLQEN}
-  name: label_3
+  name: label_col_url
   properties: {}
   type: Label
 - layout_properties: {column: ARVVED}
-  name: label_4
+  name: label_col_created_at
   properties: {}
   type: Label
 - layout_properties: {column: PYWIMC}
-  name: label_5
+  name: label_col_updated_at
   properties: {}
   type: Label
 - layout_properties: {column: UICRXP}
-  name: label_6
+  name: label_col_pothole_detected
   properties: {}
   type: Label
 - layout_properties: {column: XEIIBA}
-  name: label_7
+  name: label_col_potholes_count
   properties: {}
   type: Label
 container: {type: DataRowPanel}
