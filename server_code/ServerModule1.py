@@ -9,17 +9,10 @@ import anvil.server
 
 # Add new row into table
 @anvil.server.callable
-def save_image(file):
-    # Save the image in the data table
-    app_tables.image_table.add_row(
-      image=file,
-      url=file.url,
-      filename=file.name,
-      date_created=datetime.now(), # Capture the current date and time
-      potholes_exist=False, # Assume potholes do not exist when saving image. Will be updated after detection process 
-      potholes_count=0 # Assume no potholes when saving image. Will be updated after detection process 
-      )
-
+def display_data():
+  # Dispaly records from the image_data table 
+  return anvil.server.call('get_data')
+  
 @anvil.server.callable
 def save_image(image_base64, filename):
     # The call to Uplink function

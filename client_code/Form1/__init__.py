@@ -56,8 +56,7 @@ class Form1(Form1Template):
       self.label_status.text = "No file selected."
 
   def button_detect_click(self, **event_args):
-      # Assuming the image has already been uploaded and saved,
-      # Call the YOLO model to detect potholes
+      # Call the function from VSCode to perform inference on image
       file = self.file_loader_1.file
       if file:
           filename = file.name
