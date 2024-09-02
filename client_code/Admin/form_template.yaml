@@ -35,9 +35,12 @@ components:
       name: data_grid_1
       properties:
         columns:
-        - {data_key: column_1, id: JKSDUP, title: Column 1}
-        - {data_key: column_2, id: VJQQOR, title: Column 2}
-        - {data_key: column_3, id: OJLQEN, title: Column 3}
+        - {data_key: column_1, id: JKSDUP, title: ID}
+        - {data_key: column_2, id: VJQQOR, title: 'Filename '}
+        - {data_key: column_3, id: OJLQEN, title: URL}
+        - {data_key: column_4, id: ARVVED, title: Byte64}
+        - {data_key: column_5, id: PYWIMC, title: Column 5}
+        - {data_key: column_6, id: UICRXP, title: Column 6}
       type: DataGrid
     layout_properties: {grid_position: 'NDPKNO,TRPIAV'}
     name: outlined_card_2
