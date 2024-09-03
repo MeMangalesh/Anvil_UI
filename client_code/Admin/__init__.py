@@ -80,7 +80,7 @@ class Admin(AdminTemplate):
     if result:
         pothole_detected, potholes_count, processed_image_base64 = result
         self.label_1.text = f"Potholes detected: {potholes_count}"
-        self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
+       # self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
     else:
         self.label_message.text = "No potholes detected."
 
