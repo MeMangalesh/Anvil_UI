@@ -73,12 +73,13 @@ class Admin(AdminTemplate):
 
   def trigger_pothole_detection(self, image_id):
     # Call the Anvil server function to detect potholes using the image ID
+    self.label_2.text = "Inside the trigger pothole function"
     result = anvil.server.call('detect_potholes_with_ID', image_id)
-    
+  
     # Unpack and display the result
     if result:
         pothole_detected, potholes_count, processed_image_base64 = result
-        self.label_message.text = f"Potholes detected: {potholes_count}"
+        self.label_1.text = f"Potholes detected: {potholes_count}"
         self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
     else:
         self.label_message.text = "No potholes detected."
