@@ -11,13 +11,7 @@ class Admin(AdminTemplate):
 
   # Any code you write here will run before the form opens.
    # Fetch data from the server and set it to the repeating panel
-    data = anvil.server.call('display_data')
     
-    if data['status'] == 'success':
-        self.repeating_panel_image_data.items = data['data']
-    else:
-        anvil.Notification("Failed to load data").show()
-   
   def file_loader_1_change(self, file, **event_args):
    # Display this file in an Image component
     self.image_upload.source = file
@@ -54,7 +48,7 @@ class Admin(AdminTemplate):
   ##############
   ## START - Save image into DB & trigger detection using the newly created ID to fetch data, detect & update results back into DB
   ###############
-  def button_save_detect_click(self, **event_args):
+  def button_save_n_detect_click(self, **event_args):
     file = self.file_loader_1.file
     if file:
       filename = file.name
@@ -65,7 +59,8 @@ class Admin(AdminTemplate):
       print("Image encoded for saving")
 
       # Call the Anvil server function to save the image and get the ID
-      image_id = anvil.server.call('save_image', encoded_image, filename)
+      self.label_message.text = "Calling save_image_n_trigger_detection function"
+      image_id = anvil.server.call('save_image_n_trigger_detection', encoded_image, filename)
       
       if image_id:
           self.label_message.text = f"Image uploaded successfully with ID {image_id}."
@@ -83,25 +78,15 @@ class Admin(AdminTemplate):
     # Unpack and display the result
     if result:
         pothole_detected, potholes_count, processed_image_base64 = result
-        self.label_status.text = f"Potholes detected: {potholes_count}"
+        self.label_message.text = f"Potholes detected: {potholes_count}"
         self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
     else:
-        self.label_status.text = "No potholes detected."
+        self.label_message.text = "No potholes detected."
 
 #####################
 ## DETECTion TRIGGER 
 #####################
-  def trigger_pothole_detection(self, image_id):
-        # Call the Anvil server function to detect potholes using the image ID
-        result = anvil.server.call('detect_potholes', image_id)
-        
-        # Unpack and display the result
-        if result:
-            pothole_detected, potholes_count, processed_image_base64 = result
-            self.label_status.text = f"Potholes detected: {potholes_count}"
-            self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
-        else:
-            self.label_status.text = "No potholes detected."
+
 
 
 

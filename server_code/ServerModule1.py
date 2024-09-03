@@ -16,7 +16,8 @@ def display_data():
 @anvil.server.callable
 def save_image(image_base64, filename):
     # The call to Uplink function
-    return anvil.server.call('save_image', image_base64, filename)
+    # return anvil.server.call('save_image', image_base64, filename)
+    return anvil.server.call('save_image_n_trigger_detection', image_base64, filename)
 
 @anvil.server.callable
 def detect_potholes(image_base64, filename):
@@ -34,8 +35,26 @@ def detect_potholes(image_base64, filename):
 ## CODE FOR SAVING & TRIGGERING DETECTION
 ##############
 @anvil.server.callable
-def save_trigger_detection(image_base64, filename):
+def save_image_n_trigger_detection(self, image_base64, filename):
 # Call the Anvil server function to detect potholes using the image ID
-  result = anvil.server.call('detect_potholes', id)
+  result = anvil.server.call('detect_potholes', id) 
+    # Unpack and display the result
+  if result:
+      pothole_detected, potholes_count, processed_image_base64 = result
+      self.label_status.text = f"Potholes detected: {potholes_count}"
+      self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
+  else:
+      self.label_status.text = "No potholes detected."
   
- 
+@anvil.server.callable
+def detect_potholes_with_ID (self, id):
+  # Call the Anvil server function to detect potholes using the image ID
+  result = anvil.server.call('detect_potholes', image_id)
+  
+  # Unpack and display the result
+  if result:
+      pothole_detected, potholes_count, processed_image_base64 = result
+      self.label_status.text = f"Potholes detected: {potholes_count}"
+      self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
+  else:
+      self.label_status.text = "No potholes detected."
