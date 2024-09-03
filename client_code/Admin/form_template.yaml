@@ -10,6 +10,11 @@ components:
       name: file_loader_1
       properties: {}
       type: FileLoader
+    - event_bindings: {click: button_save_detect_click}
+      layout_properties: {grid_position: 'JBCBGH,RSGJBT'}
+      name: button_save_detect
+      properties: {role: tonal-button, text: SAVE & DETECT}
+      type: Button
     - event_bindings: {click: button_save_click}
       layout_properties: {grid_position: 'ELYDTR,WDAYAD'}
       name: button_save

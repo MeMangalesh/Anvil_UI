@@ -29,3 +29,13 @@ def detect_potholes(image_base64, filename):
   except Exception as e:
         # Handle any errors during the call
         return None
+
+##############
+## CODE FOR SAVING & TRIGGERING DETECTION
+##############
+@anvil.server.callable
+def save_trigger_detection(image_base64, filename):
+# Call the Anvil server function to detect potholes using the image ID
+  result = anvil.server.call('detect_potholes', id)
+  
+ 
