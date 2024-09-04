@@ -19,7 +19,8 @@ class Admin(AdminTemplate):
   def load_data(self):
     # Fetch data from the server
       response = anvil.server.call('get_data')
-      
+      # print(response)  # Debugging: Print the response to check the data - print OK
+
       # Check the status of the response
       if response['status'] == 'success':
           # Set the data to the RepeatingPanel

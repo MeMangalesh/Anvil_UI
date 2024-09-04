@@ -1,46 +1,50 @@
 components:
 - data_bindings:
-  - {code: '', property: text, writeback: false}
   - {code: 'self.item[''id'']', property: tag, writeback: false}
+  - {code: 'self.item[''id'']', property: text, writeback: false}
   event_bindings: {}
   layout_properties: {column: JKSDUP}
   name: label_col_id
   properties: {}
   type: Label
 - data_bindings:
-  - {code: '', property: text, writeback: false}
   - {code: 'self.item[''filename'']', property: tag, writeback: false}
+  - {code: 'self.item[''filename'']', property: text, writeback: false}
   layout_properties: {column: VJQQOR}
   name: label_col_filename
   properties: {}
   type: Label
 - data_bindings:
   - {code: 'self.item[''url'']', property: tag, writeback: false}
+  - {code: 'self.item[''url'']', property: text, writeback: false}
   layout_properties: {column: OJLQEN}
   name: label_col_url
   properties: {}
   type: Label
 - data_bindings:
   - {code: 'self.item[''created_at'']', property: tag, writeback: false}
+  - {code: 'self.item[''created_at'']', property: text, writeback: false}
   layout_properties: {column: ARVVED}
   name: label_col_created_at
   properties: {}
   type: Label
 - data_bindings:
   - {code: 'self.item[''updated_at'']', property: tag, writeback: false}
+  - {code: 'self.item[''updated_at'']', property: text, writeback: false}
   layout_properties: {column: PYWIMC}
   name: label_col_updated_at
   properties: {}
   type: Label
 - data_bindings:
   - {code: 'self.item[''pothole_detected'']', property: tag, writeback: false}
+  - {code: 'self.item[''pothole_detected'']', property: text, writeback: false}
   layout_properties: {column: UICRXP}
   name: label_col_pothole_detected
   properties: {}
   type: Label
 - data_bindings:
   - {code: 'self.item[''potholes_count'']', property: tag, writeback: false}
-  - {code: '', property: text, writeback: false}
+  - {code: 'self.item[''potholes_count'']', property: text, writeback: false}
   layout_properties: {column: XEIIBA}
   name: label_col_potholes_count
   properties: {}
