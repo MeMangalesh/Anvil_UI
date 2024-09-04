@@ -2,7 +2,7 @@ components:
 - data_bindings:
   - {code: '', property: text, writeback: false}
   - {code: 'self.item[''id'']', property: tag, writeback: false}
-  event_bindings: {show: label_col_id_show}
+  event_bindings: {}
   layout_properties: {column: JKSDUP}
   name: label_col_id
   properties: {}

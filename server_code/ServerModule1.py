@@ -9,9 +9,8 @@ import anvil.server
 
 # Add new row into table
 @anvil.server.callable
-def display_data():
-  # Dispaly records from the image_data table 
-  return anvil.server.call('get_data')
+def get_data():
+    return anvil.server.call('get_data')  # Call the VSCode uplink function
   
 @anvil.server.callable
 def save_image(image_base64, filename):

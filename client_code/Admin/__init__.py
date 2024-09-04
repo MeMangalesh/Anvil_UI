@@ -8,43 +8,26 @@ class Admin(AdminTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-
-  # Any code you write here will run before the form opens.
-   # Fetch data from the server and set it to the repeating panel
+    # Load data when the form is initialized
+    self.load_data()
     
   def file_loader_1_change(self, file, **event_args):
    # Display this file in an Image component
     self.image_upload.source = file
     # self.button_activate(self)
 
-  ##############
-  ## Code to save image
-  ## Commented to try saving & using ID to fetch data, detect & update results back into DB
-  ###############
-  # def button_save_click(self, **event_args):
-  #    # Get the uploaded file from the FileLoader component
-  #   file = self.file_loader_1.file
-  #   if file:
-  #     filename = file.name
-  #     file_data = file.get_bytes()
+  def load_data(self):
+    # Fetch data from the server
+      response = anvil.server.call('get_data')
       
-  #     # Encode the file in base64
-  #     encoded_image = base64.b64encode(file_data).decode('utf-8')
-  #     print("Image encoded and saved.")
-
-  #     # Call the Anvil server function to save the image
-  #     result = anvil.server.call('save_image', encoded_image, filename)
-            
-  #     # Display the result message
-  #     if result['status'] == 'success':
-  #         self.label_message.text = "Image uploaded and saved successfully!"
-  #     else:
-  #         self.label_message.text = f"Failed to save image: {result['message']}"
-  #   else:
-  #     self.label_message.text = "No file selected."
+      # Check the status of the response
+      if response['status'] == 'success':
+          # Set the data to the RepeatingPanel
+          self.repeating_panel_image_data.items = response['data']
+      else:
+          # Handle errors, e.g., show an alert
+          alert(response['message'])
     
-  # Deactivate the "Reset" button after saving 
-
   ##############
   ## START - Save image into DB & trigger detection using the newly created ID to fetch data, detect & update results back into DB
   ###############
