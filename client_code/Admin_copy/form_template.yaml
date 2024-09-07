@@ -57,11 +57,11 @@ components:
     - components:
       - layout_properties: {grid_position: 'YHOEHE,OKXYKU'}
         name: date_picker_from
-        properties: {}
+        properties: {placeholder: 'Date From:'}
         type: DatePicker
       - layout_properties: {grid_position: 'YHOEHE,SFZKJC'}
         name: date_picker_to
-        properties: {}
+        properties: {placeholder: 'Date To:'}
         type: DatePicker
       layout_properties: {width: 413}
       name: column_panel_2
@@ -69,7 +69,7 @@ components:
       type: ColumnPanel
     - layout_properties: {}
       name: button_1
-      properties: {align: right, bold: true, text: SHOW}
+      properties: {align: right, bold: true, role: filled-button, text: SHOW}
       type: Button
     layout_properties: {grid_position: 'MPXSZF,SROZJT'}
     name: flow_panel_1
@@ -81,21 +81,46 @@ components:
     type: Spacer
   - components:
     - components:
-      - name: repeating_panel_1
-        properties: {item_template: Admin_copy.RowTemplate2}
+      - layout_properties: {}
+        name: image_1
+        properties: {display_mode: fill_width}
+        type: Image
+      - name: repeating_panel_2
+        properties: {item_template: Admin_copy.RowTemplate3}
         type: RepeatingPanel
-      layout_properties: {grid_position: 'KQPBCJ,ZWBMCM'}
+      layout_properties: {grid_position: 'KQPBCJ,LROWBO'}
       name: data_grid_2
       properties:
-        columns:
-        - {data_key: column_1, id: JKSDUP, title: Column 1}
-        - {data_key: column_2, id: VJQQOR, title: Column 2}
-        - {data_key: column_3, id: OJLQEN, title: Column 3}
+        columns: []
       type: DataGrid
+    - layout_properties: {grid_position: 'KQPBCJ,GAMROV JSSORT,ZEPDBF'}
+      name: spacer_3
+      properties: {height: 32}
+      type: Spacer
+    - layout_properties: {grid_position: 'KQPBCJ,GAMROV KJMNRV,SFGAKB'}
+      name: label_filename
+      properties: {text: ''}
+      type: Label
+    - layout_properties: {grid_position: 'KQPBCJ,GAMROV TTUBXT,YISFQC'}
+      name: label_4
+      properties: {text: 'Date processed: '}
+      type: Label
+    - layout_properties: {grid_position: 'KQPBCJ,GAMROV YGVJAT,APMIXP'}
+      name: label_dt_processed
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'KQPBCJ,GAMROV WJAUEG,WKKQFF'}
+      name: check_box_pothole
+      properties: {text: Review}
+      type: CheckBox
     layout_properties: {grid_position: 'AUPOQW,NQLUOJ'}
     name: outlined_card_3
-    properties: {role: outlined-card}
+    properties: {col_widths: '{"LROWBO":40,"GAMROV":20}', role: outlined-card}
     type: ColumnPanel
+  - layout_properties: {grid_position: 'JLIRXQ,EMXUNY'}
+    name: spacer_4
+    properties: {height: 32}
+    type: Spacer
   - components:
     - components:
       - name: repeating_panel_image_data

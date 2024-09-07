@@ -12,6 +12,6 @@ services:
 - client_config: {}
   server_config: {}
   source: /runtime/services/tables.yml
-startup: {module: Admin_copy, type: form}
+startup: {module: Admin, type: form}
 startup_form: null
 uplink_visible: true
