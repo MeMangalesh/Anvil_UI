@@ -57,3 +57,10 @@ def detect_potholes_with_ID (self, id):
       self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
   else:
       self.label_status.text = "No potholes detected."
+
+##### STATISTICS###############
+
+def get_dashboard_stats(self):
+    # Fetch data from the server
+      response = anvil.server.call('get_stats')
+      # print(response)  # Debugging: Print the response to check the data - print OK
