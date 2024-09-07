@@ -49,6 +49,10 @@ components:
     name: spacer_1
     properties: {height: 32}
     type: Spacer
+  - layout_properties: {grid_position: 'CCRJVM,OOFELG'}
+    name: label_filter_date
+    properties: {bold: true, text: FILTER BY DATE}
+    type: Label
   - components:
     - components:
       - layout_properties: {grid_position: 'YHOEHE,OKXYKU'}
@@ -63,6 +67,10 @@ components:
       name: column_panel_2
       properties: {}
       type: ColumnPanel
+    - layout_properties: {}
+      name: button_1
+      properties: {align: right, bold: true, text: SHOW}
+      type: Button
     layout_properties: {grid_position: 'MPXSZF,SROZJT'}
     name: flow_panel_1
     properties: {}
@@ -71,6 +79,23 @@ components:
     name: spacer_2
     properties: {height: 32}
     type: Spacer
+  - components:
+    - components:
+      - name: repeating_panel_1
+        properties: {item_template: Admin_copy.RowTemplate2}
+        type: RepeatingPanel
+      layout_properties: {grid_position: 'KQPBCJ,ZWBMCM'}
+      name: data_grid_2
+      properties:
+        columns:
+        - {data_key: column_1, id: JKSDUP, title: Column 1}
+        - {data_key: column_2, id: VJQQOR, title: Column 2}
+        - {data_key: column_3, id: OJLQEN, title: Column 3}
+      type: DataGrid
+    layout_properties: {grid_position: 'AUPOQW,NQLUOJ'}
+    name: outlined_card_3
+    properties: {role: outlined-card}
+    type: ColumnPanel
   - components:
     - components:
       - name: repeating_panel_image_data
