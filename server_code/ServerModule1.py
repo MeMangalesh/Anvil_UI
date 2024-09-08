@@ -73,7 +73,7 @@ def get_stats():
       print(pie_stats)  # Debugging: Print the response to check the data - print OK
 
 @anvil.server.callable
-def get_date_range_data():
+def fetch_data_by_date():
     # Fetch data from the server
-      pie_stats = anvil.server.call('get_dt_range_data')
+      pie_stats = anvil.server.call('get_data_by_range')
       print(pie_stats)  # Debugging: Print the response to check the data - print OK
