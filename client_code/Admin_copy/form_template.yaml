@@ -159,7 +159,8 @@ components:
     name: link_Admin1
     properties: {}
     type: Link
-  - layout_properties: {grid_position: 'CUZHKP,PFYEFU'}
+  - event_bindings: {click: link_Dashboard_click}
+    layout_properties: {grid_position: 'CUZHKP,PFYEFU'}
     name: link_Dashboard
     properties: {}
     type: Link

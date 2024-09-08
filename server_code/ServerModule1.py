@@ -1,4 +1,9 @@
 import anvil.server
+###########ADDED FOR STATS##########
+import plotly.graph_objects as plt
+import anvil.plotly_templates
+anvil.plotly_templates.set_default("rally")
+###########ADDED FOR STATS##########
 
 # This is a server module. It runs on the Anvil server,
 # rather than in the user's browser.
@@ -58,9 +63,11 @@ def detect_potholes_with_ID (self, id):
   else:
       self.label_status.text = "No potholes detected."
 
-##### STATISTICS###############
+###########
+###STATISTICS
+############
 
-def get_dashboard_stats(self):
+def get_stats(self):
     # Fetch data from the server
-      response = anvil.server.call('get_stats')
+      response = anvil.server.call('get_statistics')
       # print(response)  # Debugging: Print the response to check the data - print OK

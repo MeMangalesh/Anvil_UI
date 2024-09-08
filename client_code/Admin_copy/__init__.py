@@ -86,3 +86,19 @@ class Admin_copy(Admin_copyTemplate):
     # self.image_detection.source = None
     # Clear the uploaded file from the file loader
     self.file_loader_1.clear()
+
+  ##############
+  ## STATS
+  ##############
+
+  def link_Dashboard_click(self, **event_args):
+    #Clear the content panel and add the Reports Form
+    self.content_panel.clear()
+    self.content_panel.add_component(Stats())
+    #Change the color of the sales_page_link to indicate that the Reports page has been selected
+    self.reports_page_link.background = app.theme_colors['Primary Container']
+    self.sales_page_link.background = "transparent"
+
+
+
+
