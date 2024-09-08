@@ -11,6 +11,8 @@ class Admin_copy(Admin_copyTemplate):
     self.init_components(**properties)
     # Load data when the form is initialized
     self.load_data()
+    self.date_from = None  # Initialize date_from
+    self.date_to = None  # Initialize date_to
 
   def file_loader_1_change(self, file, **event_args):
     # Display this file in an Image component
@@ -98,6 +100,18 @@ class Admin_copy(Admin_copyTemplate):
     #Change the color of the sales_page_link to indicate that the Reports page has been selected
     self.reports_page_link.background = app.theme_colors['Primary Container']
     self.sales_page_link.background = "transparent"
+
+  def button_show_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    pass
+
+  def date_picker_from_change(self, **event_args):
+    """This method is called when the selected date changes"""
+    pass
+
+  def date_picker_to_change(self, **event_args):
+    """This method is called when the selected date changes"""
+    pass
 
 
 

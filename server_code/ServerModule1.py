@@ -66,8 +66,14 @@ def detect_potholes_with_ID (self, id):
 ###########
 ###STATISTICS
 ############
-
-def get_stats(self):
+@anvil.server.callable
+def get_stats():
     # Fetch data from the server
-      response = anvil.server.call('get_statistics')
-      # print(response)  # Debugging: Print the response to check the data - print OK
+      pie_stats = anvil.server.call('get_statistics')
+      print(pie_stats)  # Debugging: Print the response to check the data - print OK
+
+@anvil.server.callable
+def get_date_range_data():
+    # Fetch data from the server
+      pie_stats = anvil.server.call('get_dt_range_data')
+      print(pie_stats)  # Debugging: Print the response to check the data - print OK

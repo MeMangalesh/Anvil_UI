@@ -55,11 +55,13 @@ components:
     type: Label
   - components:
     - components:
-      - layout_properties: {grid_position: 'YHOEHE,OKXYKU'}
+      - event_bindings: {change: date_picker_from_change}
+        layout_properties: {grid_position: 'YHOEHE,OKXYKU'}
         name: date_picker_from
         properties: {placeholder: 'Date From:'}
         type: DatePicker
-      - layout_properties: {grid_position: 'YHOEHE,SFZKJC'}
+      - event_bindings: {change: date_picker_to_change}
+        layout_properties: {grid_position: 'YHOEHE,SFZKJC'}
         name: date_picker_to
         properties: {placeholder: 'Date To:'}
         type: DatePicker
@@ -67,8 +69,9 @@ components:
       name: column_panel_2
       properties: {}
       type: ColumnPanel
-    - layout_properties: {}
-      name: button_1
+    - event_bindings: {click: button_show_click}
+      layout_properties: {}
+      name: button_show
       properties: {align: right, bold: true, role: filled-button, text: SHOW}
       type: Button
     layout_properties: {grid_position: 'MPXSZF,SROZJT'}

@@ -2,6 +2,7 @@ from ._anvil_designer import StatsTemplate
 from anvil import *
 import plotly.graph_objects as go
 import anvil.server
+#import pymysql
 #from ._anvil_designer import ReportsTemplate
 
 class Stats(StatsTemplate):
@@ -11,7 +12,7 @@ class Stats(StatsTemplate):
 
     # Call the server function to get the statistics
     stats = anvil.server.call('get_stats')
-    
+
    # Check if the server call was successful
     if stats['status'] == 'success':
       total_images = stats['data']['total_images']
