@@ -123,26 +123,26 @@ class Admin_copy(Admin_copyTemplate):
     self.date_to = self.date_picker_to.date
     self.call_server_function()
 
-  def call_server_function(self):
-    """Call the server function with the selected dates"""
-    # Handle cases where one of the dates might not be selected
-    if self.date_from and not self.date_to:
-      response = anvil.server.call('fetch_data_by_date', date_from=self.date_from)
-    elif not self.date_from and self.date_to:
-      response = anvil.server.call('fetch_data_by_date', date_to=self.date_to)
-    elif self.date_from and self.date_to:
-      response = anvil.server.call('fetch_data_by_date', date_from=self.date_from, date_to=self.date_to)
-    else:
-      # Both dates are not selected, do nothing or show a message
-      return
+  # def call_server_function(self):
+  #   """Call the server function with the selected dates"""
+  #   # Handle cases where one of the dates might not be selected
+  #   if self.date_from and not self.date_to:
+  #     response = anvil.server.call('fetch_data_by_date', date_from=self.date_from)
+  #   elif not self.date_from and self.date_to:
+  #     response = anvil.server.call('fetch_data_by_date', date_to=self.date_to)
+  #   elif self.date_from and self.date_to:
+  #     response = anvil.server.call('fetch_data_by_date', date_from=self.date_from, date_to=self.date_to)
+  #   else:
+  #     # Both dates are not selected, do nothing or show a message
+  #     return
 
-    # Handle the response (e.g., update your UI)
-    if response['status'] == 'success':
-      # Update UI with the data received from the server
-      pass
-    else:
-      # Handle the error
-      alert(f"Error fetching data: {response['message']}")
+  #   # Handle the response (e.g., update your UI)
+  #   if response['status'] == 'success':
+  #     # Update UI with the data received from the server
+  #     pass
+  #   else:
+  #     # Handle the error
+  #     alert(f"Error fetching data: {response['message']}")
 
 
 
