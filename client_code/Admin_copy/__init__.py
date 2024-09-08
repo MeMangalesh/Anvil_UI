@@ -13,7 +13,7 @@ class Admin_copy(Admin_copyTemplate):
     self.load_data()
     self.date_from = None  # Initialize date_from
     self.date_to = None  # Initialize date_to
-
+    
   def file_loader_1_change(self, file, **event_args):
     # Display this file in an Image component
     self.image_upload.source = file
@@ -102,16 +102,18 @@ class Admin_copy(Admin_copyTemplate):
     self.sales_page_link.background = "transparent"
 
   def button_show_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass
+    start_date = self.date_picker_from.date
+    end_date = self.date_picker_to.date
+    
+    if start_date and end_date:
+      response = anvil.server.call('get_data_by_date', start_date, end_date)
+      
+      if response['status'] == 'success':
+        data = response['data']
+        # Process and display the data (e.g., populate a Repeating Panel)
+      else:
+        alert(f"Failed to load data: {response['message']}")
 
-  class YourForm(YourFormTemplate):
-
-  def __init__(self, **properties):
-    # Set Form properties and Data Bindings.
-    self.init_components(**properties)
-    self.date_from = None  # Initialize date_from
-    self.date_to = None  # Initialize date_to
 
   def date_picker_from_change(self, **event_args):
     """This method is called when the selected date changes"""
@@ -123,28 +125,9 @@ class Admin_copy(Admin_copyTemplate):
     self.date_to = self.date_picker_to.date
     self.call_server_function()
 
-  # def call_server_function(self):
-  #   """Call the server function with the selected dates"""
-  #   # Handle cases where one of the dates might not be selected
-  #   if self.date_from and not self.date_to:
-  #     response = anvil.server.call('fetch_data_by_date', date_from=self.date_from)
-  #   elif not self.date_from and self.date_to:
-  #     response = anvil.server.call('fetch_data_by_date', date_to=self.date_to)
-  #   elif self.date_from and self.date_to:
-  #     response = anvil.server.call('fetch_data_by_date', date_from=self.date_from, date_to=self.date_to)
-  #   else:
-  #     # Both dates are not selected, do nothing or show a message
-  #     return
-
-  #   # Handle the response (e.g., update your UI)
-  #   if response['status'] == 'success':
-  #     # Update UI with the data received from the server
-  #     pass
-  #   else:
-  #     # Handle the error
-  #     alert(f"Error fetching data: {response['message']}")
-
-
+  def call_server_function(self):
+    """Call the server function with the selected dates"""
+    
 
 
 
