@@ -9,3 +9,10 @@ class Review(ReviewTemplate):
     self.init_components(**properties)
 
     # Any code you write here will run before the form opens.
+
+def load_undetected_images()
+    # Call the server function to get images
+    image_data_list = anvil.server.call('get_images')
+    
+    # Set the repeating panel with the list of image data
+    self.repeating_panel_1.items = image_data_list

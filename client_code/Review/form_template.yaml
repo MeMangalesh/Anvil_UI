@@ -1,11 +1,22 @@
-components: []
+components:
+- components:
+  - layout_properties: {grid_position: 'DAMZMA,XZEWJP'}
+    name: column_panel_1
+    properties: {}
+    type: ColumnPanel
+  - layout_properties: {grid_position: 'YTPCHS,PODSLR'}
+    name: image_display
+    properties: {}
+    type: Image
+  - layout_properties: {grid_position: 'NSCODW,EPRRKP'}
+    name: repeating_panel_1
+    properties: {item_template: Review.ItemTemplate1}
+    type: RepeatingPanel
+  layout_properties: {slot: default}
+  name: outlined_card_1
+  properties: {role: outlined-card}
+  type: ColumnPanel
 container:
-  properties:
-    html: |-
-      <center style="font-style:italic; color:#888; margin: 3em;">
-        (Insert your custom HTML here)
-      </center>
-      <div anvil-slot="default"></div>
-    visible: true
+  properties: {html: '@theme:standard-page.html', visible: true}
   type: HtmlTemplate
 is_package: true
