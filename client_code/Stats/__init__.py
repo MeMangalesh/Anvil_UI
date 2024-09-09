@@ -14,10 +14,10 @@ class Stats(StatsTemplate):
     stats = anvil.server.call('get_stats')
 
    # Check if the server call was successful
-    if stats['status'] == 'success':
-      total_images = stats['data']['total_images']
-      potholes_detected = stats['data']['potholes_detected']
-      potholes_not_detected = stats['data']['potholes_not_detected']
+    if stats:  # If stats were returned
+      total_images = stats.get('total_images', 0)
+      potholes_detected = stats.get('potholes_detected', 0)
+      potholes_not_detected = stats.get('potholes_not_detected', 0)
       
       # Update the pie chart with the retrieved data
       self.plot_1.data = [
@@ -27,6 +27,6 @@ class Stats(StatsTemplate):
         )
       ]
     else:
-      alert("Failed to load statistics: " + stats['message'])
-
+      alert("Failed to load statistics.")
+    
      
