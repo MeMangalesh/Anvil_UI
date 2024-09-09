@@ -2,7 +2,6 @@ from ._anvil_designer import ReviewTemplate
 from anvil import *
 import anvil.server
 
-
 class Review(ReviewTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
@@ -10,9 +9,15 @@ class Review(ReviewTemplate):
 
     # Any code you write here will run before the form opens.
 
-def load_undetected_images()
-    # Call the server function to get images
+def load_undetected_images(self):
+  # Call the server function to get images
     image_data_list = anvil.server.call('get_images')
-    
-    # Set the repeating panel with the list of image data
-    self.repeating_panel_1.items = image_data_list
+
+  # Check the status of the response
+    if image_data_list['status'] == 'success':
+      # Set the repeating panel with the list of image data
+      self.repeating_panel_1.items = image_data_list
+    else:
+        # Handle errors, e.g., show an alert
+        alert(image_data_list['message'])
+

@@ -1,0 +1,26 @@
+components:
+- data_bindings:
+  - {code: 'self.item[''image_base64'']', property: source, writeback: false}
+  - {code: 'self.item[''image_base64'']', property: tag, writeback: false}
+  layout_properties: {grid_position: 'GFLJUS,LUCZJL'}
+  name: image_display
+  properties: {}
+  type: Image
+- components:
+  - data_bindings:
+    - {code: 'self.item[''filename'']', property: text, writeback: false}
+    - {code: 'self.item[''filename'']', property: tag, writeback: false}
+    layout_properties: {grid_position: 'TMUNUP,BLKFDW'}
+    name: label_filname
+    properties: {role: title}
+    type: Label
+  layout_properties: {grid_position: 'GFLJUS,PIXUQY VOSPIZ,UFKOCE'}
+  name: outlined_card_1
+  properties: {role: outlined-card}
+  type: ColumnPanel
+- layout_properties: {grid_position: 'GFLJUS,PIXUQY GAEHLJ,AEFCAT'}
+  name: label_id
+  properties: {}
+  type: Label
+container: {type: ColumnPanel}
+is_package: true
