@@ -11,5 +11,4 @@ class ItemTemplate5(ItemTemplate5Template):
     # Any code you write here will run before the form opens.
 # Set the image source, filename, and id using the item passed to the template
     self.image_display.source = "data:image/png;base64," + self.item['image_base64']
-    self.label_filename.text = self.item['filename']
     self.label_id.text = str(self.item['id'])  # Assuming you have another Label component for the ID
