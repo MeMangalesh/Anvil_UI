@@ -20,7 +20,7 @@ class Stats(StatsTemplate):
       potholes_not_detected = stats.get('potholes_not_detected', 0)
       
       # Update the pie chart with the retrieved data
-      self.plot_1.data = [
+      self.plot_pie.data = [
         go.Pie(
           labels=["Potholes Detected", "Potholes Not Detected"],
           values=[potholes_detected, potholes_not_detected]

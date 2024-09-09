@@ -26,14 +26,14 @@ components:
       - {code: 'self.item[''potholes_detected'']', property: tag, writeback: false}
       layout_properties: {grid_position: 'AVGKHO,EAGZSJ'}
       name: label_detected_count
-      properties: {}
+      properties: {role: body}
       type: Label
     layout_properties: {grid_position: 'DDRTPM,WCUTQQ'}
     name: outlined_card_3
     properties: {role: outlined-card}
     type: ColumnPanel
   - layout_properties: {grid_position: 'WLTYFZ,FAGBHT'}
-    name: plot_1
+    name: plot_pie
     properties: {}
     type: Plot
   - layout_properties: {grid_position: 'LQWVMW,BONROF'}
