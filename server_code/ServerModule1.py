@@ -82,3 +82,16 @@ def fetch_data_by_date():
 ##REVIEW DETECTION RESULT
 ###############
 @anvil.server.callable
+def get_images():
+  #get the images from DB
+  print("Calling vscode")
+  result = anvil.server.call('get_images')
+  
+   # Unpack and display the result
+  if result:
+      self.label_status.text = "Results returned from VSCode query"
+      # Return the result directly to the client
+      return result['data']
+  else:
+      self.label_status.text = "No records exist."
+      return {"status": "error", "message": "No records found"}

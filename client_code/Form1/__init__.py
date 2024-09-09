@@ -92,3 +92,5 @@ class Form1(Form1Template):
     # Clear the uploaded file from the file loader
     self.file_loader_1.clear()
     self.button_detect.enabled = False
+    self.label_status.text = None
+    

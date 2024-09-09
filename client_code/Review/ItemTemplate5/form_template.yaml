@@ -11,16 +11,18 @@ components:
     - {code: 'self.item[''filename'']', property: text, writeback: false}
     - {code: 'self.item[''filename'']', property: tag, writeback: false}
     layout_properties: {grid_position: 'TMUNUP,BLKFDW'}
-    name: label_filname
+    name: label_filename
     properties: {role: title}
     type: Label
-  layout_properties: {grid_position: 'GFLJUS,PIXUQY VOSPIZ,UFKOCE'}
+  - data_bindings:
+    - {code: 'self.item[''id'']', property: tag, writeback: false}
+    layout_properties: {grid_position: 'EXTYAB,SLHVMQ'}
+    name: label_id
+    properties: {}
+    type: Label
+  layout_properties: {grid_position: 'GFLJUS,PIXUQY'}
   name: outlined_card_1
   properties: {role: outlined-card}
   type: ColumnPanel
-- layout_properties: {grid_position: 'GFLJUS,PIXUQY GAEHLJ,AEFCAT'}
-  name: label_id
-  properties: {}
-  type: Label
 container: {type: ColumnPanel}
 is_package: true

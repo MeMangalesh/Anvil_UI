@@ -16,8 +16,10 @@ def load_undetected_images(self):
   # Check the status of the response
     if image_data_list['status'] == 'success':
       # Set the repeating panel with the list of image data
-      self.repeating_panel_1.items = image_data_list
+      self.repeating_panel_1.items = image_data_list['data']
     else:
         # Handle errors, e.g., show an alert
         alert(image_data_list['message'])
+
+
 
