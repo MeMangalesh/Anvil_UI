@@ -1,7 +1,16 @@
 components:
 - components:
   - components:
-    - layout_properties: {grid_position: 'YGNDYW,SABCIW'}
+    - layout_properties: {grid_position: 'VCVLKE,ZJPGBJ'}
+      name: flow_panel_1
+      properties: {}
+      type: FlowPanel
+    layout_properties: {grid_position: 'VYDNZW,PJAUZH'}
+    name: outlined_card_2
+    properties: {role: outlined-card}
+    type: ColumnPanel
+  - components:
+    - layout_properties: {grid_position: 'ZIXAUQ,AXGTPM'}
       name: image_byuser
       properties: {height: 268}
       type: Image

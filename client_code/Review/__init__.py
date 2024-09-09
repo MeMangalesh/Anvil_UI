@@ -1,9 +1,9 @@
-from ._anvil_designer import ItemTemplate1Template
+from ._anvil_designer import ReviewTemplate
 from anvil import *
 import anvil.server
 
 
-class ItemTemplate1(ItemTemplate1Template):
+class Review(ReviewTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
