@@ -15,7 +15,9 @@ class Stats(StatsTemplate):
   def load_stats(self):
     try:
       # Call the server function to get the statistics
+      print("About to call the VSCode")
       total_images, potholes_detected = anvil.server.call('get_stats')
+      print("returning from VSCOde")
   
       # Validate the values
       if total_images is not None and potholes_detected is not None:
