@@ -19,27 +19,27 @@ class Stats(StatsTemplate):
       total_images, potholes_detected = anvil.server.call('get_stats')
       print("returning from VSCOde")
   
-      # Validate the values
-      if total_images is not None and potholes_detected is not None:
-          # Calculate potholes not detected
-          potholes_not_detected = total_images - potholes_detected
+      # Validate the values to ensure they are integers
+      if isinstance(total_images, int) and isinstance(potholes_detected, int):
+        # Calculate potholes not detected
+        potholes_not_detected = total_images - potholes_detected
   
-          #Print debug information
-          print(f"total images processed: {total_images}")
-          print(f"total potholes detected: {potholes_detected}")
-          print(f"total not potholes detected: {potholes_not_detected}")
+        #Print debug information
+        print(f"total images processed: {total_images}")
+        print(f"total potholes detected: {potholes_detected}")
+        print(f"total not potholes detected: {potholes_not_detected}")
 
-          # Display the total number of images processed & Number of potholes detected 
-          self.label_feedback_count.text = total_images
-          self.label_detected_count.text = potholes_detected
-        
-          # Update the pie chart with the retrieved data
-          self.plot_pie.data = [
-              go.Pie(
-                  labels=["Potholes Detected", "Potholes Not Detected"],
-                  values=[potholes_detected, potholes_not_detected]
-              )
-          ]
+        # Display the total number of images processed & Number of potholes detected 
+        self.label_feedback_count.text = total_images
+        self.label_detected_count.text = potholes_detected
+      
+        # Update the pie chart with the retrieved data
+        self.plot_pie.data = [
+            go.Pie(
+                labels=["Potholes Detected", "Potholes Not Detected"],
+                values=[potholes_detected, potholes_not_detected]
+            )
+        ]
       else:
         alert("Failed to load statistics or invalid data format.")
     except Exception as e:
