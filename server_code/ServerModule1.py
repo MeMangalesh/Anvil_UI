@@ -112,3 +112,7 @@ def get_images():
   else:
       self.label_status.text = "No records exist."
       return {"status": "error", "message": "No records found"}
+
+##########
+## GET IMAGES BY DATE
+##########

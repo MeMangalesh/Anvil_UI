@@ -1,7 +1,7 @@
 from ._anvil_designer import ReviewTemplate
 from anvil import *
 import anvil.server
-import datetime.date 
+#import datetime.date 
 
 class Review(ReviewTemplate):
   def __init__(self, **properties):
@@ -9,21 +9,24 @@ class Review(ReviewTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     # Call the method to load images
-    #self.load_undetected_images()
-    self.load_undetected_images_by_date()
-
+    self.load_undetected_images()
+    
 #####
 # Filter records by processed date
 #####
-  def load_undetected_images_by_date(self):
-    date_from = DatePicker(format="%d %m %Y")
-    date_to = DatePicker(format="%d %m %Y")
-  # Set to a datetime.date
-    #c.date = datetime.date.today()
+
+  def button_view_click(self, **event_args):
+    date_from = self.date_picker_from.date  # Access the date property
+    date_to = self.date_picker_to.date  # Access the date property
+    # Call the method to load images by selected date range 
+    self.load_undetected_images_by_date(date_from, date_to)
+      
+  
+  def load_undetected_images_by_date(self, date_from, date_to):
     try:
         # Call the server function to get images
-        print("Inside the load_undetected_images function in Anvil Form")
-        image_data_list = anvil.server.call('get_images', date_from, date_to)
+        print("Inside the load_undetected_images_by_date function in Anvil Form")
+        image_data_list = anvil.server.call('get_data_by_date', date_from, date_to)
   
         # Check the status of the response
         if image_data_list['status'] == 'success':
@@ -58,6 +61,7 @@ class Review(ReviewTemplate):
               alert(image_data_list['message'])
       except Exception as e:
           alert(f"An error occurred: {e}")
-  
+
+
 
 
