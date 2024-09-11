@@ -3,10 +3,27 @@ components:
   name: content_panel
   properties: {}
   type: ColumnPanel
-- layout_properties: {slot: nav-right}
+- components:
+  - layout_properties: {}
+    name: link_1
+    properties: {text: User}
+    type: Link
+  - layout_properties: {}
+    name: link_2
+    properties: {text: Admin}
+    type: Link
+  - layout_properties: {}
+    name: link_3
+    properties: {text: Dashboard}
+    type: Link
+  layout_properties: {slot: nav-right}
   name: navbar_links
   properties: {}
   type: FlowPanel
+- layout_properties: {slot: title}
+  name: label_1
+  properties: {text: 'PoDS ...Potholes Detection System '}
+  type: Label
 container:
   properties: {html: '@theme:standard-page.html'}
   type: HtmlTemplate
