@@ -76,8 +76,9 @@ def get_stats():
       data = pie_stats['data']
       total_images, potholes_detected = data
       potholes_not_detected = total_images - potholes_detected
+      print(f"Potholes not detected: {potholes_not_detected}")
       # return {"status": "success", "total_images": total_images, "potholes_detected": potholes_detected, "potholes_not_detected": potholes_not_detected}
-      return data
+      return total_images, potholes_detected
   else:
       print(pie_stats['message'])  # Log the error message
       return {"status": "error", "message": pie_stats['message']}
