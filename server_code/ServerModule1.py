@@ -71,28 +71,32 @@ def get_stats():
 # Fetch data from the server
   pie_stats = anvil.server.call('get_statistics')
   print("Returned from vscode")
+
 # Check if the call was successful
+  print(f"Return status: {pie_stats['status']}")
   if pie_stats['status'] == 'success':
-      data = pie_stats['data']
-      total_images, potholes_detected = data
-      potholes_not_detected = total_images - potholes_detected
-      print(f"Potholes not detected: {potholes_not_detected}")
-      # return {"status": "success", "total_images": total_images, "potholes_detected": potholes_detected, "potholes_not_detected": potholes_not_detected}
-      return total_images, potholes_detected
+      # The `data` contains two values: total_images, potholes_detected
+      total_images, potholes_detected = map(int, pie_stats['data'])  # Ensure all values are integers
+      print(f"{total_images} & {potholes_detected}")
+      # Ensure the data contains exactly two values
+      try:
+          total_images, potholes_detected = map(int, pie_stats['data'])  # Ensure all values are integers
+          print(f"Total images: {total_images}, Potholes detected: {potholes_detected}")
+          
+          # Return the results in the required format
+          return {
+              "total_images": total_images,
+              "potholes_detected": potholes_detected
+          }
+      except ValueError as e:
+          print(f"Error unpacking data: {e}")
+          return {"status": "error", "message": "Error unpacking data"}
   else:
-      print(pie_stats['message'])  # Log the error message
+      # Log the error message if the call fails
+      print(pie_stats['message'])
       return {"status": "error", "message": pie_stats['message']}
- 
-  #Commented as keeps giving Dict error
-  # if pie_stats['status'] == 'success':
-  #     total_images = pie_stats['total_images']
-  #     potholes_detected = pie_stats['potholes_detected']
-  #     # potholes_not_detected = pie_stats['potholes_not_detected']
-  #     return total_images, potholes_detected
-  # else:
-  #     print(pie_stats['message'])  # Log the error message
-  #     return None, None, None  # Or handle as needed
-  
+
+
 @anvil.server.callable
 def fetch_data_by_date():
 # Fetch data from the server

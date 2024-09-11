@@ -16,10 +16,11 @@ class Stats(StatsTemplate):
     try:
       # Call the server function to get the statistics
       print("About to call the VSCode")
-      total_images, potholes_detected = anvil.server.call('get_stats')
+      response = anvil.server.call('get_stats')
       print("returning from VSCOde")
-  
-      # Validate the values to ensure they are integers
+
+      total_images = response['total_images']
+      potholes_detected = response['potholes_detected']      # Validate the values to ensure they are integers
       if isinstance(total_images, int) and isinstance(potholes_detected, int):
         # Calculate potholes not detected
         potholes_not_detected = total_images - potholes_detected
