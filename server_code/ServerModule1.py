@@ -70,24 +70,25 @@ def detect_potholes_with_ID (self, id):
 def get_stats():
 # Fetch data from the server
   pie_stats = anvil.server.call('get_statistics')
-
-# # Check if the call was successful
-#   if pie_stats['status'] == 'success':
-#       data = pie_stats['data']
-#       total_images, potholes_detected, potholes_not_detected = data
-#       return {"status": "success", "total_images": total_images, "potholes_detected": potholes_detected, "potholes_not_detected": potholes_not_detected}
-#   else:
-#       print(pie_stats['message'])  # Log the error message
-#       return {"status": "error", "message": pie_stats['message']}
- # Check if the call was successful
+  print("Returned from vscode")
+# Check if the call was successful
   if pie_stats['status'] == 'success':
-      total_images = pie_stats['total_images']
-      potholes_detected = pie_stats['potholes_detected']
-      # potholes_not_detected = pie_stats['potholes_not_detected']
-      return total_images, potholes_detected
+      data = pie_stats['data']
+      total_images, potholes_detected, potholes_not_detected = data
+      return {"status": "success", "total_images": total_images, "potholes_detected": potholes_detected, "potholes_not_detected": potholes_not_detected}
   else:
       print(pie_stats['message'])  # Log the error message
-      return None, None, None  # Or handle as needed
+      return {"status": "error", "message": pie_stats['message']}
+ 
+  #Commented as keeps giving Dict error
+  # if pie_stats['status'] == 'success':
+  #     total_images = pie_stats['total_images']
+  #     potholes_detected = pie_stats['potholes_detected']
+  #     # potholes_not_detected = pie_stats['potholes_not_detected']
+  #     return total_images, potholes_detected
+  # else:
+  #     print(pie_stats['message'])  # Log the error message
+  #     return None, None, None  # Or handle as needed
   
 @anvil.server.callable
 def fetch_data_by_date():
