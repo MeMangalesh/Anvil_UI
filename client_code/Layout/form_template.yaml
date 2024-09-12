@@ -17,7 +17,8 @@ components:
     name: link_admin
     properties: {text: ADMIN}
     type: Link
-  - layout_properties: {grid_position: 'PXPSWF,WIUXES'}
+  - event_bindings: {click: link_dashboard_click}
+    layout_properties: {grid_position: 'PXPSWF,WIUXES'}
     name: link_dashboard
     properties: {text: DASHBOARD}
     type: Link
