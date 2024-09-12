@@ -91,11 +91,6 @@ components:
   name: navbar_links
   properties: {}
   type: FlowPanel
-- components: []
-  layout_properties: {slot: left-nav}
-  name: column_panel_1
-  properties: {}
-  type: ColumnPanel
 - layout_properties: {slot: title}
   name: label_3
   properties: {background: '', foreground: '', role: title, text: PoDS... Potholes Detection System}
@@ -104,4 +99,3 @@ container:
   properties: {html: '@theme:standard-page.html'}
   type: HtmlTemplate
 is_package: true
-slots: {}

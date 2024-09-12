@@ -1,0 +1,43 @@
+components:
+- components: []
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {}
+  type: ColumnPanel
+- components:
+  - layout_properties: {grid_position: 'MYTRWC,YPSYUW'}
+    name: link_demo
+    properties: {text: DEMO}
+    type: Link
+  - layout_properties: {grid_position: 'PGYYOZ,RPNQUA'}
+    name: link_review
+    properties: {text: REVIEW}
+    type: Link
+  - layout_properties: {grid_position: 'YPXPOC,TLWVPD'}
+    name: link_admin
+    properties: {text: ADMIN}
+    type: Link
+  - layout_properties: {grid_position: 'PXPSWF,WIUXES'}
+    name: link_dashboard
+    properties: {text: DASHBOARD}
+    type: Link
+  layout_properties: {slot: left-nav}
+  name: column_panel_side_menu
+  properties: {}
+  type: ColumnPanel
+- data_bindings:
+  - {code: '', property: border, writeback: false}
+  layout_properties: {slot: title}
+  name: label_2
+  properties: {role: title, text: PoDS...Potholes Detection System}
+  type: Label
+container:
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
+is_package: true
+layout_metadata: {description: The header footer and menu bar template}
+slots:
+  slot_content:
+    index: 0
+    set_layout_properties: {grid_position: 'IPJWBS,AQJYQD'}
+    target: {name: content_panel, type: container}

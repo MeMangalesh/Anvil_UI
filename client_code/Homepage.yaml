@@ -24,8 +24,8 @@ components:
       type: Spacer
     - components:
       - layout_properties: {}
-        name: button_user
-        properties: {role: filled-button, text: 'USER '}
+        name: button_demo
+        properties: {role: filled-button, text: DEMO}
         type: Button
       name: flow_panel_2
       properties: {}
@@ -69,7 +69,7 @@ components:
 - components:
   - layout_properties: {}
     name: link_user
-    properties: {text: User}
+    properties: {text: DEMO}
     type: Link
   - name: link_dashboard
     properties: {text: Dashboard}
