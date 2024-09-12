@@ -70,32 +70,38 @@ components:
   name: content_panel
   properties: {}
   type: ColumnPanel
-- layout_properties: {slot: nav-right}
-  name: navbar_links
-  properties: {}
-  type: FlowPanel
 - components:
-  - layout_properties: {grid_position: 'GPMOBZ,AJQQPP'}
+  - event_bindings: {click: link_User_click}
     name: link_User
     properties: {}
     type: Link
-  - layout_properties: {grid_position: 'JVBOLO,OSIPJY'}
-    name: link_Admin1
-    properties: {}
-    type: Link
-  - layout_properties: {grid_position: 'CUZHKP,PFYEFU'}
+  - event_bindings: {click: link_Dashboard_click}
     name: link_Dashboard
     properties: {}
     type: Link
+  - event_bindings: {click: link_Review_click}
+    name: link_Review
+    properties: {}
+    type: Link
+  - event_bindings: {click: link_Admin_click}
+    name: link_Admin
+    properties: {}
+    type: Link
+  layout_properties: {slot: nav-right}
+  name: navbar_links
+  properties: {}
+  type: FlowPanel
+- components: []
   layout_properties: {slot: left-nav}
   name: column_panel_1
   properties: {}
   type: ColumnPanel
 - layout_properties: {slot: title}
   name: label_3
-  properties: {background: '', foreground: '', text: Potholes Detection System}
+  properties: {background: '', foreground: '', role: title, text: PoDS... Potholes Detection System}
   type: Label
 container:
   properties: {html: '@theme:standard-page.html'}
   type: HtmlTemplate
 is_package: true
+slots: {}

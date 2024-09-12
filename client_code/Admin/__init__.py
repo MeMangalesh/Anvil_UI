@@ -73,8 +73,6 @@ class Admin(AdminTemplate):
 #####################
 
 
-
-
   ##############
   ## END - Save image into DB & trigger detection using the newly created ID to fetch data, detect & update results back into DB
   ###############
@@ -86,6 +84,22 @@ class Admin(AdminTemplate):
     # self.image_detection.source = None 
     # Clear the uploaded file from the file loader
     self.file_loader_1.clear()
+
+  def link_User_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    open_form('Form1')
+
+  def link_Dashboard_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    open_form('Stats')
+
+  def link_Review_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    open_form('Review')
+
+  def link_Admin_click(self, **event_args):
+    """This method is called when the link is clicked"""
+    open_form('Admin')
 
  
    

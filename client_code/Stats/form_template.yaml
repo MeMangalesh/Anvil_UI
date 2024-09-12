@@ -18,7 +18,7 @@ components:
     type: ColumnPanel
   - layout_properties: {grid_position: 'DDRTPM,NCGPTB'}
     name: label_detected
-    properties: {role: title, text: Number of Potholes Detected}
+    properties: {role: title, text: Instance of Potholes Detected}
     type: Label
   - components:
     - data_bindings:
