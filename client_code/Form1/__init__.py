@@ -32,7 +32,7 @@ class Form1(Form1Template):
     self.image_byuser.source = file
     self.button_activate(self)
   
-  def button_upload_img_click(self, **event_args):
+  def button_save_img_click(self, **event_args):
    # Get the uploaded file from the FileLoader component
     file = self.file_loader_1.file
     if file:

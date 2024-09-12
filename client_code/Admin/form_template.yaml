@@ -15,9 +15,9 @@ components:
       name: button_save_n_detect
       properties: {role: tonal-button, text: SAVE & DETECT}
       type: Button
-    - event_bindings: {click: button_save_click}
+    - event_bindings: {click: button_save_img_click}
       layout_properties: {grid_position: 'ELYDTR,WDAYAD'}
-      name: button_save
+      name: button_save_img
       properties: {role: filled-button, text: SAVE}
       type: Button
     - event_bindings: {click: outlined_button_reset_click}

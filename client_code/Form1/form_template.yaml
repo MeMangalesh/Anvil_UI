@@ -20,9 +20,9 @@ components:
       properties: {}
       type: FileLoader
     - components:
-      - event_bindings: {click: button_upload_img_click}
+      - event_bindings: {click: button_save_img_click}
         layout_properties: {grid_position: 'LXRQNH,JDJXEU'}
-        name: button_upload_img
+        name: button_save_img
         properties:
           role: tonal-button
           text: |

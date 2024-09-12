@@ -85,6 +85,17 @@ class Admin(AdminTemplate):
     # Clear the uploaded file from the file loader
     self.file_loader_1.clear()
 
+  def button_reset_click(self, **event_args):
+    # Clear the image displayed in the Image component
+    self.image_byuser.source = None 
+    # Clear the image displayed in the Image component
+    self.image_detection.source = None 
+    # Clear the uploaded file from the file loader
+    self.file_loader_1.clear()
+    self.button_detect.enabled = False
+    self.label_status.text = None
+  
+
   def link_User_click(self, **event_args):
     """This method is called when the link is clicked"""
     open_form('Form1')
@@ -100,6 +111,29 @@ class Admin(AdminTemplate):
   def link_Admin_click(self, **event_args):
     """This method is called when the link is clicked"""
     open_form('Admin')
+
+  def button_save_img_click(self, **event_args):
+    # Get the uploaded file from the FileLoader component
+    file = self.file_loader_1.file
+    if file:
+      filename = file.name
+      file_data = file.get_bytes()
+      # Activate the "Detect" button 
+      # self.button_detect.enabled = True
+      # Encode the file in base64
+      encoded_image = base64.b64encode(file_data).decode('utf-8')
+      print("image encoded")
+  
+      # Call the Anvil server function to save the image
+      result = anvil.server.call('save_image', encoded_image, filename)
+            
+      # Display the result message
+      if result['status'] == 'success':
+          self.label_message.text = "Image uploaded and saved successfully!"
+      else:
+          self.label_message.text = f"Failed to save image: {result['message']}"
+    else:
+      self.label_message.text = "No file selected."
 
  
    
