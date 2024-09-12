@@ -1,18 +1,20 @@
 from ._anvil_designer import HomepageTemplate
-from anvil import *
-import anvil.server
-# from .Layout import Layout  # Import Layout
-# from .Formtest import Formtest  # Import Formtest
+# from anvil import *
+# import anvil.server
+from Layout import Layout  # Import Layout
+from Formtest import Formtest 
+from .Form1 import Form1
+from .Admin import Admin
+from .Review import Review
+from .Stats import Stats
 
 # Homepage Class Definition
 class Homepage(HomepageTemplate):  # Your landing page form
   def __init__(self, **properties):
     self.init_components(**properties)
-    
+    # self.banner.role = ['spaced-title', 'left-right-padding']
+
   def button_demo_click(self, **event_args):
-    from .Layout import Layout
-    from .Formtest import Formtest
-    
   # Create an instance of the Layout form
     layout_form = Layout()
     # Load Formtest into the content slot of Layout

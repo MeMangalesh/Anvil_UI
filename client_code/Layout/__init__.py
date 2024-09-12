@@ -1,22 +1,33 @@
 from ._anvil_designer import LayoutTemplate
-from anvil import *
-import anvil.server
+# from anvil import *
+# import anvil.server
 
 # Import child forms that you plan to load into Layout
-import Formtest  # Import only the forms that you will use
-from .Demo import Demo
-from .Admin import Admin
-from .Dashboard import Dashboard
-from .Review import Review
+# import Formtest  # Import only the forms that you will use
+from Homepage import Homepage
+from Admin import Admin
+from Stats import Stats
+from Review import Review
+from Form1 import Form1
 
 class Layout(LayoutTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    self.navigate(self.home_link, Homepage())
 
   # Any code you write here will run before the form opens.
-  
-  # Function to load child forms dynamically
+    for link in [self.link_admin, self.link_dashboard, self.link_demo, self.link_review]:
+      link.role = ['spaced-title', 'display-none-responsive']
+
+  def navigate(self, active_link, form):
+      for i in [self.link_admin, self.link_dashboard, self.link_demo, self.link_review]:
+        i.foreground = 'theme:Primary 700'
+      active_link.foreground = 'theme:Secondary 500'
+      self.column_panel_1.clear()
+      self.column_panel_1.add_component(form, full_width_row=True)
+
+    # Function to load child forms dynamically
   def load_child_form(self, form_instance):
     self.content_slot.clear()  # Clear any previous content in the slot
     self.content_slot.add_component(form_instance)  # Add the new form
