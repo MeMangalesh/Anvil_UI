@@ -1,4 +1,5 @@
 from ._anvil_designer import LayoutTemplate
+from anvil import *
 
 # Import child forms that you plan to load into Layout
 from ..Formtest import Formtest  # Import only the forms that you will use
@@ -27,8 +28,8 @@ class Layout(LayoutTemplate):
 
   # Function to load child forms dynamically
   def load_child_form(self, form_instance):
-    self.slot_content.clear()  # Clear any previous content in the slot
-    self.slot_content.add_component(form_instance)  # Add the new form
+    self.column_panel_1.clear() # Clear any previous content in the slot
+    self.column_panel_1.add_component(form_instance)  # Add the new form
 
   #  Load DashboardForm into Layout
   def link_demo_click(self, **event_args):
