@@ -7,7 +7,7 @@ components:
   - components:
     - layout_properties: {grid_position: 'QZJZGL,TLHYOA'}
       name: image_1
-      properties: {display_mode: fill_width, source: _/theme/KKR_sq_img.jpg}
+      properties: {display_mode: fill_width, source: _/theme/Banner.png}
       type: Image
     layout_properties: {grid_position: 'ZPPYVR,ESLMNX'}
     name: outlined_card_1

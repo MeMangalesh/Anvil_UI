@@ -1,14 +1,29 @@
 components:
 - components:
-  - layout_properties: {grid_position: 'IVLGLZ,EZLTZY'}
+  - components:
+    - components:
+      - name: spacer_4
+        properties: {height: 32}
+        type: Spacer
+      - name: image_3
+        properties: {height: 62, source: _/theme/KKR_logo_round.png}
+        type: Image
+      - name: label_1
+        properties: {align: left, role: title, text: PODS...the Artificial Intelligence based Potholes Detection System}
+        type: Label
+      layout_properties: {grid_position: 'VSQUJL,CLTYPR'}
+      name: flow_panel_1
+      properties: {}
+      type: FlowPanel
+    layout_properties: {full_width_row: true, grid_position: 'IVLGLZ,EZLTZY', row_background: 'theme:On Primary Container'}
     name: outlined_card_2
-    properties: {role: outlined-card}
+    properties: {foreground: 'theme:On Primary', role: null}
     type: ColumnPanel
   - layout_properties: {grid_position: 'VKEIYM,USXUOW'}
     name: spacer_2
     properties: {height: 32}
     type: Spacer
-  - layout_properties: {grid_position: 'ZEVVCC,IXOZXJ'}
+  - layout_properties: {full_width_row: true, grid_position: 'ZEVVCC,IXOZXJ'}
     name: column_panel_1
     properties: {}
     type: ColumnPanel
@@ -42,7 +57,7 @@ components:
       name: column_panel_3
       properties: {col_widths: '{"GTFUHA":30,"GFOZKK":30}'}
       type: ColumnPanel
-    layout_properties: {grid_position: 'GBWBRM,HXGJIQ'}
+    layout_properties: {full_width_row: true, grid_position: 'GBWBRM,HXGJIQ'}
     name: outlined_card_1
     properties: {background: 'theme:On Primary Container', foreground: 'theme:Primary Container', role: outlined-card}
     type: ColumnPanel
