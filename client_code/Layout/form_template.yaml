@@ -79,7 +79,8 @@ components:
     name: link_review
     properties: {text: REVIEW}
     type: Link
-  - layout_properties: {grid_position: 'YPXPOC,TLWVPD'}
+  - event_bindings: {click: link_admin_click}
+    layout_properties: {grid_position: 'YPXPOC,TLWVPD'}
     name: link_admin
     properties: {text: ADMIN}
     type: Link

@@ -4,6 +4,7 @@ from anvil import *
 # Import child forms that you plan to load into Layout
 from ..Formtest import Formtest  # Import only the forms that you will use
 from ..Admin import Admin
+from ..Admin.RowTemplate1 import RowTemplate1
 from ..Stats import Stats
 from ..Review import Review
 from ..Form1 import Form1

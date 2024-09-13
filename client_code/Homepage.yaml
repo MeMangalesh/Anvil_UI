@@ -23,7 +23,8 @@ components:
       properties: {height: 32}
       type: Spacer
     - components:
-      - layout_properties: {}
+      - event_bindings: {click: button_demo_click}
+        layout_properties: {}
         name: button_demo
         properties: {role: filled-button, text: DEMO}
         type: Button
