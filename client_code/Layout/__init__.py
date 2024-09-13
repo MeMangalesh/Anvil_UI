@@ -31,11 +31,26 @@ class Layout(LayoutTemplate):
     self.column_panel_1.clear() # Clear any previous content in the slot
     self.column_panel_1.add_component(form_instance)  # Add the new form
 
-  #  Load DashboardForm into Layout
+  #  Load Demo form into Layout
   def link_demo_click(self, **event_args):
     layout_form = Layout()  # Create an instance of the Layout form
     layout_form.load_child_form(Form1())  # Load DashboardForm into the content slot
     open_form(layout_form)  # Open the Layout form
 
+  #  Load Admin form into Layout
+  def link_admin_click(self, **event_args):
+    layout_form = Layout()  # Create an instance of the Layout form
+    layout_form.load_child_form(Admin())  # Load DashboardForm into the content slot
+    open_form(layout_form)  # Open the Layout form
 
-  
+  #  Load Admin form into Layout
+  def link_review_click(self, **event_args):
+    layout_form = Layout()  # Create an instance of the Layout form
+    layout_form.load_child_form(Review())  # Load DashboardForm into the content slot
+    open_form(layout_form)  # Open the Layout form
+
+  #  Load Admin form into Layout
+  def link_dashboard_click(self, **event_args):
+    layout_form = Layout()  # Create an instance of the Layout form
+    layout_form.load_child_form(Stats())  # Load DashboardForm into the content slot
+    open_form(layout_form)  # Open the Layout form

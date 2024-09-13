@@ -11,6 +11,10 @@ components:
       - name: label_1
         properties: {align: left, role: title, text: PODS...the Artificial Intelligence based Potholes Detection System}
         type: Label
+      - layout_properties: {width: 57}
+        name: spacer_5
+        properties: {height: 55}
+        type: Spacer
       layout_properties: {grid_position: 'VSQUJL,CLTYPR'}
       name: flow_panel_1
       properties: {}
@@ -19,24 +23,19 @@ components:
     name: outlined_card_2
     properties: {foreground: 'theme:On Primary', role: null}
     type: ColumnPanel
-  - layout_properties: {grid_position: 'VKEIYM,USXUOW'}
-    name: spacer_2
-    properties: {height: 32}
-    type: Spacer
   - layout_properties: {full_width_row: true, grid_position: 'ZEVVCC,IXOZXJ'}
     name: column_panel_1
     properties: {}
     type: ColumnPanel
   - components:
-    - layout_properties: {grid_position: 'SBNDME,RJENJB'}
-      name: text_area_1
-      properties:
-        background: theme:On Primary Container
-        foreground: theme:On Primary
-        height: 118
-        text: "Kementerian Kerja Raya             \nTingkat 1 - 14 , Kompleks Kerja Raya       Jalan Sultan Salahuddin                          50580 Kuala Lumpur     "
-      type: TextArea
-    - layout_properties: {grid_position: 'SBNDME,AQIDIF'}
+    - components:
+      - layout_properties: {grid_position: 'DRGXOI,VSIEJK'}
+        name: label_3
+        properties:
+          foreground: theme:On Primary
+          text: "Kementerian Kerja Raya             \nTingkat 1 - 14 , Kompleks Kerja Raya                                                                Jalan Sultan Salahuddin                                                                                                                                    50580 Kuala Lumpur     "
+        type: Label
+      layout_properties: {grid_position: 'SBNDME,AQIDIF'}
       name: column_panel_2
       properties: {}
       type: ColumnPanel
@@ -59,7 +58,7 @@ components:
       type: ColumnPanel
     layout_properties: {full_width_row: true, grid_position: 'GBWBRM,HXGJIQ'}
     name: outlined_card_1
-    properties: {background: 'theme:On Primary Container', foreground: 'theme:Primary Container', role: outlined-card}
+    properties: {background: 'theme:On Primary Container', col_widths: '{}', foreground: 'theme:Primary Container', role: outlined-card}
     type: ColumnPanel
   - layout_properties: {grid_position: 'ZCJRFH,ADRFXY'}
     name: spacer_3
@@ -75,7 +74,8 @@ components:
     name: link_demo
     properties: {text: DEMO}
     type: Link
-  - layout_properties: {grid_position: 'PGYYOZ,RPNQUA'}
+  - event_bindings: {click: link_review_click}
+    layout_properties: {grid_position: 'PGYYOZ,RPNQUA'}
     name: link_review
     properties: {text: REVIEW}
     type: Link
