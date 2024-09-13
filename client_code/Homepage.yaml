@@ -99,8 +99,14 @@ components:
   properties: {}
   type: ColumnPanel
 - components:
-  - layout_properties: {}
-    name: link_user
+  - event_bindings: {click: link_test_click}
+    layout_properties: {}
+    name: link_test
+    properties: {text: TEST}
+    type: Link
+  - event_bindings: {click: link_demo_click}
+    layout_properties: {}
+    name: link_demo
     properties: {bold: false, text: DEMO, tooltip: ''}
     type: Link
   - layout_properties: {}

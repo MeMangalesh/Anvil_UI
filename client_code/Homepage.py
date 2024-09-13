@@ -1,12 +1,7 @@
 from ._anvil_designer import HomepageTemplate
-# from anvil import *
+from anvil import *
 # import anvil.server
-from Layout import Layout  # Import Layout
-from Formtest import Formtest 
-from .Form1 import Form1
-from .Admin import Admin
-from .Review import Review
-from .Stats import Stats
+# from Layout import Layout  # Import Layout
 
 # Homepage Class Definition
 class Homepage(HomepageTemplate):  # Your landing page form
@@ -38,3 +33,17 @@ class Homepage(HomepageTemplate):  # Your landing page form
     layout_form = Layout()
     layout_form.load_child_form(Review())  
     open_form(layout_form)
+
+  def link_demo_click(self, **event_args):
+    # Create an instance of the Layout form
+    layout_form = Layout()
+    # Load Form1 into the content slot of Layout
+    layout_form.load_child_form(Form1())
+    # Open the Layout form
+    open_form(layout_form)
+
+  def link_test_click(self, **event_args):
+    layout_form = Layout()
+    layout_form.load_child_form(Formtest())  
+    open_form(layout_form)
+

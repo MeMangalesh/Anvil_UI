@@ -1,20 +1,18 @@
 from ._anvil_designer import LayoutTemplate
-# from anvil import *
-# import anvil.server
 
 # Import child forms that you plan to load into Layout
-# import Formtest  # Import only the forms that you will use
-from Homepage import Homepage
-from Admin import Admin
-from Stats import Stats
-from Review import Review
-from Form1 import Form1
+from ..Formtest import Formtest  # Import only the forms that you will use
+from ..Admin import Admin
+from ..Stats import Stats
+from ..Review import Review
+from ..Form1 import Form1
+
 
 class Layout(LayoutTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    self.navigate(self.home_link, Homepage())
+    #self.navigate(self.home_link, Homepage())
 
   # Any code you write here will run before the form opens.
     for link in [self.link_admin, self.link_dashboard, self.link_demo, self.link_review]:
@@ -27,11 +25,16 @@ class Layout(LayoutTemplate):
       self.column_panel_1.clear()
       self.column_panel_1.add_component(form, full_width_row=True)
 
-    # Function to load child forms dynamically
+  # Function to load child forms dynamically
   def load_child_form(self, form_instance):
-    self.content_slot.clear()  # Clear any previous content in the slot
-    self.content_slot.add_component(form_instance)  # Add the new form
+    self.slot_content.clear()  # Clear any previous content in the slot
+    self.slot_content.add_component(form_instance)  # Add the new form
 
-  def link_dashboard_click(self, **event_args):
-    """This method is called when the link is clicked"""
-    pass
+  #  Load DashboardForm into Layout
+  def link_demo_click(self, **event_args):
+    layout_form = Layout()  # Create an instance of the Layout form
+    layout_form.load_child_form(Form1())  # Load DashboardForm into the content slot
+    open_form(layout_form)  # Open the Layout form
+
+
+  

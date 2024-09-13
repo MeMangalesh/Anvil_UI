@@ -47,7 +47,8 @@ components:
   properties: {}
   type: ColumnPanel
 - components:
-  - layout_properties: {grid_position: 'MYTRWC,YPSYUW'}
+  - event_bindings: {click: link_demo_click}
+    layout_properties: {grid_position: 'MYTRWC,YPSYUW'}
     name: link_demo
     properties: {text: DEMO}
     type: Link
