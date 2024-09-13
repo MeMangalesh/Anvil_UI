@@ -18,7 +18,7 @@ components:
     properties: {height: 32}
     type: Spacer
   - components:
-    - layout_properties: {width: 93}
+    - layout_properties: {width: 89}
       name: spacer_2
       properties: {height: 32}
       type: Spacer

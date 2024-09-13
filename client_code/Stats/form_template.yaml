@@ -53,7 +53,7 @@ components:
       name: column_panel_2
       properties: {}
       type: ColumnPanel
-    layout_properties: {grid_position: 'RWDUPT,ADBUYG'}
+    layout_properties: {full_width_row: true, grid_position: 'RWDUPT,ADBUYG'}
     name: outlined_card_2
     properties: {role: outlined-card}
     type: ColumnPanel

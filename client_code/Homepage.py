@@ -49,8 +49,5 @@ class Homepage(HomepageTemplate):  # Your landing page form
     # Open the Layout form
     open_form(layout_form)
 
-  def link_test_click(self, **event_args):
-    layout_form = Layout()
-    layout_form.load_child_form(Formtest())  
-    open_form(layout_form)
+
 
