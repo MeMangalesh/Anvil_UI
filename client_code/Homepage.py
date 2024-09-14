@@ -1,14 +1,6 @@
 from ._anvil_designer import HomepageTemplate
 from anvil import *
 # import anvil.server
-from Layout import Layout  # Import Layout
-
-# from ..Formtest import Formtest  # Import only the forms that you will use
-# from ..Admin import Admin
-# from ..Admin.RowTemplate1 import RowTemplate1
-# from ..Stats import Stats
-# from ..Review import Review
-# from ..Form1 import Form1
 
 # Homepage Class Definition
 class Homepage(HomepageTemplate):  # Your landing page form
