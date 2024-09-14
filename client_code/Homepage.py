@@ -8,7 +8,7 @@ from Layout import Layout  # Import Layout
 # from ..Admin.RowTemplate1 import RowTemplate1
 # from ..Stats import Stats
 # from ..Review import Review
-from ..Form1 import Form1
+# from ..Form1 import Form1
 
 # Homepage Class Definition
 class Homepage(HomepageTemplate):  # Your landing page form
@@ -16,6 +16,10 @@ class Homepage(HomepageTemplate):  # Your landing page form
     self.init_components(**properties)
     # self.banner.role = ['spaced-title', 'left-right-padding']
 
+  # Any code you write here will run before the form opens.
+    for link in [self.link_admin_homepg, self.link_dashboard_homepg, self.link_demo_homepg, self.link_review_homepg]:
+      link.role = ['spaced-title', 'display-none-responsive']
+  
   def button_demo_click(self, **event_args):
   # Create an instance of the Layout form
     layout_form = Layout()
@@ -41,7 +45,7 @@ class Homepage(HomepageTemplate):  # Your landing page form
     layout_form.load_child_form(Review())  
     open_form(layout_form)
 
-  def link_demo_click(self, **event_args):
+  def link_demo_homepg_click(self, **event_args):
     # Create an instance of the Layout form
     layout_form = Layout()
     # Load Form1 into the content slot of Layout

@@ -102,24 +102,24 @@ components:
 - components:
   - event_bindings: {click: link_test_click}
     layout_properties: {}
-    name: link_test
+    name: link_test_homepg
     properties: {text: TEST}
     type: Link
-  - event_bindings: {click: link_demo_click}
+  - event_bindings: {click: link_demo_homepg_click}
     layout_properties: {}
-    name: link_demo
+    name: link_demo_homepg
     properties: {bold: false, text: DEMO, tooltip: ''}
     type: Link
   - layout_properties: {}
-    name: link_dashboard
+    name: link_dashboard_homepg
     properties: {text: DASHBOARD}
     type: Link
   - layout_properties: {}
-    name: link_review
+    name: link_review_homepg
     properties: {text: REVIEW}
     type: Link
   - layout_properties: {}
-    name: link_admin
+    name: link_admin_homepg
     properties: {text: ADMIN}
     type: Link
   layout_properties: {slot: nav-right}
