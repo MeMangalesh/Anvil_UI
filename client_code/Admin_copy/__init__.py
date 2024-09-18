@@ -144,12 +144,13 @@ class Admin_copy(Admin_copyTemplate):
     image_id = 29
     print(f"Value of image id is 29: {image_id}")
     # self.label_2.text = "Inside the trigger pothole function"
-    result = anvil.server.call("fetch_image_by_id", image_id)
+    result = anvil.server.call("detect_potholes_with_ID", image_id)
   
     # Unpack and display the result
     if result:
       pothole_detected, potholes_count, processed_image_base64 = result
-      self.label_1.text = f("Potholes detected: {potholes_count}, ")
+      self.label_1.text = f("Potholes detected: {potholes_count}, pothol")
+      detection_result = anvil.server.call("", self)
           # self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
     else:
       self.label_message.text = "No potholes detected."
