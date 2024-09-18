@@ -125,12 +125,12 @@ class Admin_copy(Admin_copyTemplate):
       encoded_image = base64.b64encode(file_data).decode("utf-8")
 
       if encoded_image:
-        print("image encoded")
+        print(f"image encoded. filename: {filename}")
       else:
         print("Check img encoding")
 
       # Call the Anvil server function to save the image
-      result = anvil.server.call("save_image", encoded_image, filename)
+      result = anvil.server.call("save_image_n_trigger_detection", encoded_image, filename)
 
       # Display the result message
       if result["status"] == "success":
@@ -139,3 +139,18 @@ class Admin_copy(Admin_copyTemplate):
         self.label_message.text = f"Failed to save image: {result['message']}"
     else:
       self.label_message.text = "No file selected."
+
+  def button_1_click(self, **event_args):
+    image_id = 29
+    print(f"Value of image id is 29: {image_id}")
+    # self.label_2.text = "Inside the trigger pothole function"
+    result = anvil.server.call("fetch_image_by_id", image_id)
+  
+    # Unpack and display the result
+    if result:
+      pothole_detected, potholes_count, processed_image_base64 = result
+      #self.label_1.text = f"Potholes detected: {potholes_count}"
+      self.label_1 = ""
+    # self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
+    else:
+      self.label_message.text = "No potholes detected."

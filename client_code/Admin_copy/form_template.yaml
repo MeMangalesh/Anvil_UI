@@ -25,6 +25,11 @@ components:
       name: outlined_button_reset
       properties: {role: outlined-button, text: RESET}
       type: Button
+    - event_bindings: {click: button_1_click}
+      layout_properties: {grid_position: 'VOLASB,EMDIDN'}
+      name: button_1
+      properties: {text: button_1}
+      type: Button
     - layout_properties: {grid_position: 'TEBLYA,UWTEUA'}
       name: label_message
       properties: {}
