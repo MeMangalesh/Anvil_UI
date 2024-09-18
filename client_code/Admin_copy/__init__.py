@@ -123,7 +123,11 @@ class Admin_copy(Admin_copyTemplate):
       # self.button_detect.enabled = True
       # Encode the file in base64
       encoded_image = base64.b64encode(file_data).decode("utf-8")
-      print("image encoded")
+
+      if encoded_image:
+        print("image encoded")
+      else:
+        print("Check img encoding")
 
       # Call the Anvil server function to save the image
       result = anvil.server.call("save_image", encoded_image, filename)
