@@ -45,9 +45,7 @@ class Admin_copy(Admin_copyTemplate):
 
       # Call the Anvil server function to save the image and get the ID
       self.label_message.text = "Calling save_image_n_trigger_detection function"
-      image_id = anvil.server.call(
-        "save_image_n_trigger_detection", encoded_image, filename
-      )
+      image_id = anvil.server.call("save_image_n_trigger_detection", encoded_image, filename)
 
       if image_id:
         self.label_message.text = f"Image uploaded successfully with ID {image_id}."
