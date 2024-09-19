@@ -65,9 +65,10 @@ class Admin_copy(Admin_copyTemplate):
     result = anvil.server.call("detect_potholescore", image_id)
     # Unpack and display the result
     if result:
-      pothole_detected, potholes_count, processed_image_base64 = result
+      #pothole_detected, potholes_count, processed_image_base64 = result
+      pothole_detected, potholes_count, max_conf_score, min_conf_score, max_pothole_area, min_pothole_area = result
       self.label_1.text = f"Potholes detected: {potholes_count}"
-      self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
+      #self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
     else:
       self.label_message.text = "No potholes detected."
 
