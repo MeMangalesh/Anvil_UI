@@ -31,7 +31,7 @@ class Admin_copy(Admin_copyTemplate):
       alert(response["message"])
 
   ##############
-  ## START - Save image into DB & trigger detection using the newly created ID to fetch data, detect & update results back into DB
+  ## Save image into DB & trigger detection with ID to detect, calculate score & update results into table
   ###############
   def button_save_n_detect_click(self, **event_args):
     file = self.file_loader_1.file
@@ -58,15 +58,16 @@ class Admin_copy(Admin_copyTemplate):
 
   def trigger_pothole_detection(self, image_id):
     # Call the Anvil server function to detect potholes using the image ID
-    image_id = 83
+    #image_id = 83
+    print(f"Image id: {image_id}")
     self.label_2.text = "Inside the trigger pothole function"
-    result = anvil.server.call("detect_potholes_with_ID", image_id)
-
+    #result = anvil.server.call("detect_potholes_with_ID", image_id)
+    result = anvil.server.call("detect_potholescore", image_id)
     # Unpack and display the result
     if result:
       pothole_detected, potholes_count, processed_image_base64 = result
       self.label_1.text = f"Potholes detected: {potholes_count}"
-    # self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
+      self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
     else:
       self.label_message.text = "No potholes detected."
 
