@@ -72,7 +72,7 @@ class Admin_copy(Admin_copyTemplate):
       self.label_message.text = "No potholes detected."
 
   #####################
-  ## DETECTion TRIGGER
+  ## DETECTION TRIGGER
   #####################
 
   ##############

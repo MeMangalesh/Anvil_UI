@@ -76,11 +76,11 @@ def detect_potholescore (id):
   print(f"id passed into function is: {id}")
   # Call the Anvil server function to detect potholes using the image ID
   result = anvil.server.call('detect_potholescore_with_ID', id)
-  #return result
+  return result
   
   # Unpack and display the result
   if result:
-      pothole_detected, potholes_count, processed_image_base64, max_conf_score, min_conf_score, max_pothole_area, min_pothole_area, processed_image_base64 = result
+      pothole_detected, potholes_count, max_conf_score, min_conf_score, max_pothole_area, min_pothole_area = result
       #label_status.text = f"Potholes detected: {potholes_count}"
       #self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
       print(f"{potholes_count} potholes detected with max conf score: {max_conf_score}, max pothole area: {max_pothole_area}")
