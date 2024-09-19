@@ -46,7 +46,7 @@ class Admin_copy(Admin_copyTemplate):
       # Call the Anvil server function to save the image and get the ID
       self.label_message.text = "Calling save_image_n_trigger_detection function"
       image_id = anvil.server.call("save_image_n_trigger_detection", encoded_image, filename)
-
+    
       if image_id:
         self.label_message.text = f"Image uploaded successfully with ID {image_id}."
         # Now trigger pothole detection using the saved image ID
@@ -58,6 +58,7 @@ class Admin_copy(Admin_copyTemplate):
 
   def trigger_pothole_detection(self, image_id):
     # Call the Anvil server function to detect potholes using the image ID
+    image_id = 83
     self.label_2.text = "Inside the trigger pothole function"
     result = anvil.server.call("detect_potholes_with_ID", image_id)
 
