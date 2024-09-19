@@ -2,6 +2,7 @@ from ._anvil_designer import StatsTemplate
 from anvil import *
 import plotly.graph_objects as go
 import anvil.server
+import anvil.media
 #import pymysql
 #from ._anvil_designer import ReportsTemplate
 
@@ -12,6 +13,9 @@ class Stats(StatsTemplate):
     # Call a function to load and display stats
     self.load_stats()
 
+  ################
+  ## Pie Chart: Total vs Detected 
+  ################
   def load_stats(self):
     try:
       # Call the server function to get the statistics
@@ -47,3 +51,6 @@ class Stats(StatsTemplate):
       # Handle the case where the server call fails or returns unexpected data
       alert(f"Error loading statistics: {str(e)}")
 
+################
+## Line Chart: Potholes Count vs. Time 
+################

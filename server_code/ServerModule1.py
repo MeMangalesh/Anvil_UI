@@ -2,6 +2,11 @@ import anvil.server
 ###########ADDED FOR STATS##########
 import plotly.graph_objects as plt
 import anvil.plotly_templates
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+import anvil.media
+import io
 anvil.plotly_templates.set_default("rally")
 ###########ADDED FOR STATS##########
 
@@ -98,6 +103,7 @@ def get_stats():
   pie_stats = anvil.server.call('get_statistics')
   print("Returned from vscode")
 
+### PIE CHART ###
 # Check if the call was successful
   print(f"Return status: {pie_stats['status']}")
   if pie_stats['status'] == 'success':
@@ -121,6 +127,8 @@ def get_stats():
       # Log the error message if the call fails
       print(pie_stats['message'])
       return {"status": "error", "message": pie_stats['message']}
+
+### LINE CHART ####
 
 
 @anvil.server.callable
