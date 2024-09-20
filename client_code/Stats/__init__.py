@@ -137,3 +137,7 @@ class Stats(StatsTemplate):
     # Render the figure in Anvil
     self.plot_heatmap.data = fig.data
     self.plot_heatmap.layout = fig.layout
+
+###################
+## CONFUSION MATRIX
+###################
