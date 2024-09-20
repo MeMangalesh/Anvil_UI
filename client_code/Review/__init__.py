@@ -44,7 +44,7 @@ class Review(ReviewTemplate):
 
 
   #####
-  ##COde below is working fine without date filter
+  ##Code below is working fine without date filter
   #####
   def load_undetected_images(self):
       try:

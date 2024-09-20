@@ -27,8 +27,13 @@ components:
   type: ColumnPanel
 - layout_properties: {grid_position: 'GFLJUS,PIXUQY CYSRYC,LUQHPT'}
   name: check_box_pothole_exist
-  properties: {text: Pothole exist}
+  properties: {text: Pothole exist, tooltip: 'check if potholes found during manual review '}
   type: CheckBox
+- event_bindings: {click: button_save_click}
+  layout_properties: {grid_position: 'GFLJUS,PIXUQY IFDDBQ,CUOJUE'}
+  name: button_save
+  properties: {role: filled-button, text: SAVE}
+  type: Button
 container:
   data_bindings:
   - {code: 'self.item[''image_base64'']', property: tag, writeback: false}
