@@ -61,6 +61,18 @@ components:
     name: plot_pie
     properties: {height: 365}
     type: Plot
+  - layout_properties: {grid_position: 'WLTYFZ,FAGBHT BFAUJS,DJANIR'}
+    name: spacer_4
+    properties: {height: 32}
+    type: Spacer
+  - layout_properties: {grid_position: 'WLTYFZ,FAGBHT XZVCKT,QQNVTD'}
+    name: plot_potperfeedback
+    properties: {}
+    type: Plot
+  - layout_properties: {grid_position: 'WLTYFZ,FAGBHT YKBGQS,AXCLPY'}
+    name: spacer_6
+    properties: {height: 32}
+    type: Spacer
   - layout_properties: {grid_position: 'WLTYFZ,FAGBHT SYRGGJ,FHQFVG'}
     name: plot_heatmap
     properties: {}
@@ -72,8 +84,20 @@ components:
       name: plot_trend
       properties: {height: 359}
       type: Plot
+    - layout_properties: {grid_position: 'EMUINW,AIAVXB'}
+      name: spacer_3
+      properties: {height: 32}
+      type: Spacer
+    - layout_properties: {grid_position: 'GGGPCF,PZBSZK'}
+      name: plot_1
+      properties: {height: 452}
+      type: Plot
+    - layout_properties: {grid_position: 'REOLZZ,RYKMID'}
+      name: spacer_5
+      properties: {height: 32}
+      type: Spacer
     - layout_properties: {grid_position: 'QRZIQC,JQQKIA'}
-      name: plot_2
+      name: plot_severity_bar
       properties: {}
       type: Plot
     layout_properties: {grid_position: 'WLTYFZ,EOMYJW'}

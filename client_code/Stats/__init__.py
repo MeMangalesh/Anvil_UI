@@ -17,6 +17,7 @@ class Stats(StatsTemplate):
     self.load_stats()
     self.load_graph()
     self.load_heatmap()
+    self.load_bar_chart()
 
   ################
   ## Pie Chart: Total vs Detected 
@@ -138,6 +139,44 @@ class Stats(StatsTemplate):
     self.plot_heatmap.data = fig.data
     self.plot_heatmap.layout = fig.layout
 
+
+  ################
+  ## BAR CHART: potholes by severity level
+  ################
+  def load_bar_chart(self):
+        # Fetch severity data from the server
+        severity_data = anvil.server.call('fetch_severity_data')
+
+        # Extract severity labels and their counts
+        severity_labels = [item['Severity'] for item in severity_data]
+        counts = [item['Counts'] for item in severity_data]
+
+        # Create a bar chart using Plotly Graph Objects
+        fig = go.Figure(data=[
+            go.Bar(
+                x=severity_labels,  # X-axis: Severity labels (Low, Medium, High)
+                y=counts,  # Y-axis: Counts of potholes per severity
+                marker_color='indianred'  # Bar color
+            )
+        ])
+
+        # Update the layout of the chart
+        fig.update_layout(
+            title='Pothole Severity Distribution',
+            xaxis_title='Severity',
+            yaxis_title='Number of Potholes',
+            bargap=0.2  # Adds a small gap between the bars
+        )
+
+        # Render the figure in Anvil's Plot component
+        self.plot_severity_bar.data = fig.data
+        self.plot_severity_bar.layout = fig.layout
+
+
+
 ###################
 ## CONFUSION MATRIX
 ###################
+
+
+

@@ -139,6 +139,12 @@ def fetch_severity_heatmap():
   heatmap_data = anvil.server.call('get_severity_data')
   return heatmap_data
 
+### BAR CHRAT ####
+@anvil.server.callable
+def fetch_severity_data():
+  severity_data = anvil.server.call('get_severity_data')
+  return severity_data
+
 ### FILTER BY DATE #####
 @anvil.server.callable
 def fetch_data_by_date():
