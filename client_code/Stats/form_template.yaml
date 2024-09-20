@@ -57,14 +57,24 @@ components:
     name: outlined_card_2
     properties: {role: outlined-card}
     type: ColumnPanel
-  - layout_properties: {grid_position: 'WLTYFZ,FAGBHT'}
+  - layout_properties: {grid_position: 'WLTYFZ,FAGBHT UQMJIK,FXSHXY'}
     name: plot_pie
     properties: {height: 365}
     type: Plot
+  - layout_properties: {grid_position: 'WLTYFZ,FAGBHT SYRGGJ,FHQFVG'}
+    name: plot_1
+    properties: {}
+    type: Plot
   - components:
-    - layout_properties: {grid_position: 'ISRTED,QTPTTU'}
+    - data_bindings:
+      - {code: '', property: tag, writeback: false}
+      layout_properties: {grid_position: 'ISRTED,QTPTTU'}
       name: plot_trend
       properties: {height: 359}
+      type: Plot
+    - layout_properties: {grid_position: 'QRZIQC,JQQKIA'}
+      name: plot_2
+      properties: {}
       type: Plot
     layout_properties: {grid_position: 'WLTYFZ,EOMYJW'}
     name: column_panel_1

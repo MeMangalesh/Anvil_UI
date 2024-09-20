@@ -1,7 +1,9 @@
 from ._anvil_designer import StatsTemplate
+from datetime import datetime
 from anvil import *
 import plotly.graph_objects as go
 import anvil.server
+
 #import anvil.media
 #import pymysql
 #from ._anvil_designer import ReportsTemplate
@@ -56,37 +58,51 @@ class Stats(StatsTemplate):
   ## Line Chart: Potholes Count vs. Time 
   ################
   def load_graph(self):
-          # Fetch pothole trends from the server
-          try:
-              result = anvil.server.call('fetch_pothole_trends')
-              
-              if result['status'] == 'success':
-                  data = result['data']
-                  
-                  # Extract data for Plotly
-                  dates = [item['detection_date'] for item in data]
-                  counts = [item['total_potholes_count'] for item in data]
+    # #test plot with manual data 
+    # print(self.plot_trend)
+    # fig = go.Figure(data=go.Scatter(x=[1, 2, 3], y=[10, 20, 30], mode='lines+markers'))
+    # self.plot_trend.figure = fig #replaced .data with .figure to show the line on the graph
+        # Fetch pothole trends from the server
+    try:
+        result = anvil.server.call('fetch_pothole_trends')
+            
+        if result['status'] == 'success':
+            data = result['data']
+            
+            # Extract data for Plotly
+            dates = [item['detection_date'] for item in data]
+            counts = [item['total_potholes_count'] for item in data]
 
-                  # Debug: Print the data
-                  print("Dates:", dates)
-                  print("Counts:", counts)
-                
-                  # Create Plotly figure
-                  fig = go.Figure(data=go.Scatter(x=dates, y=counts, mode='lines+markers'))
-                  
-                  # Customize the layout
-                  fig.update_layout(
-                      title="Interactive Potholes Detected Over Time",
-                      xaxis_title="Date",
-                      yaxis_title="Total Potholes Detected",
-                      hovermode="x",
-                      template="plotly_dark"
-                  )
-                  # Set the figure in a Plotly chart component
-                  self.plot_trend.data = fig
-                  
-              else:
-                  alert(f"Error: {result['message']}")
-  
-          except Exception as e:
-              alert(f"Failed to load graph: {str(e)}")
+            # Debug: Print the data
+            print("Dates:", dates)
+            print("Counts:", counts)
+          
+            # Create Plotly figure
+            fig = go.Figure(data=go.Scatter(x=dates, y=counts, mode='lines+markers'))
+            
+            # Customize the layout
+            # fig.update_layout(
+            #     title="Interactive Potholes Detected Over Time",
+            #     xaxis_title="Date",
+            #     yaxis_title="Total Potholes Detected",
+            #     hovermode="x",
+            #     template="plotly_dark"
+            # )
+          # Update layout to show only the date on the x-axis
+            fig.update_layout(
+              title="Interactive Potholes Detected Over Time",
+              xaxis_title="Date",
+              yaxis_title="Total Potholes Detected",
+              xaxis=dict(
+                tickformat="%b %d, %Y",  # Format the x-axis to show date only
+                tickmode='array',
+                tickvals=dates
+              )
+            )
+            # Set the figure in a Plotly chart component
+            self.plot_trend.figure = fig
+        else:
+            alert(f"Error: {result['message']}")
+
+    except Exception as e:
+        alert(f"Failed to load graph: {str(e)}")
