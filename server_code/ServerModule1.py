@@ -165,5 +165,19 @@ def get_images():
       return {"status": "error", "message": "No records found"}
 
 ##########
-## GET IMAGES BY DATE
+## UPDATE REVIEW RESULTS
 ##########
+@anvil.server.callable
+def update_review(image_id):
+  print("calling vscode to save image review result")
+  result = anvil.server.call('save_review', image_id)
+
+# Unpack and display the result
+  if result:
+      print("Review updated successfully")  # Optional: Log the result for debugging
+      return {"status": "success", "message": "Review updated successfully"}
+  else:
+      return {"status": "error", "message": "No records found"}
+
+
+  

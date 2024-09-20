@@ -13,5 +13,22 @@ class ItemTemplate5(ItemTemplate5Template):
     self.label_id.text = str(self.item['id'])  # Assuming you have another Label component for the ID
 
   def button_save_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    pass
+    selected_image_ids = []
+
+    # Loop through each item in the repeating panel
+    for item in self.Review.ItemTemplate5.items:
+        checkbox = item['check_box_pothole_exist']  # Adjust based on how your repeating panel is structured
+        label = item['label_id']        # Assuming you have a label for the image ID
+        
+        if checkbox.checked:
+            image_id_value = label.text  # Get the image ID from the label text
+            selected_image_ids.append(image_id_value)
+
+    if selected_image_ids:
+        response = anvil.server.call('save_review', selected_image_ids)
+        if response['status'] == 'success':
+            print("Reviews updated successfully.")
+        else:
+            print("Error:", response['message'])
+    else:
+        print("No images selected.")
