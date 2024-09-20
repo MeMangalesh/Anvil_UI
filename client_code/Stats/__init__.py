@@ -3,7 +3,7 @@ from datetime import datetime
 from anvil import *
 import plotly.graph_objects as go
 import anvil.server
-import plotly.express as px
+#import plotly.express as px
 
 #import anvil.media
 #import pymysql
@@ -112,7 +112,7 @@ class Stats(StatsTemplate):
 ###############
 ## Heatmap: severity based on confidence score
 ################
-def load_and_plot_heatmap(self):
+def load_heatmap(self):
         # Fetch heatmap data from the server
         heatmap_data = anvil.server.call('get_severity_heatmap')
 
