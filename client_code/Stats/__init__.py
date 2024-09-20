@@ -3,6 +3,7 @@ from datetime import datetime
 from anvil import *
 import plotly.graph_objects as go
 import anvil.server
+import plotly.express as px
 
 #import anvil.media
 #import pymysql
@@ -15,6 +16,7 @@ class Stats(StatsTemplate):
     # Call a function to load and display stats
     self.load_stats()
     self.load_graph()
+    self.load_heatmap()
 
   ################
   ## Pie Chart: Total vs Detected 
@@ -106,3 +108,26 @@ class Stats(StatsTemplate):
 
     except Exception as e:
         alert(f"Failed to load graph: {str(e)}")
+
+###############
+## Heatmap: severity based on confidence score
+################
+def load_and_plot_heatmap(self):
+        # Fetch heatmap data from the server
+        heatmap_data = anvil.server.call('get_severity_heatmap')
+
+        # Prepare data for plotting
+        severity_labels = [item['Severity'] for item in heatmap_data]
+        counts = [item['Counts'] for item in heatmap_data]
+
+        # Create the heatmap figure
+        fig = px.imshow([counts], 
+                        x=severity_labels, 
+                        y=['Count'], 
+                        color_continuous_scale='Viridis',
+                        labels=dict(x='Severity', y='Count', color='Count'),
+                        title='Pothole Severity Heatmap')
+        
+        # Update the Plotly graph
+        self.plot_severity_heatmap.data = fig.data
+        self.plot_severity_heatmap.layout = fig.layout

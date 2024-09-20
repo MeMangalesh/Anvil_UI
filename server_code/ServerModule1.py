@@ -133,6 +133,12 @@ def fetch_pothole_trends():
     result = anvil.server.call('get_pothole_trends')
     return result
 
+### HEATMAP ####
+@anvil.server.callable
+def get_severity_heatmap():
+    return get_severity_data()
+
+
 ### FILTER BY DATE #####
 @anvil.server.callable
 def fetch_data_by_date():
