@@ -112,22 +112,28 @@ class Stats(StatsTemplate):
 ###############
 ## Heatmap: severity based on confidence score
 ################
-def load_heatmap(self):
-        # Fetch heatmap data from the server
-        heatmap_data = anvil.server.call('get_severity_heatmap')
+  def load_heatmap(self):
+    # Fetch heatmap data from the server
+    heatmap_data = anvil.server.call('fetch_severity_heatmap')
 
-        # Prepare data for plotting
-        severity_labels = [item['Severity'] for item in heatmap_data]
-        counts = [item['Counts'] for item in heatmap_data]
+    severity_labels = [item['Severity'] for item in heatmap_data]
+    counts = [item['Counts'] for item in heatmap_data]
 
-        # Create the heatmap figure
-        fig = px.imshow([counts], 
-                        x=severity_labels, 
-                        y=['Count'], 
-                        color_continuous_scale='Viridis',
-                        labels=dict(x='Severity', y='Count', color='Count'),
-                        title='Pothole Severity Heatmap')
-        
-        # Update the Plotly graph
-        self.plot_severity_heatmap.data = fig.data
-        self.plot_severity_heatmap.layout = fig.layout
+    # Create the heatmap figure using Plotly Graph Objects
+    fig = go.Figure(data=go.Heatmap(
+        z=[counts],  # Data for heatmap
+        x=severity_labels,  # X-axis labels
+        y=['Count'],  # Y-axis label
+        colorscale='Viridis'
+    ))
+
+    # Update layout
+    fig.update_layout(
+        title='Pothole Severity Heatmap',
+        xaxis_title='Severity',
+        yaxis_title='Count'
+    )
+
+    # Render the figure in Anvil
+    self.plot_heatmap.data = fig.data
+    self.plot_heatmap.layout = fig.layout
