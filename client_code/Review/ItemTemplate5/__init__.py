@@ -19,7 +19,11 @@ class ItemTemplate5(ItemTemplate5Template):
       image_id_value = label.text  # Get the image ID from the label text
       response = anvil.server.call('save_review', image_id_value)  # Call the server function with the ID
       if response['status'] == 'success':
-          print("Review updated successfully.")
+          print("Reviewed image updated successfully.")
+          # Refresh the parent form (Review) to omit the reviewed image
+          parent_form = get_open_form()  # Get the parent form (Review)
+          if hasattr(parent_form, 'load_undetected_images'):
+              parent_form.load_undetected_images()  # Call the load_undetected_images method
       else:
           print("Error:", response['message'])
     else:
