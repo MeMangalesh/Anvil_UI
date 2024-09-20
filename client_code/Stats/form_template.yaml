@@ -63,7 +63,7 @@ components:
     type: Plot
   - components:
     - layout_properties: {grid_position: 'ISRTED,QTPTTU'}
-      name: plot_1
+      name: plot_trend
       properties: {height: 359}
       type: Plot
     layout_properties: {grid_position: 'WLTYFZ,EOMYJW'}

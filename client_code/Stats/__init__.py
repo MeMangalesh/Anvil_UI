@@ -2,7 +2,7 @@ from ._anvil_designer import StatsTemplate
 from anvil import *
 import plotly.graph_objects as go
 import anvil.server
-import anvil.media
+#import anvil.media
 #import pymysql
 #from ._anvil_designer import ReportsTemplate
 
@@ -12,6 +12,7 @@ class Stats(StatsTemplate):
     self.init_components(**properties)
     # Call a function to load and display stats
     self.load_stats()
+    self.load_graph()
 
   ################
   ## Pie Chart: Total vs Detected 
@@ -51,6 +52,41 @@ class Stats(StatsTemplate):
       # Handle the case where the server call fails or returns unexpected data
       alert(f"Error loading statistics: {str(e)}")
 
-################
-## Line Chart: Potholes Count vs. Time 
-################
+  ################
+  ## Line Chart: Potholes Count vs. Time 
+  ################
+  def load_graph(self):
+          # Fetch pothole trends from the server
+          try:
+              result = anvil.server.call('fetch_pothole_trends')
+              
+              if result['status'] == 'success':
+                  data = result['data']
+                  
+                  # Extract data for Plotly
+                  dates = [item['detection_date'] for item in data]
+                  counts = [item['total_potholes_count'] for item in data]
+
+                  # Debug: Print the data
+                  print("Dates:", dates)
+                  print("Counts:", counts)
+                
+                  # Create Plotly figure
+                  fig = go.Figure(data=go.Scatter(x=dates, y=counts, mode='lines+markers'))
+                  
+                  # Customize the layout
+                  fig.update_layout(
+                      title="Interactive Potholes Detected Over Time",
+                      xaxis_title="Date",
+                      yaxis_title="Total Potholes Detected",
+                      hovermode="x",
+                      template="plotly_dark"
+                  )
+                  # Set the figure in a Plotly chart component
+                  self.plot_trend.data = fig
+                  
+              else:
+                  alert(f"Error: {result['message']}")
+  
+          except Exception as e:
+              alert(f"Failed to load graph: {str(e)}")

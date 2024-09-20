@@ -2,8 +2,7 @@ import anvil.server
 ###########ADDED FOR STATS##########
 import plotly.graph_objects as plt
 import anvil.plotly_templates
-import matplotlib.pyplot as plt
-import seaborn as sns
+#import matplotlib.pyplot as plt
 import pandas as pd
 import anvil.media
 import io
@@ -129,8 +128,12 @@ def get_stats():
       return {"status": "error", "message": pie_stats['message']}
 
 ### LINE CHART ####
+@anvil.server.callable
+def fetch_pothole_trends():
+    result = anvil.server.call('get_pothole_trends')
+    return result
 
-
+### FILTER BY DATE #####
 @anvil.server.callable
 def fetch_data_by_date():
 # Fetch data from the server
