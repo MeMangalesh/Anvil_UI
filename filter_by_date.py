@@ -83,7 +83,7 @@ def get_data_by_date(start_date, end_date):
         SELECT image_id, processed_image_base64
         FROM potholes_undetected
         WHERE pothole_detected = 0 AND
-        processed_dt BETWEEN %s AND %s
+        review_dt BETWEEN %s AND %s
         """
         cursor.execute(query, (start_date_str, end_date_str))
         result = cursor.fetchall()
@@ -109,6 +109,40 @@ def get_data_by_date(start_date, end_date):
     
     finally:
         connection.close()
+
+############################
+## Save manual review result
+############################
+
+@anvil.server.callable
+def save_review(image_id):
+    try:
+        connection = create_connection()
+        if not connection:
+            return {"status": "error", "message": "Database connection failed"}
+
+        with connection.cursor() as cursor:
+            try:
+                print("About to update the potholes_undetected table with reviewed results")
+                sql = """
+                    UPDATE potholes_undetected
+                    SET pothole_detected = TRUE, detection_accuracy = FALSE, review_dt = NOW()
+                    WHERE image_id = %s
+                """
+                cursor.execute(sql, (image_id,))  # Corrected to a tuple
+                connection.commit()
+
+                print(f"Updated manual review for image_ID: {image_id}")
+                return {"status": "success", "message": f"Review updated for ID: {image_id}"}
+            except Exception as e:
+                connection.rollback()  # Rollback in case of an error during the query execution
+                return {"status": "error", "message": f"Failed to update review: {str(e)}"}
+    except Exception as e:
+        return {"status": "error", "message": f"An error occurred: {str(e)}"}
+    finally:
+        if connection:
+            connection.close()  # Ensures the connection is closed after execution
+
 
 @anvil.server.callable
 # Function to detect potholes in an image
