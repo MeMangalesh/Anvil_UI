@@ -186,8 +186,8 @@ class Stats(StatsTemplate):
     fig = anvil.server.call('fetch_pothole_feedback_chart', date_from, date_to)
 
     # Render the figure in Anvil
-    self.plot_pothole_feedback.data = fig.data
-    self.plot_pothole_feedback.layout = fig.layout
+    self.plot_podperfeedback.data = fig.data
+    self.plot_podperfeedback.layout = fig.layout
   
    
 
