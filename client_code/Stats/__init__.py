@@ -18,6 +18,8 @@ class Stats(StatsTemplate):
     self.load_graph()
     self.load_heatmap()
     self.load_bar_chart()
+    self.load_pothole_feedback_chart()
+    
 
   ################
   ## Pie Chart: Total vs Detected 
@@ -172,15 +174,27 @@ class Stats(StatsTemplate):
         self.plot_severity_bar.data = fig.data
         self.plot_severity_bar.layout = fig.layout
 
+#############
+###
+#############
+  def load_pothole_feedback_chart(self):
+    # Get the date range from the DatePickers in the UI
+    date_from = self.date_picker_from.date
+    date_to = self.date_picker_to.date
+
+    # Fetch the figure from the server
+    fig = anvil.server.call('fetch_pothole_feedback_chart', date_from, date_to)
+
+    # Render the figure in Anvil
+    self.plot_pothole_feedback.data = fig.data
+    self.plot_pothole_feedback.layout = fig.layout
+  
+   
 
 
 ###################
 ## CONFUSION MATRIX
 ###################
-
-  def plot_pie_click(self, points, **event_args):
-    """This method is called when a data point is clicked."""
-    pass
 
 
 

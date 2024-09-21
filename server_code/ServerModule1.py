@@ -2,7 +2,7 @@ import anvil.server
 ###########ADDED FOR STATS##########
 import plotly.graph_objects as plt
 import anvil.plotly_templates
-#import matplotlib.pyplot as plt
+import plotly.express as px
 import pandas as pd
 import anvil.media
 import io
@@ -144,6 +144,35 @@ def fetch_severity_heatmap():
 def fetch_severity_data():
   severity_data = anvil.server.call('get_severity_data')
   return severity_data
+
+#### DOUBLE LINE GRAPH - Num of Feedaback vs. Num of PoD
+
+@anvil.server.callable
+def fetch_pothole_feedback_chart(date_from=None, date_to=None):
+    # Call the uplink function to get the data
+    pothole_feedback_data = anvil.server.call('get_pothole_feedback_data', date_from, date_to)
+    
+    # Convert the data to a DataFrame
+    df = pd.DataFrame(pothole_feedback_data)
+   
+    # Check column names in the DataFrame
+    print(f"DataFrame columns: {df.columns}")
+    
+    # Ensure the 'date' column exists
+    if 'date' not in df.columns:
+        raise ValueError("Expected column 'date' in DataFrame, but it was not found.")
+
+    # Create the line chart with Plotly Express
+    fig = px.line(df, x='date', y=['potholes_count', 'feedback_count'],
+                  labels={
+                      'date': 'Date',
+                      'value': 'Count',
+                      'variable': 'Data Type'
+                  },
+                  title='Potholes Detected vs. Feedback Received Over Time')
+
+    return fig
+
 #########################
 ### FILTER BY DATE #####
 @anvil.server.callable
