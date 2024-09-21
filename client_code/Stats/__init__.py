@@ -178,5 +178,9 @@ class Stats(StatsTemplate):
 ## CONFUSION MATRIX
 ###################
 
+  def plot_pie_click(self, points, **event_args):
+    """This method is called when a data point is clicked."""
+    pass
+
 
 
