@@ -37,18 +37,26 @@ components:
     properties: {height: 32}
     type: Spacer
   - components:
+    - layout_properties: {grid_position: 'RIEYID,LEKFBZ'}
+      name: label_1
+      properties: {text: 'FILTER BY DATE '}
+      type: Label
+    - data_bindings:
+      - {code: '', property: date, writeback: false}
+      - {code: 'self.item['''']', property: max_date, writeback: false}
+      layout_properties: {grid_position: 'UXWUJH,UNLELG'}
+      name: date_picker_from
+      properties: {placeholder: To, role: null}
+      type: DatePicker
     - layout_properties: {grid_position: 'UXWUJH,UBARCE'}
-      name: date_picker_2
+      name: date_picker_to
       properties: {}
       type: DatePicker
     - components:
-      - data_bindings:
-        - {code: '', property: date, writeback: false}
-        - {code: 'self.item['''']', property: max_date, writeback: false}
-        layout_properties: {grid_position: 'YTPEWS,DMBLXS'}
-        name: date_picker_1
-        properties: {placeholder: To, role: null}
-        type: DatePicker
+      - layout_properties: {grid_position: 'OJHMPZ,SWFSFT'}
+        name: button_view
+        properties: {role: filled-button, text: VIEW}
+        type: Button
       layout_properties: {grid_position: 'UXWUJH,PKEVSM'}
       name: column_panel_2
       properties: {}
@@ -66,7 +74,7 @@ components:
     properties: {height: 32}
     type: Spacer
   - layout_properties: {grid_position: 'WLTYFZ,FAGBHT XZVCKT,QQNVTD'}
-    name: plot_potperfeedback
+    name: plot_podperfeedback
     properties: {}
     type: Plot
   - layout_properties: {grid_position: 'WLTYFZ,FAGBHT YKBGQS,AXCLPY'}
