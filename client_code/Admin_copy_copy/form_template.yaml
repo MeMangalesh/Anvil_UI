@@ -1,0 +1,100 @@
+components:
+- components:
+  - components:
+    - layout_properties: {grid_position: 'SXYQFZ,ZINALT'}
+      name: image_upload
+      properties: {}
+      type: Image
+    - event_bindings: {change: file_loader_1_change}
+      layout_properties: {grid_position: 'TLIPKO,YOIXIC'}
+      name: file_loader_1
+      properties: {}
+      type: FileLoader
+    - event_bindings: {click: button_save_n_detect_click}
+      layout_properties: {grid_position: 'JBCBGH,RSGJBT'}
+      name: button_save_n_detect
+      properties: {role: tonal-button, text: SAVE & DETECT}
+      type: Button
+    - layout_properties: {grid_position: 'GPJWFH,XIRMOW'}
+      name: image_detection
+      properties: {}
+      type: Image
+    - event_bindings: {click: outlined_button_reset_click}
+      layout_properties: {grid_position: 'UZDKMQ,CKQYVN'}
+      name: outlined_button_reset
+      properties: {role: outlined-button, text: RESET}
+      type: Button
+    - layout_properties: {grid_position: 'TEBLYA,UWTEUA'}
+      name: label_message
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'DLKVVC,TWFEPU'}
+      name: label_1
+      properties: {}
+      type: Label
+    - layout_properties: {grid_position: 'EPGRLB,PASKHW'}
+      name: label_2
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'KAJFVX,MHLERO'}
+    name: outlined_card_1
+    properties: {role: outlined-card}
+    type: ColumnPanel
+  - layout_properties: {grid_position: 'GXTPXK,LAEQGB'}
+    name: label_table_status
+    properties: {}
+    type: Label
+  - components:
+    - components:
+      - name: repeating_panel_image_data
+        properties: {item_template: Admin.RowTemplate1}
+        type: RepeatingPanel
+      layout_properties: {grid_position: 'JVGPAT,ZQJILC'}
+      name: data_grid_1
+      properties:
+        columns:
+        - {data_key: column_1, expand: false, id: JKSDUP, title: ID, width: 77}
+        - {data_key: column_2, expand: false, id: VJQQOR, title: 'Filename ', width: 192}
+        - {data_key: column_3, expand: false, id: OJLQEN, title: URL, width: 91}
+        - {data_key: column_4, id: ARVVED, title: 'Date Created '}
+        - {data_key: column_5, id: PYWIMC, title: 'Date Updated '}
+        - {data_key: column_6, id: UICRXP, title: 'Potholes Detected '}
+        - {data_key: column_1, id: XEIIBA, title: Potholes Count}
+      type: DataGrid
+    layout_properties: {grid_position: 'NDPKNO,TRPIAV'}
+    name: outlined_card_2
+    properties: {role: outlined-card}
+    type: ColumnPanel
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {}
+  type: ColumnPanel
+- components:
+  - event_bindings: {click: link_User_click}
+    name: link_User
+    properties: {}
+    type: Link
+  - event_bindings: {click: link_Dashboard_click}
+    name: link_Dashboard
+    properties: {}
+    type: Link
+  - event_bindings: {click: link_Review_click}
+    name: link_Review
+    properties: {}
+    type: Link
+  - event_bindings: {click: link_Admin_click}
+    name: link_Admin
+    properties: {}
+    type: Link
+  layout_properties: {slot: nav-right}
+  name: navbar_links
+  properties: {}
+  type: FlowPanel
+- layout_properties: {slot: title}
+  name: label_3
+  properties: {background: '', foreground: '', role: title, text: PoDS... Potholes Detection System}
+  type: Label
+container:
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
+is_package: true
