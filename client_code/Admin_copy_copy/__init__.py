@@ -67,7 +67,6 @@ class Admin_copy_copy(Admin_copy_copyTemplate):
     result = anvil.server.call("detect_potholescore", image_id)
     # Unpack and display the result
     if result:
-      # pothole_detected, potholes_count, processed_image_base64 = result
       (
         pothole_detected,
         potholes_count,
