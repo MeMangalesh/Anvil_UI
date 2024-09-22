@@ -47,7 +47,7 @@ def detect_potholes(image_base64, filename):
 def save_image_n_trigger_detection(self, image_base64, filename):
 # Call the Anvil server function to detect potholes using the image ID
   #result = anvil.server.call('detect_potholes', id) 
-  result = anvil.serverr.call('detect_potholescore',id)
+  result = anvil.server.call('detect_potholescore',id)
     # Unpack and display the result
   if result:
       pothole_detected, potholes_count, processed_image_base64 = result
@@ -84,6 +84,7 @@ def detect_potholescore (id):
   
   # Unpack and display the result
   if result:
+      print("results returned back into detect_potholes in Anvil")
       pothole_detected, potholes_count, max_conf_score, min_conf_score, max_pothole_area, min_pothole_area = result
       #label_status.text = f"Potholes detected: {potholes_count}"
       #self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
