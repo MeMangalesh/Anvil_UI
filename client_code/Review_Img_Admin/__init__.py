@@ -1,9 +1,9 @@
-from ._anvil_designer import Form2Template
+from ._anvil_designer import Review_Img_AdminTemplate
 from anvil import *
 import plotly.graph_objects as go
 import anvil.server
 
-class Form2(Form2Template):
+class Review_Img_Admin(Review_Img_AdminTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
