@@ -43,33 +43,33 @@ class Admin_copy(Admin_copyTemplate):
       encoded_image = base64.b64encode(file_data).decode("utf-8")
       print("Image encoded for saving")
 
-       # Call the Anvil server function to detect potholes
-          result = anvil.server.call('detect_potholes', encoded_image, filename)
+      # Call the Anvil server function to detect potholes
+      result = anvil.server.call('detect_potholes', encoded_image, filename)
           
-          # Unpack and display the result from the tuple 
-          if result:
-             # Unpack the tuple returned by detect_potholes
-            pothole_detected, potholes_count, processed_image_base64 = result  # Unpacking tuple/list
-            #Display the processed image with bounding boxes
-            self.label_status.text = f"Potholes detected: {potholes_count}"
-            self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
-          else:
-              self.label_status.text = "No potholes detected."
+      # Unpack and display the result from the tuple 
+      if result:
+          # Unpack the tuple returned by detect_potholes
+        pothole_detected, potholes_count, processed_image_base64 = result  # Unpacking tuple/list
+        #Display the processed image with bounding boxes
+        # self.label_status.text = f"Potholes detected: {potholes_count}"
+        self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
       else:
-          self.label_status.text = "No file selected."
-
-      # Call the Anvil server function to save the image and get the ID
-      self.label_message.text = "Calling save_image_n_trigger_detection function"
-      image_id = anvil.server.call("save_image_n_trigger_detection", encoded_image, filename)
-    
-      if image_id:
-        self.label_message.text = f"Image uploaded successfully with ID {image_id}."
-        # Now trigger pothole detection using the saved image ID
-        self.trigger_pothole_detection(image_id)
-      else:
-        self.label_message.text = "Failed to save image."
+          self.label_message.text = "No potholes detected."
     else:
-      self.label_message.text = "No file selected."
+        self.label_message.text = "No file selected."
+
+    # Call the Anvil server function to save the image and get the ID
+    self.label_message.text = "Calling save_image_n_trigger_detection function"
+    image_id = anvil.server.call("save_image_n_trigger_detection", encoded_image, filename)
+  
+    if image_id:
+      self.label_message.text = f"Image uploaded successfully with ID {image_id}."
+      # Now trigger pothole detection using the saved image ID
+      self.trigger_pothole_detection(image_id)
+    else:
+      self.label_message.text = "Failed to save image."
+  # else:
+  #   self.label_message.text = "No file selected."
 
   def trigger_pothole_detection(self, image_id):
     # Call the Anvil server function to detect potholes using the image ID
