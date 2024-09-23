@@ -58,7 +58,7 @@ class Admin_copy(Admin_copyTemplate):
     else:
         self.label_message.text = "No file selected."
 
-    # Call the Anvil server function to save the image and get the ID
+    # Call the Anvil server function to save image with ID & detect potholes
     self.label_message.text = "Calling save_image_n_trigger_detection function"
     image_id = anvil.server.call("save_image_n_trigger_detection", encoded_image, filename)
   
