@@ -41,7 +41,7 @@ class Admin_copy_copy(Admin_copy_copyTemplate):
 
       # Encode the file in base64
       encoded_image = base64.b64encode(file_data).decode("utf-8")
-      print("Image encoded for saving")
+      print("Image encoded in button save & detect click function to display detection")
 
       # Call the Anvil server function to detect potholes
       result = anvil.server.call("detect_potholes", encoded_image, filename)
@@ -54,6 +54,7 @@ class Admin_copy_copy(Admin_copy_copyTemplate):
         )
         # Display the processed image with bounding boxes
         # self.label_status.text = f"Potholes detected: {potholes_count}"
+        # Show detection with annotations in the 2nd image panel
         self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
       else:
         self.label_message.text = "No potholes detected."
