@@ -37,5 +37,6 @@ components:
 container:
   data_bindings:
   - {code: 'self.item[''image_base64'']', property: tag, writeback: false}
+  properties: {col_spacing: huge}
   type: ColumnPanel
 is_package: true

@@ -4,7 +4,6 @@ import anvil.server
 import base64
 import anvil.media
 
-
 class Admin_copy(Admin_copyTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
