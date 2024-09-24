@@ -36,7 +36,7 @@ components:
       name: label_2
       properties: {}
       type: Label
-    layout_properties: {grid_position: 'KAJFVX,MHLERO'}
+    layout_properties: {full_width_row: true, grid_position: 'KAJFVX,MHLERO'}
     name: outlined_card_1
     properties: {role: outlined-card}
     type: ColumnPanel
