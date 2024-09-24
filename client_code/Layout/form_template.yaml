@@ -2,15 +2,15 @@ components:
 - components:
   - components:
     - components:
-      - name: spacer_4
-        properties: {height: 32}
-        type: Spacer
       - name: image_3
         properties: {height: 62, source: _/theme/KKR_logo_round.png}
         type: Image
+      - name: spacer_4
+        properties: {height: 32}
+        type: Spacer
       - layout_properties: {}
         name: label_1
-        properties: {align: left, role: title, text: PODS...Ai-based Potholes Detection System}
+        properties: {align: left, role: title, text: PODS...AI-based Potholes Detection System}
         type: Label
       - layout_properties: {width: 57}
         name: spacer_5
@@ -18,17 +18,13 @@ components:
         type: Spacer
       layout_properties: {grid_position: 'VSQUJL,CLTYPR'}
       name: flow_panel_1
-      properties: {}
+      properties: {spacing: huge}
       type: FlowPanel
     layout_properties: {full_width_row: true, grid_position: 'IVLGLZ,EZLTZY', row_background: 'theme:On Primary Container'}
     name: outlined_card_2
-    properties: {foreground: 'theme:On Primary', role: null}
+    properties: {col_spacing: huge, foreground: 'theme:On Primary', role: null}
     type: ColumnPanel
-  - components:
-    - layout_properties: {full_width_row: true, grid_position: 'IPIRXO,YSWOBA'}
-      name: image_4
-      properties: {alt_text: 'PODS...the AI-based Potholes Detection System ', display_mode: fill_width, source: _/theme/Banner.png}
-      type: Image
+  - components: []
     layout_properties: {full_width_row: true, grid_position: 'ZEVVCC,IXOZXJ'}
     name: column_panel_1
     properties: {col_spacing: huge, role: null}
@@ -64,7 +60,7 @@ components:
       type: ColumnPanel
     layout_properties: {full_width_row: true, grid_position: 'WTSGCQ,XMEBOF'}
     name: outlined_card_1
-    properties: {background: 'theme:On Primary Container', col_widths: '{}', foreground: 'theme:Primary Container', role: outlined-card}
+    properties: {background: 'theme:On Primary Container', col_spacing: huge, col_widths: '{}', foreground: 'theme:Primary Container', role: outlined-card}
     type: ColumnPanel
   - layout_properties: {grid_position: 'ZCJRFH,ADRFXY'}
     name: spacer_3

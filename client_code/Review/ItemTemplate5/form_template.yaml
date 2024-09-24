@@ -7,33 +7,42 @@ components:
   properties: {}
   type: Image
 - components:
-  - data_bindings:
-    - {code: '', property: text, writeback: false}
-    - {code: '', property: tag, writeback: false}
-    layout_properties: {grid_position: 'TMUNUP,BLKFDW'}
-    name: label_filename
-    properties: {role: title}
-    type: Label
-  - data_bindings:
-    - {code: 'self.item[''image_id'']', property: tag, writeback: false}
-    - {code: 'self.item[''image_id'']', property: text, writeback: false}
-    layout_properties: {grid_position: 'EXTYAB,SLHVMQ'}
-    name: label_id
+  - components:
+    - name: label_1
+      properties: {text: 'Image ID:'}
+      type: Label
+    - data_bindings:
+      - {code: 'self.item[''image_id'']', property: tag, writeback: false}
+      - {code: 'self.item[''image_id'']', property: text, writeback: false}
+      name: label_id
+      properties: {}
+      type: Label
+    layout_properties: {grid_position: 'ISDPKZ,CAGYCG'}
+    name: flow_panel_2
     properties: {}
-    type: Label
+    type: FlowPanel
   layout_properties: {grid_position: 'GFLJUS,PIXUQY FBFBNO,JNEVQB'}
   name: outlined_card_1
   properties: {role: outlined-card}
   type: ColumnPanel
-- layout_properties: {grid_position: 'GFLJUS,PIXUQY CYSRYC,LUQHPT'}
-  name: check_box_pothole_exist
-  properties: {text: Pothole exist, tooltip: 'check if potholes found during manual review '}
-  type: CheckBox
-- event_bindings: {click: button_save_click}
-  layout_properties: {grid_position: 'GFLJUS,PIXUQY IFDDBQ,CUOJUE'}
-  name: button_save
-  properties: {role: filled-button, text: SAVE}
-  type: Button
+- components:
+  - layout_properties: {}
+    name: check_box_pothole_exist
+    properties: {text: Pothole exist, tooltip: 'tick if potholes found during manual review '}
+    type: CheckBox
+  - event_bindings: {click: button_save_click}
+    layout_properties: {}
+    name: button_save
+    properties: {icon_align: right_edge, role: filled-button, text: SAVE, tooltip: 'Save review '}
+    type: Button
+  layout_properties: {grid_position: 'GFLJUS,PIXUQY ONRMIZ,DPDZAB'}
+  name: flow_panel_1
+  properties: {align: justify}
+  type: FlowPanel
+- layout_properties: {grid_position: 'GFLJUS,PIXUQY ONRMIZ,DTUYIW'}
+  name: spacer_1
+  properties: {height: 34}
+  type: Spacer
 container:
   data_bindings:
   - {code: 'self.item[''image_base64'']', property: tag, writeback: false}

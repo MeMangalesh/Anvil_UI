@@ -72,6 +72,10 @@ class Review(ReviewTemplate):
       except Exception as e:
           alert(f"An error occurred: {e}")
 
+  def date_picker_from_change(self, **event_args):
+    """This method is called when the selected date changes"""
+    pass
+
 
 
 

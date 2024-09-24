@@ -44,6 +44,7 @@ components:
     - data_bindings:
       - {code: '', property: date, writeback: false}
       - {code: 'self.item['''']', property: max_date, writeback: false}
+      event_bindings: {change: date_picker_from_change}
       layout_properties: {grid_position: 'UXWUJH,UNLELG'}
       name: date_picker_from
       properties: {placeholder: To, role: null}
@@ -53,7 +54,8 @@ components:
       properties: {}
       type: DatePicker
     - components:
-      - layout_properties: {grid_position: 'OJHMPZ,SWFSFT'}
+      - event_bindings: {click: button_view_click}
+        layout_properties: {grid_position: 'OJHMPZ,SWFSFT'}
         name: button_view
         properties: {role: filled-button, text: VIEW}
         type: Button

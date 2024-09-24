@@ -13,7 +13,7 @@ class Layout(LayoutTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    #self.navigate(self.home_link, Homepage())
+    #self.navigate(self.column_panel_1, Homepage())
 
   # Any code you write here will run before the form opens.
     for link in [self.link_admin, self.link_dashboard, self.link_demo, self.link_review]:

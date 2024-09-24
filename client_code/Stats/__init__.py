@@ -1,9 +1,11 @@
 from ._anvil_designer import StatsTemplate
-from datetime import datetime
+from datetime import date
 from anvil import *
 import plotly.graph_objects as go
 import anvil.server
 #import plotly.express as px
+####
+#from anvil import DatePicker, Button
 
 #import anvil.media
 #import pymysql
@@ -14,12 +16,25 @@ class Stats(StatsTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     # Call a function to load and display stats
+    self.reset_date_pickers()
     self.load_stats()
     self.load_graph()
     self.load_heatmap()
     self.load_bar_chart()
-    self.load_pothole_feedback_chart()
+    #self.load_pothole_feedback_chart()
     
+  ###############
+  ## Reset Date Picker
+  ###############
+  def reset_date_pickers(self):
+    # Set the date pickers to today
+    today = date.today()
+    self.date_picker_from.date = today
+    self.date_picker_to.date = today
+
+    # Deactivate older dates (minimum date)
+    self.date_picker_from.min_date = today
+    self.date_picker_to.min_date = today
 
   ################
   ## Pie Chart: Total vs Detected 
@@ -195,6 +210,21 @@ class Stats(StatsTemplate):
 ###################
 ## CONFUSION MATRIX
 ###################
+
+  def button_click(self, **event_args):
+    # Get selected dates from the date pickers
+    date_from = self.date_picker_from.date
+    date_to = self.date_picker_to.date
+
+    # Call the Anvil server function that fetches the feedback chart data
+    result = anvil.server.call('fetch_pothole_feedback_chart', date_from, date_to)
+    
+    # Now `result` contains the feedback data, and you can plot it or use it in your chart
+    print(result)
+
+  def date_picker_from_change(self, **event_args):
+    """This method is called when the selected date changes"""
+    pass
 
 
 

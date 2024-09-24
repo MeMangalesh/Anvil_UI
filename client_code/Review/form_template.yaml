@@ -5,7 +5,8 @@ components:
     properties: {role: input-prompt, text: Filter the images by processed date}
     type: Label
   - components:
-    - layout_properties: {grid_position: 'WQXIAK,DRGQBC'}
+    - event_bindings: {change: date_picker_from_change}
+      layout_properties: {grid_position: 'WQXIAK,DRGQBC'}
       name: date_picker_from
       properties: {placeholder: From, tooltip: Select start date}
       type: DatePicker
