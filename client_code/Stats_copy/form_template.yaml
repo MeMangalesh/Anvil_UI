@@ -3,65 +3,69 @@ components:
   - components:
     - layout_properties: {grid_position: 'TWLOLR,MJYUDO'}
       name: label_overview
-      properties: {bold: true, role: title, text: 'OVERVIEW '}
+      properties: {bold: true, foreground: 'theme:On Primary Container', role: title, text: 'SUMMARY TO DATE '}
       type: Label
     - components:
-      - layout_properties: {grid_position: 'YCYBMC,EBBQYC'}
-        name: label_3
-        properties: {text: AS OF}
-        type: Label
       - layout_properties: {grid_position: 'OQWZRU,KRULLV'}
         name: label_date
-        properties: {role: display}
+        properties: {align: center, bold: true, foreground: 'theme:On Secondary', role: display, spacing_above: none, spacing_below: none}
         type: Label
-      - layout_properties: {grid_position: 'YDRRTY,CMKDHZ'}
+      - components:
+        - layout_properties: {}
+          name: label_month
+          properties: {foreground: 'theme:On Secondary', role: title, spacing_above: none, spacing_below: none}
+          type: Label
+        - layout_properties: {}
+          name: label_year
+          properties: {foreground: 'theme:On Secondary', role: title, spacing_above: none, spacing_below: none}
+          type: Label
+        layout_properties: {grid_position: 'ZGJWOF,OMIHCB'}
+        name: flow_panel_2
+        properties: {align: center}
+        type: FlowPanel
+      - layout_properties: {grid_position: 'LFFNKS,SNVOSF'}
         name: label_day
-        properties: {}
+        properties: {align: center, foreground: 'theme:On Tertiary', spacing_above: none, spacing_below: none}
         type: Label
       layout_properties: {grid_position: 'PGYTAK,FYZCOE'}
       name: outlined_card_5
-      properties: {role: outlined-card}
+      properties: {background: 'theme:On Primary Container', role: outlined-card}
       type: ColumnPanel
     - components:
-      - layout_properties: {grid_position: 'GXIAIX,CKCJQP'}
-        name: label_total_feedback
-        properties: {role: null, text: TOTAL IMAGES PROCESSED}
-        type: Label
       - data_bindings:
         - {code: 'self.item[''total_images'']', property: text, writeback: false}
         - {code: 'self.item[''total_images'']', property: tag, writeback: false}
-        layout_properties: {grid_position: 'FWHKNL,EEPRHD'}
+        layout_properties: {grid_position: 'RLZQMZ,FMNUPL'}
         name: label_feedback_count
-        properties: {role: title}
+        properties: {align: center, bold: true, foreground: 'theme:On Primary', role: display, spacing_above: medium, spacing_below: medium}
         type: Label
-      layout_properties: {grid_position: 'PGYTAK,CUYSWI'}
+      - layout_properties: {grid_position: 'GXIAIX,CKCJQP'}
+        name: label_total_feedback
+        properties: {align: center, bold: true, foreground: 'theme:On Secondary', role: title, spacing_above: medium, spacing_below: large, text: IMAGES PROCESSED}
+        type: Label
+      layout_properties: {grid_position: 'PGYTAK,CUYSWI', row_background: 'theme:Primary Container'}
       name: outlined_card_4
-      properties: {role: outlined-card}
+      properties: {background: 'theme:On Primary Container', role: outlined-card}
       type: ColumnPanel
     - components:
+      - data_bindings:
+        - {code: 'self.item[''potholes_detected'']', property: text, writeback: false}
+        - {code: 'self.item[''potholes_detected'']', property: tag, writeback: false}
+        layout_properties: {grid_position: 'OAODDF,NOZCPN'}
+        name: label_detected_count
+        properties: {align: center, bold: true, foreground: 'theme:On Primary', role: display, spacing_above: medium}
+        type: Label
       - layout_properties: {grid_position: 'AHXSML,VTYSQN'}
         name: label_detected
-        properties: {role: title, text: 'Total Potholes Detected '}
+        properties: {align: center, bold: true, foreground: 'theme:On Secondary', role: title, spacing_above: medium, spacing_below: large, text: POTHOLES DETECTED}
         type: Label
-      - components:
-        - data_bindings:
-          - {code: 'self.item[''potholes_detected'']', property: text, writeback: false}
-          - {code: 'self.item[''potholes_detected'']', property: tag, writeback: false}
-          layout_properties: {grid_position: 'AVGKHO,EAGZSJ'}
-          name: label_detected_count
-          properties: {role: body}
-          type: Label
-        layout_properties: {grid_position: 'CAOOEP,BRMJCU'}
-        name: outlined_card_3
-        properties: {role: outlined-card}
-        type: ColumnPanel
-      layout_properties: {grid_position: 'PGYTAK,LWFWWA'}
+      layout_properties: {grid_position: 'PGYTAK,LWFWWA', row_background: 'theme:Secondary Container'}
       name: outlined_card_1
-      properties: {role: outlined-card}
+      properties: {background: 'theme:On Primary Container', role: outlined-card}
       type: ColumnPanel
-    layout_properties: {grid_position: 'NKNDDF,FIKBBW'}
+    layout_properties: {full_width_row: false, grid_position: 'NKNDDF,FIKBBW', row_background: ''}
     name: outlined_card_6
-    properties: {role: outlined-card}
+    properties: {background: 'theme:Secondary Container', role: elevated-card}
     type: ColumnPanel
   - layout_properties: {grid_position: 'CWXGPO,ZDNXEI'}
     name: spacer_2
@@ -70,7 +74,7 @@ components:
   - components:
     - layout_properties: {grid_position: 'RIEYID,LEKFBZ'}
       name: label_filter_date
-      properties: {bold: true, role: title, text: 'FILTER BY DATE '}
+      properties: {bold: true, foreground: 'theme:On Primary Container', role: title, text: 'FILTER BY DATE '}
       type: Label
     - data_bindings:
       - {code: '', property: date, writeback: false}
@@ -102,7 +106,7 @@ components:
       type: ColumnPanel
     layout_properties: {full_width_row: false, grid_position: 'RWDUPT,ADBUYG'}
     name: outlined_card_2
-    properties: {role: outlined-card}
+    properties: {role: elevated-card}
     type: ColumnPanel
   - event_bindings: {click: plot_pie_click}
     layout_properties: {grid_position: 'WLTYFZ,FAGBHT UQMJIK,FXSHXY'}

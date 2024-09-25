@@ -30,15 +30,18 @@ class Stats_copy(Stats_copyTemplate):
   ############
   def set_date_day(self):
   # Get today's date
-      today = date.now()
-      
-      # Extract the day and date separately
-      day_of_week = today.strftime("%A")  # Example: Tuesday
-      date_only = today.strftime("%B %d, %Y")  # Example: September 26, 2023
+      today = date.today()
+      # Extract day, month, and year separately
+      day_of_week = today.strftime("%A").upper()  # Example: Tuesday
+      date_today = today.day  # Example: 26
+      month = today.strftime("%B").upper()  # Example: September
+      year = today.year  # Example: 2023
       
       # Assign values to the labels
-      self.label_day.text = day_of_week
-      self.label_date.text = date_only
+      self.label_day.text = day_of_week  # Label for the day of the week
+      self.label_date.text = str(date_today)  # Label for the date of the month
+      self.label_month.text = month  # Label for the month
+      self.label_year.text = str(year)  # Label for the year
   
   
   ###############
