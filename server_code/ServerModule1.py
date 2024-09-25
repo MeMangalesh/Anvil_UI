@@ -9,7 +9,6 @@ import io
 anvil.plotly_templates.set_default("rally")
 ###########ADDED FOR STATS##########
 
-
 # This is a server module. It runs on the Anvil server,
 # rather than in the user's browser.
 #
@@ -152,45 +151,13 @@ def fetch_severity_data():
   severity_data = anvil.server.call('get_severity_data')
   return severity_data
 
-#### DOUBLE LINE GRAPH - Num of Feedaback vs. Num of PoD
-
+###################
+## double line graph - feedbk, potholes detected vs. date
+###################
 @anvil.server.callable
-def fetch_pothole_feedback_chart(date_from=None, date_to=None):
-# Set default date range if none is provided
-  if not date_from:
-      date_from = '2024-09-01'  # Hardcoded minimum date
-  if not date_to:
-      date_to = date.today().strftime('%Y-%m-%d')  # Today's date
-    
-  # Call the uplink function to get the data
-  pothole_feedback_data = anvil.server.call('get_pothole_feedback_data', date_from, date_to)
-  
-  # Convert the data to a DataFrame
-  df = pd.DataFrame(pothole_feedback_data)
-  
-  # Check if the DataFrame is empty
-  if df.empty:
-    raise ValueError("No feedback data available for the selected date range.")
-  
-  # Check column names in the DataFrame
-  print(f"DataFrame columns: {df.columns}")
-  
-  # Ensure the 'date' column exists
-  if 'date' not in df.columns:
-    raise ValueError("Expected column 'date' in DataFrame, but it was not found.")
-  
-    # Create the line chart with Plotly Express
-    fig = px.line(df, x='date', y=['potholes_count', 'feedback_count'],
-                  labels={
-                      'date': 'Date',
-                      'value': 'Count',
-                      'variable': 'Data Type'
-                  },
-                  title='Potholes Detected vs. Feedback Received Over Time')
-
-    return fig
-
-
+def fetch_feedback_and_potholes():
+    results = anvil.server.call('get_daily_feedback_and_potholes') 
+    return results
 #########################
 ### FILTER BY DATE #####
 @anvil.server.callable

@@ -19,14 +19,18 @@ class Stats_copy(Stats_copyTemplate):
      # Fetch the min and max dates and update the date pickers
     #self.set_default_date_range()
     # Call a function to load and display stats
-    self.set_date_day()
-    self.reset_date_pickers()
-    self.load_stats()
-    self.load_graph()
-    self.load_heatmap()
-    self.load_bar_chart()
+
+    ##comment the 6 lines to work on the line graph
+    # self.set_date_day()
+    # self.reset_date_pickers()
+    # self.load_stats()
+    # self.load_graph()
+    # self.load_heatmap()
+    # self.load_bar_chart()
+    ##comment the 6 lines to work on the line graph
     #self.load_pothole_feedback_chart()
-  
+    
+    self.feedback_pods_by_date()
 #########
 ## Set default date range
 #########
@@ -299,17 +303,45 @@ class Stats_copy(Stats_copyTemplate):
   #############
   ###
   #############
-  def load_pothole_feedback_chart(self):
-    # Get the date range from the DatePickers in the UI
-    date_from = self.date_picker_from.date
-    date_to = self.date_picker_to.date
+  def feedback_pods_by_date(self):
+    #Call the Anvil server function to get data
+    results = anvil.server.call('fetch_feedback_and_potholes')
+    
+    # Convert data to a DataFrame
+    df = pd.DataFrame(results)
+    
+    # Create the plot
+    fig = go.Figure()
+    
+    # Add trace for feedback count
+    fig.add_trace(go.Scatter(
+        x=df['feedback_date'], 
+        y=df['feedback_count'], 
+        mode='lines+markers', 
+        name='Feedback Count',
+        line=dict(color='blue')
+    ))
 
-    # Fetch the figure from the server
-    fig = anvil.server.call("fetch_pothole_feedback_chart", date_from, date_to)
+    # Add trace for total potholes detected
+    fig.add_trace(go.Scatter(
+        x=df['feedback_date'], 
+        y=df['total_potholes_detected'], 
+        mode='lines+markers', 
+        name='Total Potholes Detected',
+        line=dict(color='red')
+    ))
 
-    # Render the figure in Anvil
-    self.plot_podperfeedback.data = fig.data
-    self.plot_podperfeedback.layout = fig.layout
+    # Update layout
+    fig.update_layout(
+        title='Daily Feedback Count and Potholes Detected',
+        xaxis_title='Date',
+        yaxis_title='Count',
+        legend_title='Legend'
+    )
+
+    # Show the figure in the Anvil UI
+    # self.plot_container.clear()  # Assuming you have a container to hold the plot
+    self.plot_podperfeedback.add_plot(fig)
 
   ###################
   ## CONFUSION MATRIX
