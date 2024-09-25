@@ -307,29 +307,44 @@ class Stats_copy(Stats_copyTemplate):
     #Call the Anvil server function to get data
     results = anvil.server.call('fetch_feedback_and_potholes')
     
-    # Convert data to a DataFrame
-    df = pd.DataFrame(results)
+  # Debug: Print the results to check the structure
+    print(results)  # or use anvil.server.call to log if running in Anvil
+
+    formatted_results = []
+    for row in results:
+      formatted_results.append({
+            "feedback_date": row['feedback_date'],  # Accessing the date directly
+            "feedback_count": int(row['feedback_count']),  # Ensure this is an int
+            "total_potholes_detected": int(row['total_potholes_detected'])  # Ensure this is an int
+        })
     
     # Create the plot
     fig = go.Figure()
     
-    # Add trace for feedback count
-    fig.add_trace(go.Scatter(
-        x=df['feedback_date'], 
-        y=df['feedback_count'], 
-        mode='lines+markers', 
-        name='Feedback Count',
-        line=dict(color='blue')
-    ))
+    # Extract dates, feedback counts, and potholes detected for plotting
+    dates = [row['feedback_date'] for row in formatted_results]
+    feedback_counts = [row['feedback_count'] for row in formatted_results]
+    total_potholes_detected = [row['total_potholes_detected'] for row in formatted_results]
 
-    # Add trace for total potholes detected
-    fig.add_trace(go.Scatter(
-        x=df['feedback_date'], 
-        y=df['total_potholes_detected'], 
-        mode='lines+markers', 
-        name='Total Potholes Detected',
-        line=dict(color='red')
-    ))
+     # Create the plot using the full figure declaration
+    fig = go.Figure(
+        data=[
+            go.Scatter(
+                x=dates, 
+                y=feedback_counts, 
+                mode='lines+markers', 
+                name='Feedback Count',
+                line=dict(color='blue')
+            ),
+            go.Scatter(
+                x=dates, 
+                y=total_potholes_detected, 
+                mode='lines+markers', 
+                name='Total Potholes Detected',
+                line=dict(color='red')
+            )
+        ]
+    )
 
     # Update layout
     fig.update_layout(
@@ -339,10 +354,9 @@ class Stats_copy(Stats_copyTemplate):
         legend_title='Legend'
     )
 
-    # Show the figure in the Anvil UI
-    # self.plot_container.clear()  # Assuming you have a container to hold the plot
-    self.plot_podperfeedback.add_plot(fig)
-
+     # Render the figure in Anvil's Plot component
+    self.plot_podperfeedback.data = fig.data
+    self.plot_podperfeedback.layout = fig.layout
   ###################
   ## CONFUSION MATRIX
   ###################
