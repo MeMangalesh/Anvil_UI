@@ -25,7 +25,8 @@ class Stats_copy(Stats_copyTemplate):
     self.load_graph()
     self.load_heatmap()
     self.load_bar_chart()
-    # self.load_pothole_feedback_chart()
+    self.load_pothole_feedback_chart()
+  
 
   ############
   ## Display today's date & day 

@@ -158,14 +158,17 @@ def fetch_severity_data():
 def fetch_pothole_feedback_chart(date_from=None, date_to=None):
     # Call the uplink function to get the data
     pothole_feedback_data = anvil.server.call('get_pothole_feedback_data', date_from, date_to)
-    
+
+    # Print the raw data to check its structure
+    print(f"Raw feedback data: {pothole_feedback_data}")
+  
     # Convert the data to a DataFrame
     df = pd.DataFrame(pothole_feedback_data)
    
     # Check column names in the DataFrame
     print(f"DataFrame columns: {df.columns}")
     
-    # Ensure the 'date' column exists
+   # Ensure the 'date' column exists
     if 'date' not in df.columns:
         raise ValueError("Expected column 'date' in DataFrame, but it was not found.")
 
