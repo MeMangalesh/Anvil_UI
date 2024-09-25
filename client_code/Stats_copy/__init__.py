@@ -17,7 +17,7 @@ class Stats_copy(Stats_copyTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
      # Fetch the min and max dates and update the date pickers
-    self.fetch_min_max_dates()
+    #self.set_default_date_range()
     # Call a function to load and display stats
     self.set_date_day()
     self.reset_date_pickers()
@@ -25,9 +25,55 @@ class Stats_copy(Stats_copyTemplate):
     self.load_graph()
     self.load_heatmap()
     self.load_bar_chart()
-    self.load_pothole_feedback_chart()
+    #self.load_pothole_feedback_chart()
   
+#########
+## Set default date range
+#########
+  def set_default_date_range(self):
+    try:
+        # Call the Anvil server function to get the min and max dates
+        date_range = anvil.server.call('get_min_max_dates')
+        
+        if date_range['status'] == 'success':
+            # Set the min and max dates for the date pickers
+            self.date_picker_from.date = date_range['min_date']
+            self.date_picker_to.date = date_range['max_date']
+            self.date_picker_from.min_date = date_range['min_date']
+            self.date_picker_to.max_date = date_range['max_date']
+  
+            # Populate the graph with the default date range
+            self.update_graph(date_range['min_date'], date_range['max_date'])
+        else:
+            alert(f"Error fetching date range: {date_range['message']}")
+    except Exception as e:
+        alert(f"Unexpected error: {str(e)}")
 
+  def update_graph(self, date_from, date_to):
+    try:
+      # Call the Anvil server function to fetch chart data
+      fig = anvil.server.call('fetch_pothole_feedback_chart', date_from, date_to)
+      self.plot_feedback_chart.data = fig
+        
+    except ValueError as e:
+      # Handle the case where no data is available
+      if "No feedback data available" in str(e):
+          alert(f"No data available for the selected date range: {date_from} to {date_to}")
+      else:
+          alert(f"Unexpected error: {str(e)}")
+
+    except Exception as e:
+      alert(f"Error updating graph: {str(e)}")
+
+
+  def date_picker_from_change(self, **event_args):
+    # Get the selected dates from the date pickers
+    date_from = self.date_picker_from.date
+    date_to = self.date_picker_to.date
+
+    # Update the graph with the selected date range
+    self.update_graph(date_from, date_to)
+ 
   ############
   ## Display today's date & day 
   ############
@@ -279,4 +325,8 @@ class Stats_copy(Stats_copyTemplate):
 
     # Now `result` contains the feedback data, and you can plot it or use it in your chart
     print(result)
+
+  def plot_trend_click(self, points, **event_args):
+    """This method is called when a data point is clicked."""
+    pass
 

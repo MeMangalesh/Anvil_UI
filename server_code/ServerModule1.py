@@ -156,22 +156,29 @@ def fetch_severity_data():
 
 @anvil.server.callable
 def fetch_pothole_feedback_chart(date_from=None, date_to=None):
-    # Call the uplink function to get the data
-    pothole_feedback_data = anvil.server.call('get_pothole_feedback_data', date_from, date_to)
-
-    # Print the raw data to check its structure
-    print(f"Raw feedback data: {pothole_feedback_data}")
-  
-    # Convert the data to a DataFrame
-    df = pd.DataFrame(pothole_feedback_data)
-   
-    # Check column names in the DataFrame
-    print(f"DataFrame columns: {df.columns}")
+# Set default date range if none is provided
+  if not date_from:
+      date_from = '2024-09-01'  # Hardcoded minimum date
+  if not date_to:
+      date_to = date.today().strftime('%Y-%m-%d')  # Today's date
     
-   # Ensure the 'date' column exists
-    if 'date' not in df.columns:
-        raise ValueError("Expected column 'date' in DataFrame, but it was not found.")
-
+  # Call the uplink function to get the data
+  pothole_feedback_data = anvil.server.call('get_pothole_feedback_data', date_from, date_to)
+  
+  # Convert the data to a DataFrame
+  df = pd.DataFrame(pothole_feedback_data)
+  
+  # Check if the DataFrame is empty
+  if df.empty:
+    raise ValueError("No feedback data available for the selected date range.")
+  
+  # Check column names in the DataFrame
+  print(f"DataFrame columns: {df.columns}")
+  
+  # Ensure the 'date' column exists
+  if 'date' not in df.columns:
+    raise ValueError("Expected column 'date' in DataFrame, but it was not found.")
+  
     # Create the line chart with Plotly Express
     fig = px.line(df, x='date', y=['potholes_count', 'feedback_count'],
                   labels={
@@ -182,6 +189,7 @@ def fetch_pothole_feedback_chart(date_from=None, date_to=None):
                   title='Potholes Detected vs. Feedback Received Over Time')
 
     return fig
+
 
 #########################
 ### FILTER BY DATE #####
