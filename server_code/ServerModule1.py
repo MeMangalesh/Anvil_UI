@@ -98,6 +98,12 @@ def detect_potholescore (id):
 ###STATISTICS
 ############
 @anvil.server.callable
+def fetch_min_max_dates(self):
+    # Call the VSCode uplink function to get the min and max dates
+    results = anvil.server.call('get_min_max_dates')
+    return results     
+
+@anvil.server.callable
 def get_stats():
 # Fetch data from the server
   pie_stats = anvil.server.call('get_statistics')

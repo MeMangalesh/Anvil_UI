@@ -16,6 +16,8 @@ class Stats_copy(Stats_copyTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+     # Fetch the min and max dates and update the date pickers
+    self.fetch_min_max_dates()
     # Call a function to load and display stats
     self.set_date_day()
     self.reset_date_pickers()
@@ -43,7 +45,41 @@ class Stats_copy(Stats_copyTemplate):
       self.label_month.text = month  # Label for the month
       self.label_year.text = str(year)  # Label for the year
   
+  ##############
+  ## Update date picker
+  ##############
   
+  # Function to call the server for min and max dates
+  def fetch_min_max_dates(self):
+      try:
+          # Call the VSCode uplink function to get the min and max dates
+          response = anvil.server.call('get_min_max_dates')
+
+          if response['status'] == 'success':
+              min_date = response['min_date']
+              max_date = response['max_date']
+
+              # Update the date pickers with the min and max dates
+              self.update_date_pickers(min_date, max_date)
+          else:
+              alert(f"Error: {response['message']}")
+      
+      except Exception as e:
+          alert(f"Unexpected error: {str(e)}")
+
+    # Function to update date pickers
+  def update_date_pickers(self, min_date, max_date):
+      # Set the min and max dates for the date pickers
+      self.date_picker_from.min_date = min_date
+      self.date_picker_to.min_date = min_date
+      self.date_picker_from.max_date = max_date
+      self.date_picker_to.max_date = max_date
+
+      # Optionally, set today's date as the default
+      today = date.today()
+      self.date_picker_from.date = today
+      self.date_picker_to.date = today
+
   ###############
   ## Reset Date Picker
   ###############
@@ -243,6 +279,3 @@ class Stats_copy(Stats_copyTemplate):
     # Now `result` contains the feedback data, and you can plot it or use it in your chart
     print(result)
 
-  def date_picker_from_change(self, **event_args):
-    """This method is called when the selected date changes"""
-    pass
