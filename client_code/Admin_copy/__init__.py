@@ -8,26 +8,45 @@ class Admin_copy(Admin_copyTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    
     # Load data when the form is initialized
     self.load_data()
+    self.timer_1.enabled = False  # Disable the timer initially
+    self.button_deactivate(self)
 
   def file_loader_1_change(self, file, **event_args):
     # Display this file in an Image component
     self.image_upload.source = file
-    # self.button_activate(self) 
+    self.button_activate(self) 
 
+  def button_activate (self, file, **event_args):
+      # Deactivate button when form loads and after every "Detect" and "Reset" button click
+      # Clear the image displayed in the Image component
+      self.image_byuser.source = None
+      # Clear the image displayed in the Image component
+      self.image_detection.source = None
+      # Clear the uploaded file from the file loader
+      self.file_loader_1.clear()
+      # self.label_1.text = None
+      # self.label_2.text = None
+      
+      #self.message.text = self.init_components()
+      self.outlined_button_reset.enabled = True
+      self.button_save_n_detect.enabled = True
+      self.file_loader_1.enabled = False
+  
   def button_deactivate (self, file, **event_args):
     # Deactivate button when form loads and after every "Detect" and "Reset" button click
     # Clear the image displayed in the Image component
-    self.image_byuser.source = None
+    self.image_upload.source = None
     # Clear the image displayed in the Image component
     self.image_detection.source = None
     # Clear the uploaded file from the file loader
     self.file_loader_1.clear()
     self.label_1.text = None
     self.label_2.text = None
-    self.label_3.text = None
-    self.message.text = self.init_components()
+    
+    self.label_message.text = self.init_components()
     self.outlined_button_reset.enabled = False
     self.button_save_n_detect.enabled = False
     self.file_loader_1.enabled = True
@@ -60,6 +79,9 @@ class Admin_copy(Admin_copyTemplate):
       filename = file.name
       file_data = file.get_bytes()
 
+      #Deactivate button
+      self.button_deactivate(self)
+
       # Encode the file in base64
       encoded_image = base64.b64encode(file_data).decode("utf-8")
       print("Image encoded for saving")
@@ -74,13 +96,14 @@ class Admin_copy(Admin_copyTemplate):
         #Display the processed image with bounding boxes
         # self.label_status.text = f"Potholes detected: {potholes_count}"
         self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
+        #self.label_message.text = "Potholes detected."
       else:
           self.label_message.text = "No potholes detected."
     else:
         self.label_message.text = "No file selected."
 
     # Call the Anvil server function to save image with ID & detect potholes
-    self.label_message.text = "Calling save_image_n_trigger_detection function"
+    #self.label_message.text = "Calling save_image_n_trigger_detection function"
     image_id = anvil.server.call("save_image_n_trigger_detection", encoded_image, filename)
   
     if image_id:
@@ -90,7 +113,29 @@ class Admin_copy(Admin_copyTemplate):
     else:
       self.label_message.text = "Failed to save image."
   # else:
-  #   self.label_message.text = "No file selected."
+    self.label_message.text = "No file selected."
+
+  ########
+  ## Added text display effect 
+    #########
+  # Call this function to update the label based on detection results
+  def update_message(self, potholes_detected):
+    if potholes_detected:
+        self.label_message.text = "Potholes Detected."
+        self.label_result.foreground = "red"
+        self.timer_1.enabled = True  # Start blinking if potholes are detected
+    else:
+        self.label_result.text = "No potholes detected."
+        self.label_result.foreground = "green"
+        self.timer_1.enabled = False  # No blinking for 'No potholes detected'
+        self.label_result.visible = True  # Ensure text is visible in green
+  
+  # Timer event to make the text blink
+  def timer_1_tick(self, **event_args):
+    # Toggle visibility to create a blinking effect
+    self.label_result.visible = not self.label_result.visible
+
+  #########
 
   def trigger_pothole_detection(self, image_id):
     # Call the Anvil server function to detect potholes using the image ID
@@ -103,13 +148,17 @@ class Admin_copy(Admin_copyTemplate):
     if result:
       #pothole_detected, potholes_count, processed_image_base64 = result
       pothole_detected, potholes_count, max_conf_score, min_conf_score, max_pothole_area, min_pothole_area = result
-      self.label_1.text = f"Number of pothole(s) detected: {potholes_count}"
-      self.label_2.text = f"Max confidence score: {max_conf_score}"
-      self.label_3.text = f"Min confidence score: {min_conf_score}"
-           
+      self.label_result.text = "Potholes Detected."
+      
+      self.update_message(pothole_detected)
+       
+      self.label_1.text = f"{potholes_count}"
+      self.label_2.text = f"{max_conf_score:.2f}%"
+      self.label_ID.text = f"{image_id}"
+                 
       #self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
     else:
-      self.label_message.text = "No potholes detected."
+      self.label_result.text = "No potholes detected."
 
   #####################
   ## SHOW DETECTED IMAGE - 22092024
