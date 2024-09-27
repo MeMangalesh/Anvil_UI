@@ -54,6 +54,7 @@ def save_image_n_trigger_detection(self, image_base64, filename):
       self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
   else:
       self.label_status.text = "No potholes detected."
+    
 ####################################################
 ### Original Function to detect potholes with ID ###
 ####################################################

@@ -21,11 +21,13 @@ class Form1(Form1Template):
     # Deactivate button when form loads and after every "Detect" and "Reset" button click
     self.button_reset.enabled = False
     self.button_detect.enabled = False
+    self.button_save_img.enabled = False
 
   def button_activate (self, file, **event_args):
     # Activate button when form loads and after every "Detect" and "Reset" button click
     self.button_reset.enabled = True
     self.button_detect.enabled = True
+    self.button_save_img.enabled = True
 
   def file_loader_1_change(self, file, **event_args):
    # Display this file in an Image component
@@ -83,6 +85,8 @@ class Form1(Form1Template):
               self.label_status.text = "No potholes detected."
       else:
           self.label_status.text = "No file selected."
+        
+      self.button_activate(self)
 
   def button_reset_click(self, **event_args):
     # Clear the image displayed in the Image component
@@ -91,6 +95,6 @@ class Form1(Form1Template):
     self.image_detection.source = None 
     # Clear the uploaded file from the file loader
     self.file_loader_1.clear()
-    self.button_detect.enabled = False
+    self.button_deactivate(self)
     self.label_status.text = None
     

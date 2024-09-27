@@ -14,7 +14,29 @@ class Admin_copy(Admin_copyTemplate):
   def file_loader_1_change(self, file, **event_args):
     # Display this file in an Image component
     self.image_upload.source = file
-    # self.button_activate(self)
+    # self.button_activate(self) 
+
+  def button_deactivate (self, file, **event_args):
+    # Deactivate button when form loads and after every "Detect" and "Reset" button click
+    # Clear the image displayed in the Image component
+    self.image_byuser.source = None
+    # Clear the image displayed in the Image component
+    self.image_detection.source = None
+    # Clear the uploaded file from the file loader
+    self.file_loader_1.clear()
+    self.label_1.text = None
+    self.label_2.text = None
+    self.label_3.text = None
+    self.message.text = self.init_components()
+    self.outlined_button_reset.enabled = False
+    self.button_save_n_detect.enabled = False
+    self.file_loader_1.enabled = True
+
+  def button_activate (self, file, **event_args):
+    # Activate button when form loads and after every "Detect" and "Reset" button click
+    self.outlined_button_reset.enabled = True
+    self.button_save_n_detect.enabled = True
+    self.file_loader_1.enabled = False
 
   def load_data(self):
     # Fetch data from the server
@@ -74,14 +96,17 @@ class Admin_copy(Admin_copyTemplate):
     # Call the Anvil server function to detect potholes using the image ID
     #image_id = 83
     print(f"Image id: {image_id}")
-    self.label_2.text = "Inside the trigger pothole function"
+    #self.label_2.text = "Inside the trigger pothole function"
     #result = anvil.server.call("detect_potholes_with_ID", image_id)
     result = anvil.server.call("detect_potholescore", image_id)
     # Unpack and display the result
     if result:
       #pothole_detected, potholes_count, processed_image_base64 = result
       pothole_detected, potholes_count, max_conf_score, min_conf_score, max_pothole_area, min_pothole_area = result
-      self.label_1.text = f"Potholes detected: {potholes_count}"
+      self.label_1.text = f"Number of pothole(s) detected: {potholes_count}"
+      self.label_2.text = f"Max confidence score: {max_conf_score}"
+      self.label_3.text = f"Min confidence score: {min_conf_score}"
+           
       #self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
     else:
       self.label_message.text = "No potholes detected."

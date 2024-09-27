@@ -24,18 +24,42 @@ components:
       name: outlined_button_reset
       properties: {role: outlined-button, text: RESET}
       type: Button
-    - layout_properties: {grid_position: 'TEBLYA,UWTEUA'}
-      name: label_message
-      properties: {}
-      type: Label
-    - layout_properties: {grid_position: 'DLKVVC,TWFEPU'}
-      name: label_1
-      properties: {}
-      type: Label
-    - layout_properties: {grid_position: 'EPGRLB,PASKHW'}
-      name: label_2
-      properties: {}
-      type: Label
+    - components:
+      - layout_properties: {grid_position: 'YLYSPG,ORMEIR'}
+        name: label_5
+        properties: {bold: true, text: DETECTION SUMMARY}
+        type: Label
+      - components:
+        - name: label_message
+          properties: {}
+          type: Label
+        - name: label_1
+          properties: {}
+          type: Label
+        - name: label_2
+          properties: {}
+          type: Label
+        layout_properties: {grid_position: 'CCIXNM,JOGFVT'}
+        name: flow_panel_1
+        properties: {}
+        type: FlowPanel
+      - components:
+        - layout_properties: {}
+          name: label_4
+          properties: {text: Max Accuracy}
+          type: Label
+        layout_properties: {grid_position: 'SPVWQU,NVWTCL'}
+        name: flow_panel_2
+        properties: {}
+        type: FlowPanel
+      - layout_properties: {grid_position: 'TRCTMM,NFSREG'}
+        name: outlined_card_4
+        properties: {role: outlined-card}
+        type: ColumnPanel
+      layout_properties: {grid_position: 'PBCNEN,WNDJTD'}
+      name: outlined_card_3
+      properties: {role: outlined-card}
+      type: ColumnPanel
     layout_properties: {full_width_row: true, grid_position: 'KAJFVX,MHLERO'}
     name: outlined_card_1
     properties: {role: outlined-card}
