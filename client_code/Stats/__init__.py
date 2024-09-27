@@ -23,7 +23,7 @@ class Stats(StatsTemplate):
     ##comment the 6 lines to work on the line graph
     self.set_date_day()
     self.reset_date_pickers()
-    self.load_stats()
+    self.load_pie_plot()
     self.load_graph()
     self.load_heatmap()
     self.load_bar_chart()
@@ -147,11 +147,11 @@ class Stats(StatsTemplate):
   ################
   ## Pie Chart: Total vs Detected
   ################
-  def load_stats(self):
+  def load_pie_plot(self):
     try:
       # Call the server function to get the statistics
       print("About to call the VSCode")
-      response = anvil.server.call("get_stats")
+      response = anvil.server.call("get_pie_plot")
       print("returning from VSCOde")
 
       total_images = response["total_images"]
