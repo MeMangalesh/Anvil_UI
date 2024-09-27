@@ -155,31 +155,28 @@ class Stats(StatsTemplate):
       print("returning from VSCOde")
 
       total_images = response["total_images"]
-      potholes_detected = response[
-        "potholes_detected"
-      ]  # Validate the values to ensure they are integers
-      if isinstance(total_images, int) and isinstance(potholes_detected, int):
-        # Calculate potholes not detected
-        potholes_not_detected = total_images - potholes_detected
+      potholes_detected = response["potholes_detected"]
+      # Validate the values to ensure they are integers
+      # if isinstance(total_images, int) and isinstance(potholes_detected, int):
+      #   # Calculate potholes not detected
+      #   potholes_not_detected = total_images - potholes_detected
 
-        # Print debug information
-        print(f"total images processed: {total_images}")
-        print(f"total potholes detected: {potholes_detected}")
-        print(f"total not potholes detected: {potholes_not_detected}")
+      # Print debug information
+      print(f"total images processed: {total_images}")
+      print(f"total potholes detected: {potholes_detected}")
+      # print(f"total not potholes detected: {potholes_not_detected}")
 
-        # Display the total number of images processed & Number of potholes detected
-        self.label_feedback_count.text = total_images
-        self.label_detected_count.text = potholes_detected
+      # Display the total number of images processed & Number of potholes detected
+      self.label_feedback_count.text = total_images
+      self.label_detected_count.text = potholes_detected
 
-        # Update the pie chart with the retrieved data
-        self.plot_pie.data = [
-          go.Pie(
-            labels=["Potholes Detected", "Potholes Not Detected"],
-            values=[potholes_detected, potholes_not_detected],
-          )
-        ]
-      else:
-        alert("Failed to load statistics or invalid data format.")
+      # Update the pie chart with the retrieved data
+      self.plot_pie.data = [
+        go.Pie(
+          labels=["Potholes Detected", "Potholes Not Detected"],
+          values=[potholes_detected, potholes_not_detected],
+        )
+      ]
     except Exception as e:
       # Handle the case where the server call fails or returns unexpected data
       alert(f"Error loading statistics: {str(e)}")
@@ -301,7 +298,7 @@ class Stats(StatsTemplate):
     self.plot_severity_bar.layout = fig.layout
 
   #############
-  ###
+  ### Feedback vs Potholes Detected - OK
   #############
   def feedback_pods_by_date(self):
     #Call the Anvil server function to get data
@@ -372,7 +369,5 @@ class Stats(StatsTemplate):
     # Now `result` contains the feedback data, and you can plot it or use it in your chart
     print(result)
 
-  def plot_trend_click(self, points, **event_args):
-    """This method is called when a data point is clicked."""
-    pass
+
 
