@@ -103,6 +103,38 @@ def fetch_min_max_dates(self):
     results = anvil.server.call('get_min_max_dates')
     return results     
 
+#########
+## Gauge Meter for Confidence Score 
+#########
+# Function to call the uplink code in VSCode
+@anvil.server.callable
+def fetch_avg_max_conf_score():
+  avg_max_conf_score = anvil.server.call('get_avg_max_conf_score')
+  return avg_max_conf_score
+
+###################
+## Bubble Chart 
+###################
+@anvil.server.callable
+def get_pothole_bubble_data():
+    try:
+        # Call the VSCode function to get pothole bubble data
+        result = anvil.server.call('get_pothole_bubble_data')
+
+        if result['status'] == "success":
+            return {
+                "status": "success",
+                "pothole_counts": result['pothole_counts'],
+                "frequencies": result['frequencies'],
+                "avg_conf_scores": result['avg_conf_scores']
+            }
+        else:
+            return {"status": "error", "message": result['message']}
+    
+    except Exception as e:
+        logging.error(f"An error occurred when calling the VSCode function: {e}")
+        return {"status": "error", "message": str(e)}
+
 @anvil.server.callable
 def get_stats():
 # Fetch data from the server

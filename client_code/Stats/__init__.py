@@ -3,7 +3,7 @@ from datetime import date, datetime
 from anvil import *
 import plotly.graph_objects as go
 import anvil.server
-# import plotly.express as px
+
 ####
 # from anvil import DatePicker, Button
 
@@ -23,10 +23,12 @@ class Stats(StatsTemplate):
     ##comment the 6 lines to work on the line graph
     self.set_date_day()
     self.reset_date_pickers()
-    self.load_pie_plot()
-    self.load_graph()
-    self.load_heatmap()
-    self.load_bar_chart()
+    self.load_speedometer()
+    self.load_bubble_chart()
+    # self.load_pie_plot()
+    # self.load_graph()
+    # self.load_heatmap()
+    # self.load_bar_chart()
     ##comment the 6 lines to work on the line graph
     #self.load_pothole_feedback_chart()
     
@@ -144,6 +146,80 @@ class Stats(StatsTemplate):
     self.date_picker_from.min_date = today
     self.date_picker_to.min_date = today
 
+ ################
+  ## Speedometer: Avg Confidence Score 
+  ################
+  def load_speedometer(self):
+    # Fetch the average max confidence score from the server
+    avg_max_conf_score = anvil.server.call('fetch_avg_max_conf_score')
+    print(f"avg_max_conf_score: {avg_max_conf_score}")
+    
+    if avg_max_conf_score['status'] == "success":
+      value = round(avg_max_conf_score['avg_max_conf_score'], 2)
+
+      # Create a speedometer (gauge chart) using Plotly
+      fig = go.Figure(go.Indicator(
+        mode="gauge+number",
+        value=value,  # Set the needle value to the avg max confidence score
+        title={'text': "Average Max Confidence Score", 'font': {'size': 24}},
+        gauge={
+                'axis': {'range': [0, 1]},  # Assuming confidence score is from 0 to 1
+                'bar': {'color': "darkgreen"},  # Needle color
+                'steps': [
+                     {'range': [0, 0.33], 'color': "red"},    # First segment (0-0.33)
+                        {'range': [0.33, 0.67], 'color': "yellow"},  # Second segment (0.33-0.67)
+                        {'range': [0.67, 1], 'color': "green"},  # Third segment (0.67-1)
+                    ],
+                'threshold': {
+                    #'line': {'color': "red", 'width': 4},
+                     'line': {'color': "transparent"},  # Make the threshold line invisible  
+                    'thickness': 0.75,
+                    'value': value  # Set the threshold line at the needle's position
+                 }
+              }
+         ))
+      # Display the speedometer in the designated plot component
+      self.plot_speedometer.figure = fig
+
+    else:
+        self.label_status.text = "Error loading data: " + avg_max_conf_score['message']
+
+  ##############
+  ## Bubble Chart 
+  ###############
+
+  def load_bubble_chart(self):
+    # Fetch pothole bubble data
+    data = anvil.server.call('get_pothole_bubble_data')  # Call your server function to get data
+
+    # Create bubble chart
+    fig = go.Figure(data=[
+        go.Scatter(
+            x=data['pothole_counts'],
+            y=data['frequencies'],
+            mode='markers',
+            marker=dict(
+                size=[score * 10 for score in data['avg_conf_scores']],  # Bubble size
+                color=data['avg_conf_scores'],  # Color based on average confidence scores
+                colorscale='Viridis',
+                showscale=True
+            ),
+            text=data['avg_conf_scores'],  # Hover text
+        )
+    ])
+
+    # Set layout
+    fig.update_layout(
+        title='Pothole Frequency Bubble Chart',
+        xaxis_title='Number of Potholes Detected',
+        yaxis_title='Frequency of Incidents',
+        hovermode='closest'
+    )
+
+    # Render the figure in the Anvil plot component
+    self.plot_bubble_chart.figure = fig  # Assuming you have a plot component named `plot_bubble_chart`
+
+  
   ################
   ## Pie Chart: Total vs Detected
   ################
@@ -305,7 +381,7 @@ class Stats(StatsTemplate):
     results = anvil.server.call('fetch_feedback_and_potholes')
     
   # Debug: Print the results to check the structure
-    print(results)  # or use anvil.server.call to log if running in Anvil
+    #print(results)  # or use anvil.server.call to log if running in Anvil
 
     formatted_results = []
     for row in results:
