@@ -22,10 +22,10 @@ class Stats(StatsTemplate):
 
     ##comment the 6 lines to work on the line graph
     self.set_date_day()
-    self.reset_date_pickers()
+    # self.reset_date_pickers()
     self.load_speedometer()
     self.load_bubble_chart()
-    # self.load_pie_plot()
+    self.load_pie_plot()
     # self.load_graph()
     # self.load_heatmap()
     # self.load_bar_chart()
@@ -36,24 +36,24 @@ class Stats(StatsTemplate):
 #########
 ## Set default date range
 #########
-  def set_default_date_range(self):
-    try:
-        # Call the Anvil server function to get the min and max dates
-        date_range = anvil.server.call('get_min_max_dates')
+  # def set_default_date_range(self):
+  #   try:
+  #       # Call the Anvil server function to get the min and max dates
+  #       date_range = anvil.server.call('get_min_max_dates')
         
-        if date_range['status'] == 'success':
-            # Set the min and max dates for the date pickers
-            self.date_picker_from.date = date_range['min_date']
-            self.date_picker_to.date = date_range['max_date']
-            self.date_picker_from.min_date = date_range['min_date']
-            self.date_picker_to.max_date = date_range['max_date']
+  #       if date_range['status'] == 'success':
+  #           # Set the min and max dates for the date pickers
+  #           self.date_picker_from.date = date_range['min_date']
+  #           self.date_picker_to.date = date_range['max_date']
+  #           self.date_picker_from.min_date = date_range['min_date']
+  #           self.date_picker_to.max_date = date_range['max_date']
   
-            # Populate the graph with the default date range
-            self.update_graph(date_range['min_date'], date_range['max_date'])
-        else:
-            alert(f"Error fetching date range: {date_range['message']}")
-    except Exception as e:
-        alert(f"Unexpected error: {str(e)}")
+  #           # Populate the graph with the default date range
+  #           self.update_graph(date_range['min_date'], date_range['max_date'])
+  #       else:
+  #           alert(f"Error fetching date range: {date_range['message']}")
+  #   except Exception as e:
+  #       alert(f"Unexpected error: {str(e)}")
 
   def update_graph(self, date_from, date_to):
     try:
@@ -72,13 +72,13 @@ class Stats(StatsTemplate):
       alert(f"Error updating graph: {str(e)}")
 
 
-  def date_picker_from_change(self, **event_args):
-    # Get the selected dates from the date pickers
-    date_from = self.date_picker_from.date
-    date_to = self.date_picker_to.date
+  # def date_picker_from_change(self, **event_args):
+  #   # Get the selected dates from the date pickers
+  #   date_from = self.date_picker_from.date
+  #   date_to = self.date_picker_to.date
 
-    # Update the graph with the selected date range
-    self.update_graph(date_from, date_to)
+  #   # Update the graph with the selected date range
+  #   self.update_graph(date_from, date_to)
  
   ############
   ## Display today's date & day 
@@ -102,49 +102,49 @@ class Stats(StatsTemplate):
   ## Update date picker
   ##############
   
-  # Function to call the server for min and max dates
-  def fetch_min_max_dates(self):
-      try:
-          # Call the VSCode uplink function to get the min and max dates
-          response = anvil.server.call('get_min_max_dates')
+  # # Function to call the server for min and max dates
+  # def fetch_min_max_dates(self):
+  #     try:
+  #         # Call the VSCode uplink function to get the min and max dates
+  #         response = anvil.server.call('get_min_max_dates')
 
-          if response['status'] == 'success':
-              min_date = response['min_date']
-              max_date = response['max_date']
+  #         if response['status'] == 'success':
+  #             min_date = response['min_date']
+  #             max_date = response['max_date']
 
-              # Update the date pickers with the min and max dates
-              self.update_date_pickers(min_date, max_date)
-          else:
-              alert(f"Error: {response['message']}")
+  #             # Update the date pickers with the min and max dates
+  #             self.update_date_pickers(min_date, max_date)
+  #         else:
+  #             alert(f"Error: {response['message']}")
       
-      except Exception as e:
-          alert(f"Unexpected error: {str(e)}")
+  #     except Exception as e:
+  #         alert(f"Unexpected error: {str(e)}")
 
-    # Function to update date pickers
-  def update_date_pickers(self, min_date, max_date):
-      # Set the min and max dates for the date pickers
-      self.date_picker_from.min_date = min_date
-      self.date_picker_to.min_date = min_date
-      self.date_picker_from.max_date = max_date
-      self.date_picker_to.max_date = max_date
+  #   # Function to update date pickers
+  # def update_date_pickers(self, min_date, max_date):
+  #     # Set the min and max dates for the date pickers
+  #     self.date_picker_from.min_date = min_date
+  #     self.date_picker_to.min_date = min_date
+  #     self.date_picker_from.max_date = max_date
+  #     self.date_picker_to.max_date = max_date
 
-      # Optionally, set today's date as the default
-      today = date.today()
-      self.date_picker_from.date = today
-      self.date_picker_to.date = today
+  #     # Optionally, set today's date as the default
+  #     today = date.today()
+  #     self.date_picker_from.date = today
+  #     self.date_picker_to.date = today
 
   ###############
   ## Reset Date Picker
   ###############
-  def reset_date_pickers(self):
-    # Set the date pickers to today
-    today = date.today()
-    self.date_picker_from.date = today
-    self.date_picker_to.date = today
+  # def reset_date_pickers(self):
+  #   # Set the date pickers to today
+  #   today = date.today()
+  #   self.date_picker_from.date = today
+  #   self.date_picker_to.date = today
 
-    # Deactivate older dates (minimum date)
-    self.date_picker_from.min_date = today
-    self.date_picker_to.min_date = today
+  #   # Deactivate older dates (minimum date)
+  #   self.date_picker_from.min_date = today
+  #   self.date_picker_to.min_date = today
 
  ################
   ## Speedometer: Avg Confidence Score 
@@ -163,8 +163,8 @@ class Stats(StatsTemplate):
         value=value,  # Set the needle value to the avg max confidence score
         title={'text': "Average Max Confidence Score", 'font': {'size': 24}},
         gauge={
-                'axis': {'range': [0, 1]},  # Assuming confidence score is from 0 to 1
-                'bar': {'color': "darkgreen"},  # Needle color
+                'axis': {'range': [0, 1], 'tickvals': [0, 0.33, 0.66, 1], 'ticktext': ['Low', 'Medium', 'High', 'Max'], 'ticks': "outside"},
+                'bar': {'color': "limegreen"},  # Needle color
                 'steps': [
                      {'range': [0, 0.33], 'color': "red"},    # First segment (0-0.33)
                         {'range': [0.33, 0.67], 'color': "yellow"},  # Second segment (0.33-0.67)
@@ -199,7 +199,7 @@ class Stats(StatsTemplate):
             y=data['frequencies'],
             mode='markers',
             marker=dict(
-                size=[score * 10 for score in data['avg_conf_scores']],  # Bubble size
+                size=[score * 20 for score in data['avg_conf_scores']],  # Bubble size
                 color=data['avg_conf_scores'],  # Color based on average confidence scores
                 colorscale='Viridis',
                 showscale=True
@@ -221,7 +221,7 @@ class Stats(StatsTemplate):
 
   
   ################
-  ## Pie Chart: Total vs Detected
+  ## Summary data & Pie Chart
   ################
   def load_pie_plot(self):
     try:
@@ -247,12 +247,12 @@ class Stats(StatsTemplate):
       self.label_detected_count.text = potholes_detected
 
       # Update the pie chart with the retrieved data
-      self.plot_pie.data = [
-        go.Pie(
-          labels=["Potholes Detected", "Potholes Not Detected"],
-          values=[potholes_detected, potholes_not_detected],
-        )
-      ]
+      # self.plot_pie.data = [
+      #   go.Pie(
+      #     labels=["Potholes Detected", "Potholes Not Detected"],
+      #     values=[potholes_detected, potholes_not_detected],
+      #   )
+      # ]
     except Exception as e:
       # Handle the case where the server call fails or returns unexpected data
       alert(f"Error loading statistics: {str(e)}")

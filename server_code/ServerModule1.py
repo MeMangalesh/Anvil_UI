@@ -141,7 +141,7 @@ def get_stats():
   pie_stats = anvil.server.call('get_statistics')
   print("Returned from vscode")
 
-### PIE CHART ###
+### SUMMARY FIGURE & PIE CHART ###
 # Check if the call was successful
   print(f"Return status: {pie_stats['status']}")
   if pie_stats['status'] == 'success':
