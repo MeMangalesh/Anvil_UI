@@ -26,7 +26,7 @@ class Admin_copy(Admin_copyTemplate):
       # Clear the image displayed in the Image component
       self.image_detection.source = None
       # Clear the uploaded file from the file loader
-      self.file_loader_1.clear()
+      #self.file_loader_1.clear()
       # self.label_1.text = None
       # self.label_2.text = None
       
@@ -38,7 +38,7 @@ class Admin_copy(Admin_copyTemplate):
   def button_deactivate (self, file, **event_args):
     # Deactivate button when form loads and after every "Detect" and "Reset" button click
     # Clear the image displayed in the Image component
-    self.image_upload.source = None
+    #self.image_upload.source = None  --------------- commented this
     # Clear the image displayed in the Image component
     self.image_detection.source = None
     # Clear the uploaded file from the file loader
@@ -88,6 +88,9 @@ class Admin_copy(Admin_copyTemplate):
 
       # Call the Anvil server function to detect potholes
       result = anvil.server.call('detect_potholes', encoded_image, filename)
+
+    else:
+      self.label_message.text = "No file selected."
           
       # Unpack and display the result from the tuple 
       if result:
@@ -99,8 +102,8 @@ class Admin_copy(Admin_copyTemplate):
         #self.label_message.text = "Potholes detected."
       else:
           self.label_message.text = "No potholes detected."
-    else:
-        self.label_message.text = "No file selected."
+    # else:
+    #     self.label_message.text = "No file selected."
 
     # Call the Anvil server function to save image with ID & detect potholes
     #self.label_message.text = "Calling save_image_n_trigger_detection function"
@@ -112,8 +115,7 @@ class Admin_copy(Admin_copyTemplate):
       self.trigger_pothole_detection(image_id)
     else:
       self.label_message.text = "Failed to save image."
-  # else:
-    self.label_message.text = "No file selected."
+  
 
   ########
   ## Added text display effect 
@@ -156,7 +158,7 @@ class Admin_copy(Admin_copyTemplate):
       self.label_2.text = f"{max_conf_score:.2f}%"
       self.label_ID.text = f"{image_id}"
                  
-      #self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
+      # self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
     else:
       self.label_result.text = "No potholes detected."
 
@@ -173,19 +175,21 @@ class Admin_copy(Admin_copyTemplate):
     # Clear the image displayed in the Image component
     self.image_upload.source = None
     # # Clear the image displayed in the Image component
-    # self.image_detection.source = None
-    # Clear the uploaded file from the file loader
-    self.file_loader_1.clear()
-
-  def button_reset_click(self, **event_args):
-    # Clear the image displayed in the Image component
-    self.image_byuser.source = None
-    # Clear the image displayed in the Image component
     self.image_detection.source = None
     # Clear the uploaded file from the file loader
     self.file_loader_1.clear()
-    self.button_detect.enabled = False
-    self.label_status.text = None
+    self.button_save_n_detect.enabled = False
+    # self.label_status.text = None
+   
+  # def button_reset_click(self, **event_args):
+  #   # Clear the image displayed in the Image component
+  #   self.image_byuser.source = None
+  #   # Clear the image displayed in the Image component
+  #   self.image_detection.source = None
+  #   # Clear the uploaded file from the file loader
+  #   self.file_loader_1.clear()
+  #   self.button_detect.enabled = False
+  #   self.label_status.text = None
 
   def link_User_click(self, **event_args):
     """This method is called when the link is clicked"""

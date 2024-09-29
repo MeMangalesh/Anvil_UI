@@ -7,10 +7,12 @@ components:
           name: image_upload
           properties: {alt_text: Upload an image, height: 301, role: null}
           type: Image
-        - event_bindings: {change: file_loader_1_change}
+        - data_bindings:
+          - {code: '', property: file_types, writeback: false}
+          event_bindings: {change: file_loader_1_change}
           layout_properties: {grid_position: 'NLREKM,XEDWKL'}
           name: file_loader_1
-          properties: {role: elevated-button}
+          properties: {role: elevated-button, tooltip: 'Upload image file in .jpeg, .jpg or .png formats'}
           type: FileLoader
         layout_properties: {grid_position: 'OCCWPY,VMNTUC'}
         name: outlined_card_5
