@@ -24,7 +24,9 @@ class Review(ReviewTemplate):
   def button_view_click(self, **event_args):
     date_from = self.date_picker_from.date  # Access the date property
     date_to = self.date_picker_to.date  # Access the date property
-  
+
+    print(f"Start Date: {date_from}, End Date: {date_to}")
+    
     # If no dates are selected, read all data in the database
     if not date_from and not date_to:
         # Load all data without date filter
