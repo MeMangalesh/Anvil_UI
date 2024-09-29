@@ -22,7 +22,7 @@ class Admin_copy(Admin_copyTemplate):
   def button_activate (self, file, **event_args):
       # Deactivate button when form loads and after every "Detect" and "Reset" button click
       # Clear the image displayed in the Image component
-      self.image_byuser.source = None
+      # self.image_byuser.source = None
       # Clear the image displayed in the Image component
       self.image_detection.source = None
       # Clear the uploaded file from the file loader
@@ -51,11 +51,11 @@ class Admin_copy(Admin_copyTemplate):
     self.button_save_n_detect.enabled = False
     self.file_loader_1.enabled = True
 
-  def button_activate (self, file, **event_args):
-    # Activate button when form loads and after every "Detect" and "Reset" button click
-    self.outlined_button_reset.enabled = True
-    self.button_save_n_detect.enabled = True
-    self.file_loader_1.enabled = False
+  # def button_activate (self, file, **event_args):
+  #   # Activate button when form loads and after every "Detect" and "Reset" button click
+  #   self.outlined_button_reset.enabled = True
+  #   self.button_save_n_detect.enabled = True
+  #   self.file_loader_1.enabled = False
 
   def load_data(self):
     # Fetch data from the server

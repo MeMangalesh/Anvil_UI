@@ -15,13 +15,6 @@ components:
   properties: {}
   type: Label
 - data_bindings:
-  - {code: 'self.item[''url'']', property: tag, writeback: false}
-  - {code: 'self.item[''url'']', property: text, writeback: false}
-  layout_properties: {column: OJLQEN}
-  name: label_col_url
-  properties: {}
-  type: Label
-- data_bindings:
   - {code: 'self.item[''created_at'']', property: tag, writeback: false}
   - {code: 'self.item[''created_at'']', property: text, writeback: false}
   layout_properties: {column: ARVVED}
