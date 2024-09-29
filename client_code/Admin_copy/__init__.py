@@ -10,8 +10,10 @@ class Admin_copy(Admin_copyTemplate):
     self.init_components(**properties)
     
     # Load data when the form is initialized
-    self.load_data()
+    # self.load_data()
     self.timer_1.enabled = False  # Disable the timer initially
+    # Set initial message in outlined_card_3
+    self.label_message.text = "Upload image to view detection result"
     self.button_deactivate(self)
 
   def file_loader_1_change(self, file, **event_args):
@@ -57,18 +59,47 @@ class Admin_copy(Admin_copyTemplate):
   #   self.button_save_n_detect.enabled = True
   #   self.file_loader_1.enabled = False
 
+  # def load_data(self):
+  #   # Fetch data from the server
+  #   response = anvil.server.call("get_data")
+  #   # print(response)  # Debugging: Print the response to check the data - print OK
+
+  #   # Check the status of the response
+  #   if response["status"] == "success":
+  #     # Set the data to the RepeatingPanel
+  #     self.repeating_panel_image_data.items = response["data"]
+  #   else:
+  #     # Handle errors, e.g., show an alert
+  #     alert(response["message"])
+
   def load_data(self):
     # Fetch data from the server
     response = anvil.server.call("get_data")
-    # print(response)  # Debugging: Print the response to check the data - print OK
-
+    
     # Check the status of the response
     if response["status"] == "success":
-      # Set the data to the RepeatingPanel
-      self.repeating_panel_image_data.items = response["data"]
+        # Sort the data in descending order based on a key (e.g., 'date')
+        sorted_data = sorted(response["data"], key=lambda x: x['id'], reverse=True)
+        
+        # Set the sorted data to the RepeatingPanel
+        self.repeating_panel_image_data.items = sorted_data
     else:
-      # Handle errors, e.g., show an alert
-      alert(response["message"])
+        # Handle errors, e.g., show an alert
+        alert(response["message"])
+
+    # Check if the data grid is visible
+    if not self.data_grid_1.visible:
+        # If the DataGrid is hidden, show it and load data
+        self.data_grid_1.visible = True
+        #self.load_data()  # Assuming you have a function to load the data
+        self.button_show_data.text = "HIDE DATA"  # Change button text to 'HIDE DATA'
+        self.button_show_data.visible = True      # Show the 'Hide Data' button below the DataGrid
+    else:
+        # If the DataGrid is visible, hide it and reset the button
+        self.data_grid_1.visible = False
+        self.button_show_data.text = "SHOW DATA"  # Change button text back to 'SHOW DATA'
+        self.button_show_data.visible = False 
+  
 
   ##############
   ## Save image into DB & trigger detection with ID to detect, calculate score & update results into table
@@ -92,16 +123,16 @@ class Admin_copy(Admin_copyTemplate):
     else:
       self.label_message.text = "No file selected."
           
-      # Unpack and display the result from the tuple 
-      if result:
-          # Unpack the tuple returned by detect_potholes
-        pothole_detected, potholes_count, processed_image_base64 = result  # Unpacking tuple/list
-        #Display the processed image with bounding boxes
-        # self.label_status.text = f"Potholes detected: {potholes_count}"
-        self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
-        #self.label_message.text = "Potholes detected."
-      else:
-          self.label_message.text = "No potholes detected."
+    # Unpack and display the result from the tuple 
+    if result:
+        # Unpack the tuple returned by detect_potholes
+      pothole_detected, potholes_count, processed_image_base64 = result  # Unpacking tuple/list
+      #Display the processed image with bounding boxes
+      # self.label_status.text = f"Potholes detected: {potholes_count}"
+      self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
+      #self.label_message.text = "Potholes detected."
+    else:
+        self.label_message.text = "No potholes detected."
     # else:
     #     self.label_message.text = "No file selected."
 
@@ -178,6 +209,9 @@ class Admin_copy(Admin_copyTemplate):
     self.image_detection.source = None
     # Clear the uploaded file from the file loader
     self.file_loader_1.clear()
+    # Enable the file upload button
+    self.file_loader_1.enabled = True
+    # Disable the save & detect button
     self.button_save_n_detect.enabled = False
     # self.label_status.text = None
    
@@ -196,15 +230,18 @@ class Admin_copy(Admin_copyTemplate):
     open_form("Form1")
 
   def link_Dashboard_click(self, **event_args):
-    """This method is called when the link is clicked"""
     open_form("Stats")
 
   def link_Review_click(self, **event_args):
-    """This method is called when the link is clicked"""
     open_form("Review")
 
   def link_Admin_click(self, **event_args):
-    """This method is called when the link is clicked"""
     open_form("Admin")
+
+  def button_show_data_click(self, **event_args):
+    self.load_data()
+
+
+    
 
   

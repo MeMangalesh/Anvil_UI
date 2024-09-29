@@ -92,10 +92,15 @@ components:
         name: outlined_card_4
         properties: {role: outlined-card}
         type: ColumnPanel
-      - components: []
+      - components:
+        - event_bindings: {click: button_show_data_click}
+          layout_properties: {}
+          name: button_show_data
+          properties: {background: 'theme:Primary Container', text: SHOW DATA}
+          type: Button
         layout_properties: {grid_position: 'SPVWQU,NVWTCL'}
         name: flow_panel_2
-        properties: {}
+        properties: {align: right}
         type: FlowPanel
       layout_properties: {grid_position: 'PBCNEN,WNDJTD'}
       name: outlined_card_3
@@ -128,7 +133,8 @@ components:
         - {data_key: column_5, id: PYWIMC, title: 'Date Updated '}
         - {data_key: column_6, id: UICRXP, title: 'Potholes Detected '}
         - {data_key: column_1, id: XEIIBA, title: Potholes Count}
-        rows_per_page: 10
+        rows_per_page: 5
+        visible: false
         wrap_on: mobile
       type: DataGrid
     layout_properties: {grid_position: 'CACBKZ,RDOJRQ NDPKNO,TRPIAV'}
