@@ -1,8 +1,23 @@
 from ._anvil_designer import ItemTemplate5Template
 from anvil import *
+from . import ImagePopup  # Import the new ImagePopup form
 import anvil.server
 
 class ItemTemplate5(ItemTemplate5Template):
+  # def __init__(self, **properties):
+  #   # Set Form properties and Data Bindings.
+  #   self.init_components(**properties)
+
+  #   # Set the image source, filename, and id using the item passed to the template
+  #   self.image_display.source = "data:image/png;base64," + self.item['image_base64']
+  #   self.label_id.text = str(self.item['id'])  # Assuming you have another Label component for the ID
+
+  #   # Assign the CSS class 'enlarge-on-hover' to the image for hover effect
+  #   self.image_display.role = 'enlarge-on-hover'
+  #   print(f"Role set for image: {self.image_display.role}")
+#######################################
+  # code above replaced with below
+#######################################
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
@@ -11,6 +26,24 @@ class ItemTemplate5(ItemTemplate5Template):
     self.image_display.source = "data:image/png;base64," + self.item['image_base64']
     self.label_id.text = str(self.item['id'])  # Assuming you have another Label component for the ID
 
+    # Assign the CSS class 'enlarge-on-hover' to the image
+    self.image_display.role = 'enlarge-on-hover'
+
+    # Bind the hover event
+    self.image_display.bind("mouseenter", self.show_popup)
+    self.image_display.bind("mouseleave", self.hide_popup)
+
+    self.popup = ImagePopup()  # Create an instance of the popup
+
+    def show_popup(self, **event_args):
+        # Set the image source in the popup
+        self.popup.image.source = self.image_display.source
+        self.popup.show()  # Display the popup
+
+    def hide_popup(self, **event_args):
+        self.popup.hide()  # Hide the popup
+  #################################
+  
   def button_save_click(self, **event_args):
     checkbox = self.check_box_pothole_exist
     label = self.label_id       

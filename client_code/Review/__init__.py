@@ -8,7 +8,7 @@ class Review(ReviewTemplate):
     # Any code you write here will run before the form opens.
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
-    
+        
      # Set max_date to today's date for both date pickers
     today = datetime.date.today()  # Get today's date using datetime
     self.date_picker_from.max_date = today  # Restrict 'from' date picker to today's date
@@ -16,7 +16,8 @@ class Review(ReviewTemplate):
         
     # Call the method to load images
     self.load_undetected_images()
-    
+
+      
 #####
 # Filter records by processed date
 #####
