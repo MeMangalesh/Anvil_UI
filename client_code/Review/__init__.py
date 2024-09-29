@@ -25,12 +25,18 @@ class Review(ReviewTemplate):
     date_from = self.date_picker_from.date  # Access the date property
     date_to = self.date_picker_to.date  # Access the date property
   
-    # Validation: Ensure 'from' date is not greater than 'to' date
-    if date_from > date_to:
-      alert("The 'From' date must be before or the same as the 'To' date. Please select a valid date range.", title="Invalid Date Range")
+    # If no dates are selected, read all data in the database
+    if not date_from and not date_to:
+        # Load all data without date filter
+        self.load_undetected_images_by_date(None, None)
     else:
-      # If valid, proceed to load images by the selected date range
-      self.load_undetected_images_by_date(date_from, date_to)
+        # Validation: Ensure 'from' date is not greater than 'to' date
+        if date_from > date_to:
+            alert("The 'From' date must be before or the same as the 'To' date. Please select a valid date range.", title="Invalid Date Range")
+        else:
+            # Proceed to load filtered images by the selected date range
+            self.load_undetected_images_by_date(date_from, date_to)
+
   
   def load_undetected_images_by_date(self, date_from, date_to):
     try:
