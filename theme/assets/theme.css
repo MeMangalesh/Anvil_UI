@@ -1049,12 +1049,13 @@ div.plot-container.plotly svg.main-svg {
 
 /* CSS for enlarging the image on hover */
 /* Ensure that the 'enlarge-on-hover' class takes precedence */
-.anvil-role-enlarge-on-hover {
+/*.anvil-role-enlarge-on-hover {
     transition: transform 0.3s ease; /* Smooth transition */
-}
+} */
 
+/*
 .anvil-role-enlarge-on-hover:hover {
     transform: scale(1.5); /* Enlarge the image */
     z-index: 10;            /* Bring the image to the front */
     position: relative;      /* Ensure the enlarged image does not overlap */
-}
+} */
