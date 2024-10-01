@@ -172,7 +172,7 @@ class Stats(StatsTemplate):
                     ],
                 'threshold': {
                     #'line': {'color': "red", 'width': 4},
-                     'line': {'color': "transparent"},  # Make the threshold line invisible  
+                     'line': {'color': "black",'width': 4},  # Make the threshold line invisible  - replaced transparent
                     'thickness': 0.75,
                     'value': value  # Set the threshold line at the needle's position
                  }
