@@ -161,10 +161,10 @@ class Stats(StatsTemplate):
       fig = go.Figure(go.Indicator(
         mode="gauge+number",
         value=value,  # Set the needle value to the avg max confidence score
-        title={'text': "Average Max Confidence Score", 'font': {'size': 24}},
+        # title={'text': "Average Max Confidence Score", 'font': {'size': 24}},
         gauge={
                 'axis': {'range': [0, 1], 'tickvals': [0, 0.33, 0.66, 1], 'ticktext': ['Low', 'Medium', 'High', 'Max'], 'ticks': "outside"},
-                'bar': {'color': "limegreen"},  # Needle color
+                'bar': {'color': "gray"},  # Needle color
                 'steps': [
                      {'range': [0, 0.33], 'color': "red"},    # First segment (0-0.33)
                         {'range': [0.33, 0.67], 'color': "yellow"},  # Second segment (0.33-0.67)
@@ -178,6 +178,13 @@ class Stats(StatsTemplate):
                  }
               }
          ))
+      # Set layout
+      fig.update_layout(
+          title='Average Max Confidence Score Gauge',
+          # xaxis_title='Number of Potholes Detected',
+          # yaxis_title='Frequency of Incidents',
+          hovermode='closest'
+      )
       # Display the speedometer in the designated plot component
       self.plot_speedometer.figure = fig
 
