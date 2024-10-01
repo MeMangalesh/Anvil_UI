@@ -13,6 +13,7 @@ class ItemTemplate5(ItemTemplate5Template):
     self.label_id.text = str(self.item['id'])  # Assuming you have another Label component for the ID
     # Assuming `dt_processed` is included in self.item
     if 'processed_dt' in self.item and self.item['processed_dt']:
+        # print(f"Processed date:{self.item[dat]}")
         self.label_processed_dt.text = self.item['processed_dt']
     else:
         self.label_processed_dt.text = "N/A"  # Handle missing date if necessary
