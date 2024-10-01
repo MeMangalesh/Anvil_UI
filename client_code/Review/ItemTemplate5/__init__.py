@@ -13,19 +13,19 @@ class ItemTemplate5(ItemTemplate5Template):
     # Set the image source, filename, and id using the item passed to the template
     self.image_display.source = "data:image/png;base64," + self.item['image_base64']
     self.label_id.text = str(self.item['id'])  # Assuming you have another Label component for the ID
+    # self.label_processed_dt.text = str(self.item['processed_dt'])
     
-    # Handle `processed_dt` - format as a string if present, otherwise set to "N/A"
-    if 'processed_dt' in self.item and self.item['processed_dt']:
-    if self.item['processed_dt']:
-    # Format the date if it's a datetime object, otherwise convert to string
-      if isinstance(self.item['processed_dt'], datetime):
-          formatted_date = self.item['processed_dt'].strftime("%Y-%m-%d")
-      else:
-          formatted_date = str(self.item['processed_dt'])  # In case it's already a string
-      print(f"Processed date: {formatted_date}")
-      self.label_processed_dt.text = formatted_date
-    else:
-        self.label_processed_dt.text = "N/A"  # Handle missing date if necessary
+    # # Handle `processed_dt` - format as a string if present, otherwise set to "N/A"
+    # if 'processed_dt' in self.item and self.item['processed_dt']:
+    #   # # Format the date if it's a datetime object, otherwise convert to string
+    #   # if isinstance(self.item['processed_dt'], datetime):
+    #   #     formatted_date = self.item['processed_dt'].strftime("%Y-%m-%d")
+    #   # else:
+    #   #     formatted_date = str(self.item['processed_dt'])  # In case it's already a string
+    #   # print(f"Processed date: {formatted_date}")
+    #   self.label_processed_dt.text = self.item['processed_dt']
+    # else:
+    #     self.label_processed_dt.text = "N/A"  # Handle missing date if necessary
 
     # Assign the CSS class 'enlarge-on-hover' to the image for hover effect
     # self.image_display.role = 'enlarge-on-hover'
