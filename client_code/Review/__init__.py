@@ -1,7 +1,8 @@
 from ._anvil_designer import ReviewTemplate
 from anvil import *
 import anvil.server
-import datetime  # Import the datetime module
+#from datetime import datetime, date  # Import the datetime module
+import datetime
 
 class Review(ReviewTemplate):
   def __init__(self, **properties):
@@ -45,6 +46,20 @@ class Review(ReviewTemplate):
     try:
         # Call the server function to get images
         print("Inside the load_undetected_images_by_date function in Anvil Form")
+        print(f"Dates from: {date_from}")
+
+      ###added below##
+      # Ensure isinstance() is used correctly with proper types
+        if isinstance(date_from, (datetime, date)):  # date or datetime type
+            print(f"Dates from is valid: {date_from}")
+        else:
+            print(f"Invalid date_from: {date_from}")
+        
+        if isinstance(date_to, (datetime, date)):  # date or datetime type
+            print(f"Dates to is valid: {date_to}")
+        else:
+            print(f"Invalid date_to: {date_to}")
+        ### end added####
         image_data_list = anvil.server.call('get_data_by_date', date_from, date_to)
   
         # Check the status of the response
@@ -81,9 +96,6 @@ class Review(ReviewTemplate):
       except Exception as e:
           alert(f"An error occurred: {e}")
 
-  def date_picker_from_change(self, **event_args):
-    """This method is called when the selected date changes"""
-    pass
 
 
 

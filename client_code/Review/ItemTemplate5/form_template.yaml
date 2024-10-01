@@ -28,7 +28,10 @@ components:
       name: label_2
       properties: {bold: true, text: Processed Date}
       type: Label
-    - name: label_processed_dt
+    - data_bindings:
+      - {code: 'self.item[''processed_dt'']', property: text, writeback: false}
+      - {code: 'self.item[''processed_dt'']', property: tag, writeback: false}
+      name: label_processed_dt
       properties: {}
       type: Label
     layout_properties: {grid_position: 'UMPYDK,ACTJGI'}

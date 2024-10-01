@@ -225,37 +225,76 @@ class Stats(StatsTemplate):
   ################
   def load_pie_plot(self):
     try:
-      # Call the server function to get the statistics
-      print("About to call the VSCode")
-      response = anvil.server.call("get_pie_plot")
-      print("returning from VSCOde")
+        # Call the server function to get the statistics
+        print("About to call the VSCode")
+        response = anvil.server.call("get_pie_plot")
+        print("returning from VSCode")
 
-      total_images = response["total_images"]
-      potholes_detected = response["potholes_detected"]
-      # Validate the values to ensure they are integers
-      # if isinstance(total_images, int) and isinstance(potholes_detected, int):
-      #   # Calculate potholes not detected
-      #   potholes_not_detected = total_images - potholes_detected
+        # Check the response status
+        if response['status'] == "success":
+            # Unpack the data correctly
+            total_images, potholes_detected = response['data']
+            
+            print(f"Total images: {total_images}")
+            print(f"Total potholes detected: {potholes_detected}")
 
-      # Print debug information
-      print(f"total images processed: {total_images}")
-      print(f"total potholes detected: {potholes_detected}")
-      # print(f"total not potholes detected: {potholes_not_detected}")
+            # Display the total number of images processed & number of potholes detected
+            self.label_feedback_count.text = str(total_images)  # Ensure to convert to str
+            self.label_detected_count.text = str(potholes_detected)  # Ensure to convert to str
 
-      # Display the total number of images processed & Number of potholes detected
-      self.label_feedback_count.text = total_images
-      self.label_detected_count.text = potholes_detected
+            # Optionally, calculate potholes not detected and update your pie chart if needed
+            potholes_not_detected = total_images - potholes_detected
+            
+            # Update the pie chart with the retrieved data
+            self.plot_pie.data = [
+                go.Pie(
+                    labels=["Potholes Detected", "Potholes Not Detected"],
+                    values=[potholes_detected, potholes_not_detected],
+                )
+            ]
+        else:
+            alert(f"Error loading statistics: {response['message']}")
 
-      # Update the pie chart with the retrieved data
-      # self.plot_pie.data = [
-      #   go.Pie(
-      #     labels=["Potholes Detected", "Potholes Not Detected"],
-      #     values=[potholes_detected, potholes_not_detected],
-      #   )
-      # ]
     except Exception as e:
-      # Handle the case where the server call fails or returns unexpected data
-      alert(f"Error loading statistics: {str(e)}")
+        # Handle the case where the server call fails or returns unexpected data
+        alert(f"Error loading statistics: {str(e)}")
+
+  # def load_pie_plot(self):
+  #   try:
+  #     # Call the server function to get the statistics
+  #     print("About to call the VSCode")
+  #     response = anvil.server.call("get_pie_plot")
+  #     print("returning from VSCOde")
+  #     print("total images:{total_images}")
+  #     # total_images = response['total_images']
+  #     # potholes_detected = response['potholes_detected']
+
+  #     print(f"total images:{total_images}")
+  #     print(f"total potholes_detected:{potholes_detected}")
+  #     # Validate the values to ensure they are integers
+  #     # if isinstance(total_images, int) and isinstance(potholes_detected, int):
+  #     #   # Calculate potholes not detected
+  #     #   potholes_not_detected = total_images - potholes_detected
+
+  #     # Print debug information
+  #     print(f"total images processed: {total_images}")
+  #     print(f"total potholes detected: {potholes_detected}")
+  #     # print(f"total not potholes detected: {potholes_not_detected}")
+
+  #     # Display the total number of images processed & Number of potholes detected
+  #     self.label_feedback_count.text = total_images
+  #     self.label_detected_count.text = potholes_detected
+
+  #     # Update the pie chart with the retrieved data
+  #     # self.plot_pie.data = [
+  #     #   go.Pie(
+  #     #     labels=["Potholes Detected", "Potholes Not Detected"],
+  #     #     values=[potholes_detected, potholes_not_detected],
+  #     #   )
+  #     # ]
+  #   except Exception as e:
+  #     # Handle the case where the server call fails or returns unexpected data
+  #     alert(f"Error loading statistics: {str(e)}")
 
   ################
   ## Line Chart: Potholes Count vs. Time
