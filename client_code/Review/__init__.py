@@ -1,7 +1,6 @@
 from ._anvil_designer import ReviewTemplate
 from anvil import *
 import anvil.server
-#from datetime import datetime, date  # Import the datetime module
 import datetime
 
 class Review(ReviewTemplate):
@@ -36,10 +35,11 @@ class Review(ReviewTemplate):
     else:
         # Validation: Ensure 'from' date is not greater than 'to' date
         if date_from > date_to:
-            alert("The 'From' date must be before or the same as the 'To' date. Please select a valid date range.", title="Invalid Date Range")
+          alert("The 'From' date must be before or the same as the 'To' date. Please select a valid date range.", title="Invalid Date Range")
         else:
-            # Proceed to load filtered images by the selected date range
-            self.load_undetected_images_by_date(date_from, date_to)
+          # Proceed to load filtered images by the selected date range
+          print("About to call load_undetected_images_by_date func in Anvil Review Form")
+          self.load_undetected_images_by_date(date_from, date_to)
 
   
   def load_undetected_images_by_date(self, date_from, date_to):
@@ -50,18 +50,21 @@ class Review(ReviewTemplate):
 
       ###added below##
       # Ensure isinstance() is used correctly with proper types
-        if isinstance(date_from, (datetime, date)):  # date or datetime type
-            print(f"Dates from is valid: {date_from}")
+        if isinstance(date_from, (datetime.datetime, datetime.date)):  # Check if date_from is a datetime or date type
+          print(f"Dates from is valid: {date_from}")
         else:
             print(f"Invalid date_from: {date_from}")
         
-        if isinstance(date_to, (datetime, date)):  # date or datetime type
+        if isinstance(date_to, (datetime.datetime, datetime.date)):  # Check if date_to is a datetime or date type
             print(f"Dates to is valid: {date_to}")
         else:
             print(f"Invalid date_to: {date_to}")
         ### end added####
         image_data_list = anvil.server.call('get_data_by_date', date_from, date_to)
-  
+         
+        # Debug: Print response from the server
+        print(f"Response from server: {image_data_list}")
+      
         # Check the status of the response
         if image_data_list['status'] == 'success':
           # Set the repeating panel with the list of image data

@@ -1,6 +1,6 @@
 from ._anvil_designer import ItemTemplate5Template
 from anvil import *
-from datetime import datetime
+from datetime import datetime, date
 # from . import ImagePopup  # Import the new ImagePopup form
 import anvil.server
 
@@ -16,12 +16,13 @@ class ItemTemplate5(ItemTemplate5Template):
     
     # Handle `processed_dt` - format as a string if present, otherwise set to "N/A"
     if 'processed_dt' in self.item and self.item['processed_dt']:
+    if self.item['processed_dt']:
     # Format the date if it's a datetime object, otherwise convert to string
-      # if isinstance(self.item['processed_dt'], datetime):
-      #     formatted_date = self.item['processed_dt'].strftime("%Y-%m-%d")
-      # else:
-      #     formatted_date = str(self.item['processed_dt'])  # In case it's already a string
-      # print(f"Processed date: {formatted_date}")
+      if isinstance(self.item['processed_dt'], datetime):
+          formatted_date = self.item['processed_dt'].strftime("%Y-%m-%d")
+      else:
+          formatted_date = str(self.item['processed_dt'])  # In case it's already a string
+      print(f"Processed date: {formatted_date}")
       self.label_processed_dt.text = formatted_date
     else:
         self.label_processed_dt.text = "N/A"  # Handle missing date if necessary
