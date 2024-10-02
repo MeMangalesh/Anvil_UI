@@ -24,8 +24,8 @@ def get_data():
 @anvil.server.callable
 def save_image(image_base64, filename):
     # The call to Uplink function
-    # return anvil.server.call('save_image', image_base64, filename)
-    return anvil.server.call('save_image_n_trigger_detection', image_base64, filename)
+    return anvil.server.call('save_image', image_base64, filename)
+    #return anvil.server.call('save_image_n_trigger_detection', image_base64, filename)
 
 @anvil.server.callable
 def detect_potholes(image_base64, filename):

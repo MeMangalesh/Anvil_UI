@@ -1,70 +1,127 @@
 components:
 - components:
   - components:
-    - layout_properties: {grid_position: 'SXYQFZ,ZINALT'}
-      name: image_upload
-      properties: {display_mode: zoom_to_fill}
-      type: Image
-    - event_bindings: {change: file_loader_1_change}
-      layout_properties: {grid_position: 'TLIPKO,YOIXIC'}
-      name: file_loader_1
-      properties: {}
-      type: FileLoader
-    - event_bindings: {click: button_save_n_detect_click}
-      layout_properties: {grid_position: 'JBCBGH,RSGJBT'}
-      name: button_save_n_detect
-      properties: {role: tonal-button, text: SAVE & DETECT}
-      type: Button
     - components:
       - components:
-        - event_bindings: {click: button_save_img_click}
-          name: button_save_img
-          properties: {role: filled-button, text: SAVE}
-          type: Button
-        - event_bindings: {click: outlined_button_reset_click}
-          name: outlined_button_reset
-          properties: {role: outlined-button, text: RESET}
-          type: Button
-        layout_properties: {grid_position: 'APNUUZ,WOCTAH'}
-        name: flow_panel_1
-        properties: {align: center}
-        type: FlowPanel
-      layout_properties: {grid_position: 'NBGWNG,RQLGSW'}
+        - layout_properties: {grid_position: 'IBDAEE,BEYXGP'}
+          name: image_upload
+          properties: {alt_text: Upload an image, height: 301, role: null}
+          type: Image
+        - data_bindings:
+          - {code: '', property: file_types, writeback: false}
+          event_bindings: {change: file_loader_1_change}
+          layout_properties: {grid_position: 'NLREKM,XEDWKL'}
+          name: file_loader_1
+          properties: {role: elevated-button, tooltip: 'Upload image file in .jpeg, .jpg or .png formats'}
+          type: FileLoader
+        layout_properties: {grid_position: 'OCCWPY,VMNTUC'}
+        name: outlined_card_5
+        properties: {role: outlined-card}
+        type: ColumnPanel
+      - components:
+        - layout_properties: {grid_position: 'VJJNPT,OVIBRC'}
+          name: image_detection
+          properties: {height: 349}
+          type: Image
+        layout_properties: {grid_position: 'OCCWPY,SYVEKW'}
+        name: outlined_card_6
+        properties: {role: outlined-card}
+        type: ColumnPanel
+      layout_properties: {grid_position: 'KEKIZL,MTHXWL'}
       name: column_panel_1
-      properties: {}
+      properties: {background: 'theme:On Primary Container'}
       type: ColumnPanel
-    - layout_properties: {grid_position: 'TFWGIZ,GMBDDA'}
-      name: spacer_1
-      properties: {height: 32}
-      type: Spacer
-    - layout_properties: {grid_position: 'MWGNSI,ABEJYJ'}
-      name: image_detection
-      properties: {display_mode: zoom_to_fill}
-      type: Image
-    - layout_properties: {grid_position: 'TEBLYA,UWTEUA'}
-      name: label_message
-      properties: {}
-      type: Label
-    - layout_properties: {grid_position: 'DLKVVC,TWFEPU'}
-      name: label_1
-      properties: {}
-      type: Label
-    - layout_properties: {grid_position: 'EPGRLB,PASKHW'}
-      name: label_2
-      properties: {}
-      type: Label
-    layout_properties: {grid_position: 'KAJFVX,MHLERO'}
+    - components:
+      - event_bindings: {click: button_save_n_detect_click}
+        layout_properties: {grid_position: 'PLKIBJ,FFBLYF'}
+        name: button_save_n_detect
+        properties: {role: filled-button, text: DETECT & SAVE}
+        type: Button
+      - event_bindings: {click: outlined_button_reset_click}
+        layout_properties: {grid_position: 'RCDDWK,UATVLY'}
+        name: outlined_button_reset
+        properties: {role: outlined-button, text: RESET}
+        type: Button
+      layout_properties: {grid_position: 'ZKHEGQ,BNUDEY'}
+      name: outlined_card_7
+      properties: {role: null}
+      type: ColumnPanel
+    - components:
+      - layout_properties: {grid_position: 'YLYSPG,ORMEIR'}
+        name: label_5
+        properties: {bold: true, foreground: 'theme:On Primary', role: title, text: SUMMARY}
+        type: Label
+      - components:
+        - layout_properties: {}
+          name: label_result
+          properties: {background: '', bold: true, foreground: 'theme:On Primary', role: title}
+          type: Label
+        - name: label_message
+          properties: {bold: true, foreground: 'theme:On Primary'}
+          type: Label
+        layout_properties: {grid_position: 'NSQCKZ,MLVIXR'}
+        name: flow_panel_1
+        properties: {background: ''}
+        type: FlowPanel
+      - components:
+        - layout_properties: {grid_position: 'POSWHE,FMVJLQ'}
+          name: label_9
+          properties: {bold: true, foreground: '', role: title, text: 'Image ID:'}
+          type: Label
+        - layout_properties: {grid_position: 'POSWHE,CYKUKH'}
+          name: label_ID
+          properties: {bold: true, foreground: '', role: title}
+          type: Label
+        - layout_properties: {grid_position: 'POSWHE,CZOCND'}
+          name: label_8
+          properties: {background: '', bold: true, foreground: '', role: title, text: Potholes Count}
+          type: Label
+        - layout_properties: {grid_position: 'POSWHE,YGLAFH'}
+          name: label_1
+          properties: {bold: true, role: title}
+          type: Label
+        - layout_properties: {grid_position: 'POSWHE,AKAJWF'}
+          name: label_4
+          properties: {background: '', bold: true, foreground: '', role: title, text: Max Confidence Score}
+          type: Label
+        - layout_properties: {grid_position: 'POSWHE,IQXTYI'}
+          name: label_2
+          properties: {bold: true, role: title}
+          type: Label
+        layout_properties: {grid_position: 'XSEIUA,FDKZVR'}
+        name: outlined_card_4
+        properties: {role: outlined-card}
+        type: ColumnPanel
+      - components:
+        - event_bindings: {click: button_show_data_click}
+          layout_properties: {}
+          name: button_show_data
+          properties: {background: 'theme:Primary Container', text: SHOW DATA}
+          type: Button
+        layout_properties: {grid_position: 'SPVWQU,NVWTCL'}
+        name: flow_panel_2
+        properties: {align: right}
+        type: FlowPanel
+      layout_properties: {grid_position: 'PBCNEN,WNDJTD'}
+      name: outlined_card_3
+      properties: {background: 'theme:On Primary Container', role: outlined-card}
+      type: ColumnPanel
+    layout_properties: {full_width_row: true, grid_position: 'CACBKZ,RDOJRQ KAJFVX,MHLERO'}
     name: outlined_card_1
-    properties: {col_spacing: huge, role: outlined-card}
+    properties: {role: outlined-card}
     type: ColumnPanel
-  - layout_properties: {grid_position: 'GXTPXK,LAEQGB'}
+  - layout_properties: {grid_position: 'CACBKZ,RDOJRQ GXTPXK,LAEQGB'}
     name: label_table_status
     properties: {}
     type: Label
+  - layout_properties: {grid_position: 'CACBKZ,PHDSHP'}
+    name: timer_1
+    properties: {}
+    type: Timer
   - components:
     - components:
       - name: repeating_panel_image_data
-        properties: {item_template: Admin.RowTemplate1}
+        properties: {item_template: Admin_old.RowTemplate1}
         type: RepeatingPanel
       layout_properties: {grid_position: 'JVGPAT,ZQJILC'}
       name: data_grid_1
@@ -72,19 +129,21 @@ components:
         columns:
         - {data_key: column_1, expand: false, id: JKSDUP, title: ID, width: 77}
         - {data_key: column_2, expand: false, id: VJQQOR, title: 'Filename ', width: 192}
-        - {data_key: column_3, expand: false, id: OJLQEN, title: URL, width: 91}
         - {data_key: column_4, id: ARVVED, title: 'Date Created '}
         - {data_key: column_5, id: PYWIMC, title: 'Date Updated '}
         - {data_key: column_6, id: UICRXP, title: 'Potholes Detected '}
         - {data_key: column_1, id: XEIIBA, title: Potholes Count}
+        rows_per_page: 5
+        visible: false
+        wrap_on: mobile
       type: DataGrid
-    layout_properties: {grid_position: 'NDPKNO,TRPIAV'}
+    layout_properties: {grid_position: 'CACBKZ,RDOJRQ NDPKNO,TRPIAV'}
     name: outlined_card_2
     properties: {role: outlined-card}
     type: ColumnPanel
   layout_properties: {slot: default}
   name: content_panel
-  properties: {col_spacing: huge}
+  properties: {}
   type: ColumnPanel
 - components:
   - event_bindings: {click: link_User_click}

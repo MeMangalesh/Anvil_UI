@@ -2,7 +2,7 @@ components:
 - components:
   - layout_properties: {full_width_row: true, grid_position: 'NYDFGZ,SUGDYW'}
     name: label_1
-    properties: {bold: true, role: title, text: Filter the images by processed date}
+    properties: {bold: true, role: title, text: REVIEW UNDETECTED IMAGES FOR MODEL EVALUATION & RETRAINING}
     type: Label
   - components:
     - event_bindings: {change: date_picker_from_change}
