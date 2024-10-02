@@ -109,7 +109,7 @@ class Admin(AdminTemplate):
     if file:
       filename = file.name
       file_data = file.get_bytes()
-
+      print(f"Filename: {filename}")
       #Deactivate button
       self.button_deactivate(self)
 

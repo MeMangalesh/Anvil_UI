@@ -21,17 +21,6 @@ class ItemTemplate5(ItemTemplate5Template):
     
     if checkbox.checked:
       image_id_value = label.text  # Get the image ID from the label text
-    #   response = anvil.server.call('save_review', image_id_value)  # Call the server function with the ID
-    #   if response['status'] == 'success':
-    #       print("Reviewed image updated successfully.")
-    #       # Refresh the parent form (Review) to omit the reviewed image
-    #       parent_form = get_open_form()  # Get the parent form (Review)
-    #       if hasattr(parent_form, 'load_undetected_images'):
-    #           parent_form.load_undetected_images()  # Call the load_undetected_images method
-    #   else:
-    #       print("Error:", response['message'])
-    # else:
-    #     print("No images selected.")
       try:
           # Call the server function with the ID
           response = anvil.server.call('save_review', image_id_value)  
@@ -43,8 +32,10 @@ class ItemTemplate5(ItemTemplate5Template):
               
               # Refresh the parent form (Review) to omit the reviewed image
               parent_form = get_open_form()  # Get the parent form (Review)
-              if hasattr(parent_form, 'load_undetected_images'):
-                  parent_form.load_undetected_images()  # Call the load_undetected_images method
+              # if hasattr(parent_form, 'load_undetected_images'):
+              #     parent_form.load_undetected_images()  # Call the load_undetected_images method
+              if hasattr(parent_form, 'load_undetected_images_by_date'):
+                parent_form.load_undetected_images_by_date(None,None) # Refresh the page with dates
               
           else:
               # Handle error response from the server

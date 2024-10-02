@@ -16,7 +16,9 @@ class Review(ReviewTemplate):
     self.date_picker_to.max_date = today    # Restrict 'to' date picker to today's date
         
     # Call the method to load images
-    self.load_undetected_images()
+    # self.load_undetected_images()
+    self.load_undetected_images_by_date(None, None)
+    
     
 #####
 # Filter records by processed date
@@ -81,9 +83,7 @@ class Review(ReviewTemplate):
       except Exception as e:
           alert(f"An error occurred: {e}")
 
-  def date_picker_from_change(self, **event_args):
-    """This method is called when the selected date changes"""
-    pass
+
 
 
 
