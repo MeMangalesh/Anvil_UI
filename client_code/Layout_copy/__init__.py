@@ -33,11 +33,34 @@ class Layout_copy(Layout_copyTemplate):
     active_link.foreground = "theme:Secondary 500"
     self.column_panel_1.clear()
     self.column_panel_1.add_component(form, full_width_row=True)
-
+    
+# ###Changed self.column_panel_1.clear() to self.slot_1.clear()
+#   # Function to load child forms dynamically
+#   def load_child_form(self, form_instance):
+#     self.slot_1.clear()  # Clear any previous content in the slot
+#     self.slot_1.add_component(form_instance)  # Add the new form
+  
   # Function to load child forms dynamically
   def load_child_form(self, form_instance):
-    self.column_panel_1.clear()  # Clear any previous content in the slot
-    self.column_panel_1.add_component(form_instance)  # Add the new form
+    self.slot_1.clear()  # Clear any previous content in the slot
+    self.slot_1.add_component(form_instance)  # Add the new form
+  
+  # Load Demo form into Layout
+  def link_demo_click(self, **event_args):
+    layout_form = Layout()  # Create an instance of the Layout form
+    layout_form.load_child_form(Form1())  # Load the Demo form into the content slot
+    open_form(layout_form)  # Open the Layout form
+  
+  # Dynamically load different forms based on navigation choice (menu)
+  def load_selected_form(self, form_name):
+    layout_form = Layout()
+    if form_name == "demo":
+        layout_form.load_child_form(Form1())
+    elif form_name == "dashboard":
+        layout_form.load_child_form(Stats())
+    elif form_name == "review":
+        layout_form.load_child_form(Review())
+    open_form(layout_form)
 
   #  Load Demo form into Layout
   def link_demo_click(self, **event_args):
