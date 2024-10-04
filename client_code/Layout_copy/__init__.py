@@ -17,7 +17,8 @@ class Layout_copy(Layout_copyTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     # self.navigate(self.column_panel_1, Homepage())
-
+    # Load the default form (HomePage) when LayoutForm is first opened
+    self.load_child_form(Homepage())
     # Any code you write here will run before the form opens.
     for link in [
       self.link_admin,
@@ -55,22 +56,22 @@ class Layout_copy(Layout_copyTemplate):
   def load_selected_form(self, form_name):
     layout_form = Layout()
     if form_name == "demo":
-        layout_form.load_child_form(Form1())
+        layout_copy_form.load_child_form(Form1())
     elif form_name == "dashboard":
-        layout_form.load_child_form(Stats())
+        layout_copy_form.load_child_form(Stats())
     elif form_name == "review":
-        layout_form.load_child_form(Review())
+        layout_copy_form.load_child_form(Review())
     open_form(layout_form)
 
   #  Load Demo form into Layout
   def link_demo_click(self, **event_args):
-    layout_form = Layout()  # Create an instance of the Layout form
-    layout_form.load_child_form(Form1())  # Load DashboardForm into the content slot
-    open_form(layout_form)  # Open the Layout form
+    layout_copy_form = Layout_copy()()  # Create an instance of the Layout form
+    layout_copy_formform.load_child_form(Form1())  # Load DashboardForm into the content slot
+    open_form(layout_copy_form)  # Open the Layout form
 
   #  Load Admin form into Layout
   def link_admin_click(self, **event_args):
-    layout_form = Layout()  # Create an instance of the Layout form
+    layout_form = Layout_copy()()  # Create an instance of the Layout form
     layout_form.load_child_form(Admin())  # Load DashboardForm into the content slot
     open_form(layout_form)  # Open the Layout form
 
