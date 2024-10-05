@@ -2,6 +2,11 @@ from ._anvil_designer import HomepageTemplate
 from anvil import *
 # import anvil.server
 from Layout_copy import Layout_copy
+import Admin  # Absolute import for Admin
+import Stats  # Absolute import for Stats
+import Review  # Absolute import for Review
+import Form1  # Absolute import for Form1
+import Form1_copy  # Absolute import for Form1
 
 # Homepage Class Definition
 class Homepage(HomepageTemplate):  # Your landing page form
@@ -17,7 +22,7 @@ class Homepage(HomepageTemplate):  # Your landing page form
   # Create an instance of the Layout form
     layout_form = Layout_copy()
     # Load Formtest into the content slot of Layout
-    layout_form.load_child_form(Form1())
+    layout_form.load_child_form(Form1_copy.Form1_copy())
     # Open the Layout form
     open_form(layout_form)
 

@@ -116,7 +116,7 @@ container:
 is_package: true
 layout_metadata: {description: The header footer and menu bar template}
 slots:
-  slot_1:
+  slot_content:
     index: 0
     set_layout_properties: {full_width_row: true, grid_position: 'AUODKB,AYROUB'}
     target: {name: column_panel_1, type: container}

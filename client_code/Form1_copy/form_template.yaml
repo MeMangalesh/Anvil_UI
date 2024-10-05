@@ -1,0 +1,78 @@
+components:
+- components:
+  - components:
+    - components:
+      - layout_properties: {grid_position: 'OGLDNC,OGFOAS'}
+        name: image_detection
+        properties: {height: 270}
+        type: Image
+      - layout_properties: {grid_position: 'NJUJQK,QCETVB'}
+        name: label_result
+        properties: {bold: true, role: title, text: RESULT}
+        type: Label
+      - layout_properties: {grid_position: 'OAIAWI,GKUCLY'}
+        name: label_status
+        properties: {role: title}
+        type: Label
+      layout_properties: {full_width_row: true, grid_position: 'VCONHP,PHUNRQ'}
+      name: outlined_card_3
+      properties: {col_spacing: none, role: outlined-card}
+      type: ColumnPanel
+    - components:
+      - layout_properties: {grid_position: 'ZIXAUQ,AXGTPM'}
+        name: image_byuser
+        properties: {height: 268}
+        type: Image
+      - event_bindings: {change: file_loader_1_change}
+        layout_properties: {grid_position: 'KSAJDC,NLLAGS'}
+        name: file_loader_1
+        properties: {role: elevated-button}
+        type: FileLoader
+      - components:
+        - event_bindings: {click: button_save_img_click}
+          layout_properties: {grid_position: 'LXRQNH,JDJXEU'}
+          name: button_save_img
+          properties:
+            role: tonal-button
+            text: |
+              SAVE
+          type: Button
+        - event_bindings: {click: button_detect_click}
+          layout_properties: {grid_position: 'LXRQNH,MPDEUC'}
+          name: button_detect
+          properties: {role: filled-button, text: DETECT}
+          type: Button
+        - components: []
+          layout_properties: {grid_position: 'RJTRRM,OXOZJY'}
+          name: column_panel_2
+          properties: {}
+          type: ColumnPanel
+        layout_properties: {grid_position: 'XFQGDW,MSMAZC'}
+        name: column_panel_1
+        properties: {}
+        type: ColumnPanel
+      layout_properties: {grid_position: 'VCONHP,MCPSPD'}
+      name: outlined_card_1
+      properties: {col_spacing: none, role: outlined-card}
+      type: ColumnPanel
+    - event_bindings: {click: button_reset_click}
+      layout_properties: {grid_position: 'NUIQQZ,RTOBNS'}
+      name: button_reset
+      properties: {background: 'theme:On Primary', role: outlined-button, text: RESET}
+      type: Button
+    layout_properties: {full_width_row: true, grid_position: 'VYDNZW,PJAUZH'}
+    name: outlined_card_2
+    properties: {background: 'theme:On Primary Container', col_spacing: large, role: outlined-card}
+    type: ColumnPanel
+  layout_properties: {slot: default}
+  name: content_panel
+  properties: {col_spacing: large, col_widths: '{}'}
+  type: ColumnPanel
+- layout_properties: {slot: nav-right}
+  name: navbar_links
+  properties: {}
+  type: FlowPanel
+container:
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
+is_package: true

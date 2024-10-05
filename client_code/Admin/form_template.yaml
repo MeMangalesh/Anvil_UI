@@ -14,7 +14,7 @@ components:
           name: file_loader_1
           properties: {role: elevated-button, tooltip: 'Upload image file in .jpeg, .jpg or .png formats'}
           type: FileLoader
-        layout_properties: {grid_position: 'OCCWPY,VMNTUC'}
+        layout_properties: {full_width_row: true, grid_position: 'OCCWPY,VMNTUC'}
         name: outlined_card_5
         properties: {role: outlined-card}
         type: ColumnPanel
@@ -23,11 +23,11 @@ components:
           name: image_detection
           properties: {height: 349}
           type: Image
-        layout_properties: {grid_position: 'OCCWPY,SYVEKW'}
+        layout_properties: {full_width_row: true, grid_position: 'OCCWPY,SYVEKW'}
         name: outlined_card_6
         properties: {role: outlined-card}
         type: ColumnPanel
-      layout_properties: {grid_position: 'KEKIZL,MTHXWL'}
+      layout_properties: {full_width_row: true, grid_position: 'KEKIZL,MTHXWL'}
       name: column_panel_1
       properties: {background: 'theme:On Primary Container'}
       type: ColumnPanel
@@ -108,7 +108,7 @@ components:
       type: ColumnPanel
     layout_properties: {full_width_row: true, grid_position: 'CACBKZ,RDOJRQ KAJFVX,MHLERO'}
     name: outlined_card_1
-    properties: {role: outlined-card}
+    properties: {background: 'theme:On Primary Container', role: outlined-card}
     type: ColumnPanel
   - layout_properties: {grid_position: 'CACBKZ,RDOJRQ GXTPXK,LAEQGB'}
     name: label_table_status
