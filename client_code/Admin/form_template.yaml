@@ -47,7 +47,7 @@ components:
       properties: {role: null}
       type: ColumnPanel
     - components:
-      - layout_properties: {grid_position: 'YLYSPG,ORMEIR'}
+      - layout_properties: {full_width_row: true, grid_position: 'YLYSPG,ORMEIR'}
         name: label_5
         properties: {bold: true, foreground: 'theme:On Primary', role: title, text: SUMMARY}
         type: Label
@@ -88,7 +88,7 @@ components:
           name: label_2
           properties: {bold: true, role: title}
           type: Label
-        layout_properties: {grid_position: 'XSEIUA,FDKZVR'}
+        layout_properties: {full_width_row: true, grid_position: 'XSEIUA,FDKZVR'}
         name: outlined_card_4
         properties: {role: outlined-card}
         type: ColumnPanel
@@ -96,13 +96,13 @@ components:
         - event_bindings: {click: button_show_data_click}
           layout_properties: {}
           name: button_show_data
-          properties: {background: 'theme:Primary Container', text: SHOW DATA}
+          properties: {align: right, background: 'theme:Primary Container', text: SHOW DATA, visible: false}
           type: Button
         layout_properties: {grid_position: 'SPVWQU,NVWTCL'}
         name: flow_panel_2
         properties: {align: right}
         type: FlowPanel
-      layout_properties: {grid_position: 'PBCNEN,WNDJTD'}
+      layout_properties: {full_width_row: true, grid_position: 'PBCNEN,WNDJTD'}
       name: outlined_card_3
       properties: {background: 'theme:On Primary Container', role: outlined-card}
       type: ColumnPanel
