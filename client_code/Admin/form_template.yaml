@@ -143,7 +143,7 @@ components:
     type: ColumnPanel
   layout_properties: {slot: default}
   name: content_panel
-  properties: {}
+  properties: {col_spacing: huge}
   type: ColumnPanel
 - components:
   - event_bindings: {click: link_User_click}

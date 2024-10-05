@@ -67,7 +67,7 @@ components:
       type: Button
     layout_properties: {full_width_row: true, grid_position: 'VYDNZW,PJAUZH'}
     name: outlined_card_2
-    properties: {background: 'theme:On Primary Container', col_spacing: large, role: outlined-card}
+    properties: {background: 'theme:On Primary Container', col_spacing: huge, role: outlined-card}
     type: ColumnPanel
   layout_properties: {slot: default}
   name: content_panel
