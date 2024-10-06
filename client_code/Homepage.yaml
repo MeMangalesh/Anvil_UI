@@ -57,11 +57,11 @@ components:
         type: Label
       - layout_properties: {grid_position: 'NWHWWB,VYRIVF'}
         name: label_2
-        properties: {foreground: 'theme:On Primary', icon: 'fa:map', spacing_above: none, spacing_below: none, text:  N03.15475 E101.68833 }
+        properties: {foreground: 'theme:On Primary', icon: 'fa:map-marker', spacing_above: none, spacing_below: none, text:  N03.15475 E101.68833 }
         type: Label
       - layout_properties: {grid_position: 'IUBEOI,RVXFZH'}
         name: label_3
-        properties: {foreground: 'theme:On Primary', icon: 'fa:address-book', text:  (+6) 03 8000 8000 pro@kkr.gov.my}
+        properties: {foreground: 'theme:On Primary', icon: 'fa:address-book', text:  (+6) 03 8000 8000 }
         type: Label
       - layout_properties: {grid_position: 'PUEIYD,XXFZFT'}
         name: label_4

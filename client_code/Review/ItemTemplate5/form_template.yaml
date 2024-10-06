@@ -4,7 +4,7 @@ components:
   - {code: '', property: tag, writeback: false}
   layout_properties: {grid_position: 'GFLJUS,LUCZJL'}
   name: image_display
-  properties: {role: null}
+  properties: {background: '', role: null}
   type: Image
 - components:
   - components:
@@ -63,6 +63,6 @@ components:
 container:
   data_bindings:
   - {code: 'self.item[''image_base64'']', property: tag, writeback: false}
-  properties: {col_spacing: huge}
+  properties: {background: '', col_spacing: huge}
   type: ColumnPanel
 is_package: true
