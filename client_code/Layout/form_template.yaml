@@ -5,13 +5,13 @@ components:
       - name: spacer_4
         properties: {height: 32}
         type: Spacer
-      - layout_properties: {width: 106}
+      - layout_properties: {width: 103}
         name: image_3
         properties: {height: 84}
         type: Image
       - layout_properties: {}
         name: label_1
-        properties: {align: left, role: headline, text: PODS...AI-based Potholes Detection System}
+        properties: {align: left, bold: false, role: headline, text: PODS...the AI-based Potholes Detection System}
         type: Label
       - layout_properties: {width: 105}
         name: image_4
