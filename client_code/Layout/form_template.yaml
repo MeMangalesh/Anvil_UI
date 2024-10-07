@@ -1,7 +1,18 @@
 components:
 - components:
   - components:
-    - components: []
+    - components:
+      - components:
+        - data_bindings:
+          - {code: '100', property: height, writeback: false}
+          layout_properties: {grid_position: 'MCXQJU,VKMJIZ'}
+          name: image_masthead
+          properties: {display_mode: fill_width, source: _/theme/2.png}
+          type: Image
+        layout_properties: {full_width_row: true, grid_position: 'LKOFOE,LCCUBQ'}
+        name: outlined_card_2
+        properties: {role: null}
+        type: ColumnPanel
       layout_properties: {full_width_row: true, grid_position: 'VTDGYP,OZPUCI'}
       name: column_panel_1
       properties: {col_spacing: none, role: null}
@@ -88,7 +99,7 @@ components:
 - data_bindings:
   - {code: '', property: border, writeback: false}
   layout_properties: {slot: title}
-  name: label_2
+  name: label_title
   properties: {role: title, text: 'PODS by Ministry of Works '}
   type: Label
 - layout_properties: {slot: nav-right}
@@ -102,6 +113,6 @@ is_package: true
 layout_metadata: {description: The header footer and menu bar template}
 slots:
   slot_1:
-    index: 0
+    index: 1
     set_layout_properties: {full_width_row: true, grid_position: 'WILKMB,NARJBJ'}
     target: {name: column_panel_1, type: container}

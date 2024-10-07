@@ -16,6 +16,8 @@ class Layout(LayoutTemplate):
     self.init_components(**properties)
     # Load the default form (Homepage) when Layout_copy is first opened
     # self.load_child_form(Homepage.Homepage())  # Load Homepage initially
+    self.label_title.text = "PODS...the AI-based Potholes Detection System"
+    # self.hamburger_icon.visible = True  # Ensure the hamburger icon is visible
 
     # Create an image component for the masthead
     # self.masthead_image = Image(source=anvil.URLMedia('theme:/header.png'), 
@@ -45,7 +47,7 @@ class Layout(LayoutTemplate):
     """Clear and load the selected form into the content slot."""
     # self.slot_content.clear()  # Clear any previous content in the slot
     # self.slot_content.add_component(form_instance)  # Add the new form to the slot
-    self.outlined_card_3.clear()  # Clear any previous content in the slot
+    # self.outlined_card_3.clear()  # Clear any previous content in the slot
     self.outlined_card_3.add_component(form_instance, full_width_row=True, align='center')  # Add the new form to the slot
 
   #  Load Demo form into Layout
