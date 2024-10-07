@@ -17,6 +17,14 @@ class Layout(LayoutTemplate):
     # Load the default form (Homepage) when Layout_copy is first opened
     # self.load_child_form(Homepage.Homepage())  # Load Homepage initially
 
+    # Create an image component for the masthead
+    # self.masthead_image = Image(source=anvil.URLMedia('theme:/header.png'), 
+    #                             width="100%", 
+    #                             height="200px")
+
+   # # Add the image component to the form (you can use a slot or a container)
+   #  self.add_component(self.masthead_image, slot='header')
+
     # Any code you write here will run before the form opens.
     for link in [
       self.link_admin,

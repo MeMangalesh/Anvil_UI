@@ -3,7 +3,7 @@ components:
   - components:
     - layout_properties: {full_width_row: true, grid_position: 'QZJZGL,TLHYOA'}
       name: image_1
-      properties: {display_mode: fill_width, source: _/theme/Banner.png}
+      properties: {display_mode: fill_width, height: 335, source: _/theme/header.png}
       type: Image
     layout_properties: {full_width_row: true, grid_position: 'ZPPYVR,ESLMNX'}
     name: outlined_card_1
