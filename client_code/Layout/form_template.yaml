@@ -1,27 +1,11 @@
 components:
 - components:
   - components:
-    - components:
-      - name: spacer_4
-        properties: {height: 32}
-        type: Spacer
-      - layout_properties: {width: 103}
-        name: image_3
-        properties: {height: 84}
-        type: Image
-      - layout_properties: {}
-        name: label_1
-        properties: {align: left, bold: false, role: headline, text: PODS...the AI-based Potholes Detection System}
-        type: Label
-      - layout_properties: {width: 105}
-        name: image_4
-        properties: {height: 68}
-        type: Image
-      layout_properties: {grid_position: 'VSQUJL,CLTYPR'}
-      name: flow_panel_1
-      properties: {spacing: huge}
-      type: FlowPanel
-    layout_properties: {full_width_row: true, grid_position: 'IVLGLZ,EZLTZY', row_background: 'theme:On Primary Container'}
+    - layout_properties: {grid_position: 'JDMDUV,AODHWT'}
+      name: image_3
+      properties: {}
+      type: Image
+    layout_properties: {full_width_row: true, grid_position: 'IVLGLZ,EZLTZY', row_background: ''}
     name: outlined_card_2
     properties: {col_spacing: huge, foreground: 'theme:On Primary', role: null}
     type: ColumnPanel
@@ -76,14 +60,10 @@ components:
       name: flow_panel_2
       properties: {align: right}
       type: FlowPanel
-    layout_properties: {full_width_row: false, grid_position: 'WTSGCQ,XMEBOF'}
+    layout_properties: {full_width_row: true, grid_position: 'WTSGCQ,XMEBOF'}
     name: outlined_card_1
-    properties: {background: 'theme:On Primary Container', col_spacing: medium, col_widths: '{}', foreground: 'theme:Primary Container', role: outlined-card}
+    properties: {background: 'theme:On Primary Container', col_spacing: huge, col_widths: '{}', foreground: 'theme:Primary Container', role: outlined-card}
     type: ColumnPanel
-  - layout_properties: {grid_position: 'ZCJRFH,ADRFXY'}
-    name: spacer_3
-    properties: {height: 32}
-    type: Spacer
   layout_properties: {slot: default}
   name: content_panel
   properties: {}
