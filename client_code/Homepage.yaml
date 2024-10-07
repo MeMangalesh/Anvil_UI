@@ -23,15 +23,18 @@ components:
       name: flow_panel_2
       properties: {}
       type: FlowPanel
-    - layout_properties: {}
+    - event_bindings: {click: button_dashboard_click}
+      layout_properties: {}
       name: button_dashboard
       properties: {background: 'theme:On Primary Container', font_size: 36, foreground: 'theme:On Primary', icon: 'fa:line-chart', role: elevated-button, text: DASHBOARD}
       type: Button
-    - layout_properties: {}
+    - event_bindings: {click: button_review_click}
+      layout_properties: {}
       name: button_review
       properties: {background: 'theme:On Primary Container', font_size: 36, foreground: 'theme:On Primary', icon: 'fa:edit', role: filled-button, text: REVIEW}
       type: Button
-    - layout_properties: {}
+    - event_bindings: {click: button_admin_click}
+      layout_properties: {}
       name: button_admin
       properties: {background: 'theme:On Primary Container', font_size: 36, foreground: 'theme:On Primary', icon: 'fa:cog', role: filled-button, text: ADMIN}
       type: Button
