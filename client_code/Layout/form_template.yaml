@@ -75,7 +75,7 @@ components:
       type: FlowPanel
     layout_properties: {full_width_row: true, grid_position: 'WTSGCQ,XMEBOF'}
     name: outlined_card_1
-    properties: {background: 'theme:On Primary Container', col_spacing: huge, col_widths: '{}', foreground: 'theme:Primary Container', role: outlined-card}
+    properties: {background: 'theme:On Primary Container', col_spacing: medium, col_widths: '{}', foreground: 'theme:Primary Container', role: outlined-card}
     type: ColumnPanel
   layout_properties: {slot: default}
   name: content_panel
@@ -113,6 +113,10 @@ components:
   name: label_2
   properties: {role: title, text: 'PODS by Ministry of Works '}
   type: Label
+- layout_properties: {slot: nav-right}
+  name: flow_panel_1
+  properties: {}
+  type: FlowPanel
 container:
   properties: {html: '@theme:standard-page.html'}
   type: HtmlTemplate
