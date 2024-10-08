@@ -141,10 +141,6 @@ components:
   name: content_panel
   properties: {col_spacing: huge}
   type: ColumnPanel
-- layout_properties: {slot: title}
-  name: label_Admin
-  properties: {text: Admin}
-  type: Label
 container:
   properties: {html: '@theme:standard-page.html'}
   type: HtmlTemplate

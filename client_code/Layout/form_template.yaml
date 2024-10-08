@@ -11,118 +11,72 @@ components:
     properties: {col_spacing: huge, role: null}
     type: ColumnPanel
   - components:
-    - components:
-      - layout_properties: {full_width_row: true, grid_position: 'DRGXOI,VSIEJK'}
-        name: label_3
-        properties:
-          align: left
-          foreground: theme:On Primary
-          spacing_below: none
-          text: "Kementerian Kerja Raya             \nTingkat 1 - 14 , Kompleks Kerja Raya                                                                  Jalan Sultan Salahuddin                                                                                                                                    50580 Kuala Lumpur     "
-        type: Label
-      layout_properties: {grid_position: 'SBNDME,AQIDIF IPFNIM,RJUPFV'}
-      name: column_panel_2
-      properties: {}
-      type: ColumnPanel
-    - layout_properties: {full_width_row: true, grid_position: 'SBNDME,AQIDIF MQDTGZ,JCOXYT'}
+    - layout_properties: {full_width_row: true, grid_position: 'GLSMUM,CDQNCT FLGCXO,CSNTPW'}
+      name: label_3
+      properties:
+        align: left
+        foreground: theme:On Primary
+        spacing_above: none
+        spacing_below: none
+        text: "Kementerian Kerja Raya             \nTingkat 1 - 14 , Kompleks Kerja Raya                                                                                             Jalan Sultan Salahuddin                                                                                                                                    50580 Kuala Lumpur     "
+      type: Label
+    - layout_properties: {grid_position: 'GLSMUM,CDQNCT IRYMTK,ZLZOSC'}
       name: label_4
       properties: {foreground: 'theme:On Primary', icon: 'fa:map-marker', spacing_above: none, spacing_below: none, text:  N03.15475 E101.68833 }
       type: Label
-    - layout_properties: {full_width_row: true, grid_position: 'SBNDME,AQIDIF IHALQX,MFSCJC'}
+    - layout_properties: {grid_position: 'GLSMUM,CDQNCT YBIYWR,DWUOCB'}
       name: label_5
       properties: {foreground: 'theme:On Primary', icon: 'fa:address-book', spacing_above: none, spacing_below: none, text:  (+6) 03 8000 8000 }
       type: Label
-    - layout_properties: {full_width_row: true, grid_position: 'SBNDME,AQIDIF JEDQZE,BIGRFF'}
+    - layout_properties: {grid_position: 'GLSMUM,CDQNCT PWGPVG,JJRVQE'}
       name: label_6
       properties: {foreground: 'theme:On Primary', icon: 'fa:envelope', spacing_above: none, spacing_below: none, text: pro@kkr.gov.my}
       type: Label
-    - layout_properties: {grid_position: 'SBNDME,VPRLSV PBFMVC,FLSGHZ'}
-      name: column_panel_3
-      properties: {}
-      type: ColumnPanel
     - components:
-      - name: image_1
-        properties: {alt_text: MyJalan app, height: 102, source: _/theme/MyJalan.png}
-        type: Image
       - name: image_2
         properties: {height: 99, source: _/theme/MyJalan_QR.jpeg}
         type: Image
-      layout_properties: {full_width_row: true, grid_position: 'SBNDME,VPRLSV CMVRGX,PVDIED'}
+      - name: image_1
+        properties: {alt_text: MyJalan app, height: 102, source: _/theme/MyJalan.png}
+        type: Image
+      layout_properties: {full_width_row: true, grid_position: 'GLSMUM,VQDADX'}
       name: flow_panel_2
       properties: {align: right}
       type: FlowPanel
     layout_properties: {full_width_row: true, grid_position: 'WTSGCQ,XMEBOF'}
     name: outlined_card_1
-    properties: {background: 'theme:On Primary Container', col_spacing: medium, col_widths: '{}', foreground: 'theme:Primary Container', role: outlined-card}
+    properties: {background: 'theme:On Primary Container', col_spacing: small, col_widths: '{}', foreground: 'theme:Primary Container', role: outlined-card, spacing_above: medium, spacing_below: medium}
     type: ColumnPanel
   layout_properties: {slot: default}
   name: content_panel
-  properties: {}
+  properties: {col_spacing: huge}
   type: ColumnPanel
-- components:
-  - event_bindings: {click: link_home_click}
-    layout_properties: {grid_position: 'BNJRRD,NWQXHG'}
-    name: link_home
-    properties: {icon: 'fa:home', text: HOME}
-    type: Link
-  - components: []
-    event_bindings: {click: link_demo_click}
-    layout_properties: {grid_position: 'ENDYRN,IOBQVT'}
-    name: link_demo
-    properties: {icon: 'fa:play-circle', text: DEMO}
-    type: Link
-  - event_bindings: {click: link_admin_click}
-    layout_properties: {grid_position: 'PUCKVF,NQYMJP'}
-    name: link_admin
-    properties: {icon: 'fa:cog', text: ADMIN}
-    type: Link
-  - event_bindings: {click: link_review_click}
-    layout_properties: {grid_position: 'WLYUPN,QDUXZU'}
-    name: link_review
-    properties: {icon: 'fa:edit', text: REVIEW}
-    type: Link
-  - event_bindings: {click: link_dashboard_click}
-    layout_properties: {grid_position: 'PXPSWF,WIUXES'}
-    name: link_dashboard
-    properties: {icon: 'fa:line-chart', text: DASHBOARD}
-    type: Link
-  layout_properties: {slot: left-nav}
-  name: column_panel_side_menu
-  properties: {}
-  type: ColumnPanel
-- data_bindings:
-  - {code: '', property: border, writeback: false}
-  layout_properties: {slot: title}
-  name: label_title
-  properties: {bold: true, role: title, text: 'PoDS...by Ministry of Works '}
-  type: Label
 - components:
   - event_bindings: {click: link_home1_click}
     layout_properties: {}
     name: link_home1
-    properties: {text: Home}
+    properties: {icon: 'fa:home', text: Home}
     type: Link
   - event_bindings: {click: link_demo1_click}
     layout_properties: {}
     name: link_demo1
-    properties: {text: Demo}
+    properties: {icon: 'fa:play-circle', text: Demo}
     type: Link
-  - event_bindings: {click: link_Admin1_click}
-    layout_properties: {}
+  - layout_properties: {}
     name: link_Admin1
-    properties: {text: Admin}
+    properties: {icon: 'fa:gear', text: Admin}
     type: Link
   - layout_properties: {}
     name: link_review1
-    properties: {text: Review}
+    properties: {icon: 'fa:edit', text: Review}
     type: Link
   - layout_properties: {}
     name: link_dashboard1
-    properties: {text: Dashboard}
+    properties: {icon: 'fa:line-chart', text: Dashboard}
     type: Link
   layout_properties: {slot: nav-right}
   name: flow_panel_1
-  properties: {}
+  properties: {align: left}
   type: FlowPanel
 container:
   properties: {html: '@theme:standard-page.html'}
@@ -131,6 +85,6 @@ is_package: true
 layout_metadata: {description: The header footer and menu bar template}
 slots:
   slot_1:
-    index: 0
-    set_layout_properties: {full_width_row: true, grid_position: 'WILKMB,NARJBJ'}
-    target: {name: column_panel_1, type: container}
+    index: 1
+    set_layout_properties: {full_width_row: true, grid_position: 'RHIGZT,DHMUBW'}
+    target: {name: outlined_card_3, type: container}

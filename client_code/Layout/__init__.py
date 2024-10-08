@@ -16,7 +16,7 @@ class Layout(LayoutTemplate):
     self.init_components(**properties)
     # Load the default form (Homepage) when Layout_copy is first opened
     # self.load_child_form(Homepage.Homepage())  # Load Homepage initially
-    self.label_title.text = "PODS...the AI-based Potholes Detection System"
+    # self.label_title.text = "PODS...the AI-based Potholes Detection System"
     # self.hamburger_icon.visible = True  # Ensure the hamburger icon is visible
 
     # Create an image component for the masthead

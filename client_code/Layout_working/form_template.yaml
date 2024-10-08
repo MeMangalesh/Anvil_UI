@@ -1,6 +1,15 @@
 components:
 - components:
   - components:
+    - components:
+      - layout_properties: {full_width_row: true, grid_position: 'OAUKDH,BWRWVE'}
+        name: label_1
+        properties: {bold: true, text: PoDS...by Ministry of Works}
+        type: Label
+      layout_properties: {full_width_row: true, grid_position: 'WYEKRS,EJUIZV'}
+      name: outlined_card_2
+      properties: {role: outlined-card}
+      type: ColumnPanel
     - components: []
       layout_properties: {full_width_row: true, grid_position: 'VTDGYP,OZPUCI'}
       name: column_panel_1
@@ -94,7 +103,7 @@ components:
   - {code: '', property: border, writeback: false}
   layout_properties: {slot: title}
   name: label_title
-  properties: {bold: true, role: title, text: 'PoDS...by Ministry of Works '}
+  properties: {role: title, text: 'PODS by Ministry of Works '}
   type: Label
 - components:
   - event_bindings: {click: link_home1_click}
@@ -107,8 +116,7 @@ components:
     name: link_demo1
     properties: {text: Demo}
     type: Link
-  - event_bindings: {click: link_Admin1_click}
-    layout_properties: {}
+  - layout_properties: {}
     name: link_Admin1
     properties: {text: Admin}
     type: Link
@@ -122,7 +130,7 @@ components:
     type: Link
   layout_properties: {slot: nav-right}
   name: flow_panel_1
-  properties: {}
+  properties: {align: right}
   type: FlowPanel
 container:
   properties: {html: '@theme:standard-page.html'}
