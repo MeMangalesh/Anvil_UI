@@ -1,18 +1,7 @@
 components:
 - components:
   - components:
-    - components:
-      - components:
-        - data_bindings:
-          - {code: '100', property: height, writeback: false}
-          layout_properties: {grid_position: 'MCXQJU,VKMJIZ'}
-          name: image_masthead
-          properties: {display_mode: fill_width, source: _/theme/2.png}
-          type: Image
-        layout_properties: {full_width_row: true, grid_position: 'LKOFOE,LCCUBQ'}
-        name: outlined_card_2
-        properties: {role: null}
-        type: ColumnPanel
+    - components: []
       layout_properties: {full_width_row: true, grid_position: 'VTDGYP,OZPUCI'}
       name: column_panel_1
       properties: {col_spacing: none, role: null}
@@ -71,26 +60,31 @@ components:
   properties: {}
   type: ColumnPanel
 - components:
+  - event_bindings: {click: link_home_click}
+    layout_properties: {grid_position: 'BNJRRD,NWQXHG'}
+    name: link_home
+    properties: {icon: 'fa:home', text: HOME}
+    type: Link
   - components: []
     event_bindings: {click: link_demo_click}
-    layout_properties: {grid_position: 'KHASWR,HLCCJX'}
+    layout_properties: {grid_position: 'ENDYRN,IOBQVT'}
     name: link_demo
-    properties: {text: DEMO}
+    properties: {icon: 'fa:play-circle', text: DEMO}
     type: Link
   - event_bindings: {click: link_admin_click}
     layout_properties: {grid_position: 'PUCKVF,NQYMJP'}
     name: link_admin
-    properties: {text: ADMIN}
+    properties: {icon: 'fa:cog', text: ADMIN}
     type: Link
   - event_bindings: {click: link_review_click}
     layout_properties: {grid_position: 'WLYUPN,QDUXZU'}
     name: link_review
-    properties: {text: REVIEW}
+    properties: {icon: 'fa:edit', text: REVIEW}
     type: Link
   - event_bindings: {click: link_dashboard_click}
     layout_properties: {grid_position: 'PXPSWF,WIUXES'}
     name: link_dashboard
-    properties: {text: DASHBOARD}
+    properties: {icon: 'fa:line-chart', text: DASHBOARD}
     type: Link
   layout_properties: {slot: left-nav}
   name: column_panel_side_menu
@@ -102,7 +96,31 @@ components:
   name: label_title
   properties: {role: title, text: 'PODS by Ministry of Works '}
   type: Label
-- layout_properties: {slot: nav-right}
+- components:
+  - event_bindings: {click: link_home1_click}
+    layout_properties: {}
+    name: link_home1
+    properties: {text: Home}
+    type: Link
+  - event_bindings: {click: link_demo1_click}
+    layout_properties: {}
+    name: link_demo1
+    properties: {text: Demo}
+    type: Link
+  - event_bindings: {click: link_Admin1_click}
+    layout_properties: {}
+    name: link_Admin1
+    properties: {text: Admin}
+    type: Link
+  - layout_properties: {}
+    name: link_review1
+    properties: {text: Review}
+    type: Link
+  - layout_properties: {}
+    name: link_dashboard1
+    properties: {text: Dashboard}
+    type: Link
+  layout_properties: {slot: nav-right}
   name: flow_panel_1
   properties: {}
   type: FlowPanel
@@ -113,6 +131,6 @@ is_package: true
 layout_metadata: {description: The header footer and menu bar template}
 slots:
   slot_1:
-    index: 1
+    index: 0
     set_layout_properties: {full_width_row: true, grid_position: 'WILKMB,NARJBJ'}
     target: {name: column_panel_1, type: container}

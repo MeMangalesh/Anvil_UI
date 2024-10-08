@@ -38,6 +38,10 @@ components:
   name: outlined_card_1
   properties: {col_spacing: huge, role: outlined-card}
   type: ColumnPanel
+- layout_properties: {slot: title}
+  name: label_Review
+  properties: {text: Review}
+  type: Label
 container:
   properties: {html: '@theme:standard-page.html', visible: true}
   type: HtmlTemplate

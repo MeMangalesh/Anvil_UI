@@ -96,7 +96,7 @@ components:
         - event_bindings: {click: button_show_data_click}
           layout_properties: {}
           name: button_show_data
-          properties: {align: right, background: 'theme:Primary Container', text: SHOW DATA, visible: false}
+          properties: {align: right, background: 'theme:On Primary', text: SHOW DATA, visible: false}
           type: Button
         layout_properties: {grid_position: 'SPVWQU,NVWTCL'}
         name: flow_panel_2
@@ -106,18 +106,14 @@ components:
       name: outlined_card_3
       properties: {background: 'theme:On Primary Container', role: outlined-card}
       type: ColumnPanel
-    layout_properties: {full_width_row: true, grid_position: 'CACBKZ,RDOJRQ KAJFVX,MHLERO'}
+    layout_properties: {full_width_row: true, grid_position: 'KAJFVX,MHLERO'}
     name: outlined_card_1
     properties: {background: 'theme:On Primary Container', role: outlined-card}
     type: ColumnPanel
-  - layout_properties: {grid_position: 'CACBKZ,RDOJRQ GXTPXK,LAEQGB'}
+  - layout_properties: {grid_position: 'GXTPXK,LAEQGB'}
     name: label_table_status
     properties: {}
     type: Label
-  - layout_properties: {grid_position: 'CACBKZ,PHDSHP'}
-    name: timer_1
-    properties: {}
-    type: Timer
   - components:
     - components:
       - name: repeating_panel_image_data
@@ -137,7 +133,7 @@ components:
         visible: false
         wrap_on: mobile
       type: DataGrid
-    layout_properties: {grid_position: 'CACBKZ,RDOJRQ NDPKNO,TRPIAV'}
+    layout_properties: {grid_position: 'NDPKNO,TRPIAV'}
     name: outlined_card_2
     properties: {role: outlined-card}
     type: ColumnPanel
@@ -145,6 +141,10 @@ components:
   name: content_panel
   properties: {col_spacing: huge}
   type: ColumnPanel
+- layout_properties: {slot: title}
+  name: label_Admin
+  properties: {text: Admin}
+  type: Label
 container:
   properties: {html: '@theme:standard-page.html'}
   type: HtmlTemplate
