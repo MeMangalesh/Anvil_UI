@@ -28,13 +28,13 @@ class Layout_copy(Layout_copyTemplate):
     #  self.add_component(self.masthead_image, slot='header')
 
     # Any code you write here will run before the form opens.
-    for link in [
-      self.link_admin,
-      self.link_dashboard,
-      self.link_demo,
-      self.link_review,
-    ]:
-      link.role = ["spaced-title"]
+    # for link in [
+    #   self.link_admin,
+    #   self.link_dashboard,
+    #   self.link_demo,
+    #   self.link_review,
+    # ]:
+    #   link.role = ["spaced-title"]
       # link.role = ["spaced-title", "display-none-responsive"]
 
   # def navigate(self, active_link, form):
@@ -54,25 +54,25 @@ class Layout_copy(Layout_copyTemplate):
 
   #  Load Demo form into Layout
   def link_demo_click(self, **event_args):
-    layout_form = Layout()  # Create an instance of the Layout form
+    layout_form = Layout_copy()  # Create an instance of the Layout form
     layout_form.load_child_form(Form1())  # Load DashboardForm into the content slot
     open_form(layout_form)  # Open the Layout form
 
   #  Load Admin form into Layout
   def link_admin_click(self, **event_args):
-    layout_form = Layout()  # Create an instance of the Layout form
+    layout_form = Layout_copy()  # Create an instance of the Layout form
     layout_form.load_child_form(Admin())  # Load DashboardForm into the content slot
     open_form(layout_form)  # Open the Layout form
 
   #  Load Admin form into Layout
   def link_review_click(self, **event_args):
-    layout_form = Layout()  # Create an instance of the Layout form
+    layout_form = Layout_copy()  # Create an instance of the Layout form
     layout_form.load_child_form(Review())  # Load DashboardForm into the content slot
     open_form(layout_form)  # Open the Layout form
 
   #  Load Admin form into Layout
   def link_dashboard_click(self, **event_args):
-    layout_form = Layout()  # Create an instance of the Layout form
+    layout_form = Layout_copy()  # Create an instance of the Layout form
     layout_form.load_child_form(Stats())  # Load DashboardForm into the content slot
     open_form(layout_form)  # Open the Layout form
 
@@ -83,11 +83,11 @@ class Layout_copy(Layout_copyTemplate):
     open_form("Homepage")
 
   def link_demo1_click(self, **event_args):
-    layout_form = Layout()  # Create an instance of the Layout form
+    layout_form = Layout_copy()  # Create an instance of the Layout form
     layout_form.load_child_form(Form1())  # Load DashboardForm into the content slot
     open_form(layout_form)  # Open the Layout form
 
   def link_Admin1_click(self, **event_args):
-    layout_form = Layout()  # Create an instance of the Layout form
+    layout_form = Layout_copy()()  # Create an instance of the Layout form
     layout_form.load_child_form(Admin())  # Load DashboardForm into the content slot
     open_form(layout_form)  # Open the Layout form

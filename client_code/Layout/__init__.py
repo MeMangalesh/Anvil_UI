@@ -28,13 +28,13 @@ class Layout(LayoutTemplate):
    #  self.add_component(self.masthead_image, slot='header')
 
     # Any code you write here will run before the form opens.
-    for link in [
-      self.link_admin,
-      self.link_dashboard,
-      self.link_demo,
-      self.link_review,
-    ]:
-      link.role = ["spaced-title"]
+    # for link in [
+    #   self.link_admin,
+    #   self.link_dashboard,
+    #   self.link_demo,
+    #   self.link_review,
+    # ]:
+    #   link.role = ["spaced-title"]
       # link.role = ["spaced-title", "display-none-responsive"]
 
   # def navigate(self, active_link, form):

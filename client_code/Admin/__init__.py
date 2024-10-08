@@ -156,7 +156,7 @@ class Admin(AdminTemplate):
     if potholes_detected:
         self.label_message.text = "Potholes Detected."
         self.label_result.foreground = "red"
-        self.timer_1.enabled = True  # Start blinking if potholes are detected
+        # self.timer_1.enabled = True  # Start blinking if potholes are detected
     else:
         self.label_result.text = "No potholes detected."
         self.label_result.foreground = "green"
