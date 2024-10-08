@@ -11,7 +11,7 @@ class Admin(AdminTemplate):
     
     # Load data when the form is initialized
     # self.load_data()
-    self.timer_1.enabled = False  # Disable the timer initially
+    # self.timer_1.enabled = False  # Disable the timer initially
     # Set initial message in outlined_card_3
     self.label_message.text = "Upload image to view detection result"
     self.button_deactivate(self)
