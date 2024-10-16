@@ -76,8 +76,41 @@ components:
     type: Link
   layout_properties: {slot: nav-right}
   name: flow_panel_1
-  properties: {align: left, gap: none}
+  properties: {align: left, gap: none, vertical_align: top}
   type: FlowPanel
+- components:
+  - event_bindings: {click: link_home_click}
+    layout_properties: {grid_position: 'BSSESH,ZCNAZQ'}
+    name: link_home
+    properties: {bold: true, icon: 'fa:home', text: Home}
+    type: Link
+  - event_bindings: {click: link_demo_click}
+    layout_properties: {grid_position: 'TAIZJJ,HKVRPW'}
+    name: link_demo
+    properties: {bold: true, icon: 'fa:play-circle', text: Demo}
+    type: Link
+  - event_bindings: {click: link_admin_click}
+    layout_properties: {grid_position: 'OAKVNZ,EJQPQD'}
+    name: link_admin
+    properties: {bold: true, icon: 'fa:gear', text: Admin}
+    type: Link
+  - components: []
+    layout_properties: {grid_position: 'PJWBNX,ASKLQE'}
+    name: link_review
+    properties: {bold: true, icon: 'fa:edit', text: Review}
+    type: Link
+  - layout_properties: {grid_position: 'DATYUQ,URQADR'}
+    name: link_dashboard
+    properties: {bold: true, icon: 'fa:line-chart', text: Dashboard}
+    type: Link
+  layout_properties: {slot: left-nav}
+  name: column_panel_2
+  properties: {}
+  type: ColumnPanel
+- layout_properties: {slot: title}
+  name: label_1
+  properties: {text: PoDS...by Ministry of Works}
+  type: Label
 container:
   properties: {html: '@theme:standard-page.html'}
   type: HtmlTemplate

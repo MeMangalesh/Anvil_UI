@@ -74,9 +74,6 @@ class Layout(LayoutTemplate):
     layout_form.load_child_form(Stats())  # Load DashboardForm into the content slot
     open_form(layout_form)  # Open the Layout form
 
-  def link_home_click(self, **event_args):
-    open_form('Homepage')  # Open the Layout form
-
   def link_home1_click(self, **event_args):
     open_form('Homepage')
 
@@ -88,4 +85,33 @@ class Layout(LayoutTemplate):
   def link_Admin1_click(self, **event_args):
     layout_form = Layout()  # Create an instance of the Layout form
     layout_form.load_child_form(Admin())  # Load DashboardForm into the content slot
+    open_form(layout_form)  # Open the Layout form
+
+#Side navigation 
+
+  #  Load Demo form into Layout
+  def link_home_click(self, **event_args):
+    open_form('Homepage') # Open the Layout form
+  
+  def link_demo_click(self, **event_args):
+    layout_form = Layout()  # Create an instance of the Layout form
+    layout_form.load_child_form(Form1())  # Load DashboardForm into the content slot
+    open_form(layout_form)  # Open the Layout form
+
+  #  Load Admin form into Layout
+  def link_admin_click(self, **event_args):
+    layout_form = Layout()  # Create an instance of the Layout form
+    layout_form.load_child_form(Admin())  # Load DashboardForm into the content slot
+    open_form(layout_form)  # Open the Layout form
+
+  #  Load Admin form into Layout
+  def link_review_click(self, **event_args):
+    layout_form = Layout()  # Create an instance of the Layout form
+    layout_form.load_child_form(Review())  # Load DashboardForm into the content slot
+    open_form(layout_form)  # Open the Layout form
+
+  #  Load Admin form into Layout
+  def link_dashboard_click(self, **event_args):
+    layout_form = Layout()  # Create an instance of the Layout form
+    layout_form.load_child_form(Stats())  # Load DashboardForm into the content slot
     open_form(layout_form)  # Open the Layout form
