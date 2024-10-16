@@ -56,8 +56,9 @@ components:
           name: label_result
           properties: {background: '', bold: true, foreground: 'theme:On Primary', role: title}
           type: Label
-        - name: label_message
-          properties: {bold: true, foreground: 'theme:On Primary'}
+        - layout_properties: {}
+          name: label_message
+          properties: {bold: true, foreground: 'theme:On Primary', visible: false}
           type: Label
         layout_properties: {grid_position: 'NSQCKZ,MLVIXR'}
         name: flow_panel_1
@@ -96,7 +97,7 @@ components:
         - event_bindings: {click: button_show_data_click}
           layout_properties: {}
           name: button_show_data
-          properties: {align: right, background: 'theme:On Primary', text: SHOW DATA, visible: true}
+          properties: {align: right, background: 'theme:On Primary', text: SHOW DATA, visible: false}
           type: Button
         layout_properties: {grid_position: 'SPVWQU,NVWTCL'}
         name: flow_panel_2
@@ -133,7 +134,7 @@ components:
         visible: false
         wrap_on: mobile
       type: DataGrid
-    layout_properties: {grid_position: 'NDPKNO,TRPIAV'}
+    layout_properties: {full_width_row: true, grid_position: 'NDPKNO,TRPIAV'}
     name: outlined_card_2
     properties: {role: outlined-card}
     type: ColumnPanel

@@ -63,6 +63,6 @@ components:
 container:
   data_bindings:
   - {code: 'self.item[''image_base64'']', property: tag, writeback: false}
-  properties: {background: 'theme:On Primary', col_spacing: huge}
+  properties: {background: 'theme:On Primary', col_spacing: huge, spacing_above: medium, spacing_below: medium}
   type: ColumnPanel
 is_package: true

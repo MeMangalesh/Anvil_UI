@@ -9,10 +9,7 @@ class Admin(AdminTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     
-    # Load data when the form is initialized
-    # self.load_data()
-    # self.timer_1.enabled = False  # Disable the timer initially
-    # Set initial message in outlined_card_3
+    #Initialize form with default 
     self.label_message.text = "Upload image to view detection result"
     self.button_deactivate(self)
 
@@ -22,21 +19,17 @@ class Admin(AdminTemplate):
     self.button_activate(self) 
 
   def button_activate (self, file, **event_args):
-      # Deactivate button when form loads and after every "Detect" and "Reset" button click
-      # Clear the image displayed in the Image component
-      # self.image_byuser.source = None
-      # Clear the image displayed in the Image component
-      self.image_detection.source = None
-      # Clear the uploaded file from the file loader
-      #self.file_loader_1.clear()
-      # self.label_1.text = None
-      # self.label_2.text = None
-      
-      #self.message.text = self.init_components()
-      self.outlined_button_reset.enabled = True
-      self.button_save_n_detect.enabled = True
-      self.file_loader_1.enabled = False
-  
+    self.image_detection.source = None
+    # Clear the uploaded file from the file loader
+    #self.file_loader_1.clear()
+    # self.label_1.text = None
+    # self.label_2.text = None
+    
+    #self.message.text = self.init_components()
+    self.outlined_button_reset.enabled = True
+    self.button_save_n_detect.enabled = True
+    self.file_loader_1.enabled = False
+
   def button_deactivate (self, file, **event_args):
     # Deactivate button when form loads and after every "Detect" and "Reset" button click
     # Clear the image displayed in the Image component
@@ -53,24 +46,26 @@ class Admin(AdminTemplate):
     self.button_save_n_detect.enabled = False
     self.file_loader_1.enabled = True
 
-  # def button_activate (self, file, **event_args):
-  #   # Activate button when form loads and after every "Detect" and "Reset" button click
+  #############
+  ##Replaced with below
+  #############
+  # def button_activate(self):
+  #   # Enable buttons and prepare UI for the next action after image upload
+  #   self.image_detection.source = None
   #   self.outlined_button_reset.enabled = True
   #   self.button_save_n_detect.enabled = True
   #   self.file_loader_1.enabled = False
 
-  # def load_data(self):
-  #   # Fetch data from the server
-  #   response = anvil.server.call("get_data")
-  #   # print(response)  # Debugging: Print the response to check the data - print OK
-
-  #   # Check the status of the response
-  #   if response["status"] == "success":
-  #     # Set the data to the RepeatingPanel
-  #     self.repeating_panel_image_data.items = response["data"]
-  #   else:
-  #     # Handle errors, e.g., show an alert
-  #     alert(response["message"])
+  # def button_deactivate(self):
+  #   # Reset the form to its initial state
+  #   self.image_detection.source = None
+  #   self.file_loader_1.clear()  # Clear the uploaded file
+  #   self.label_1.text = None
+  #   self.label_2.text = None
+  #   self.label_message.text = "Upload image to view detection result"  # Reset label
+  #   self.outlined_button_reset.enabled = False
+  #   self.button_save_n_detect.enabled = False
+  #   self.file_loader_1.enabled = True
 
   def load_data(self):
     # Fetch data from the server
@@ -80,25 +75,28 @@ class Admin(AdminTemplate):
     if response["status"] == "success":
         # Sort the data in descending order based on a key (e.g., 'date')
         sorted_data = sorted(response["data"], key=lambda x: x['id'], reverse=True)
-        
         # Set the sorted data to the RepeatingPanel
         self.repeating_panel_image_data.items = sorted_data
     else:
         # Handle errors, e.g., show an alert
         alert(response["message"])
-
+ 
+    # # Toggle visibility of the DataGrid
+    # self.data_grid_1.visible = not self.data_grid_1.visible
+    # self.button_show_data.text = "HIDE DATA" if self.data_grid_1.visible else "SHOW DATA"
+    
     # Check if the data grid is visible
     if not self.data_grid_1.visible:
         # If the DataGrid is hidden, show it and load data
         self.data_grid_1.visible = True
         #self.load_data()  # Assuming you have a function to load the data
-        self.button_show_data.text = "HIDE DATA"  # Change button text to 'HIDE DATA'
-        self.button_show_data.visible = True      # Show the 'Hide Data' button below the DataGrid
+        # self.button_show_data.text = "HIDE DATA"  # Change button text to 'HIDE DATA'
+        # self.button_show_data.visible = True      # Show the 'Hide Data' button below the DataGrid
     else:
         # If the DataGrid is visible, hide it and reset the button
         self.data_grid_1.visible = False
-        self.button_show_data.text = "SHOW DATA"  # Change button text back to 'SHOW DATA'
-        self.button_show_data.visible = False 
+        # self.button_show_data.text = "SHOW DATA"  # Change button text back to 'SHOW DATA'
+        # self.button_show_data.visible = False 
   
 
   ##############
@@ -215,16 +213,6 @@ class Admin(AdminTemplate):
     self.button_save_n_detect.enabled = False
     # self.label_status.text = None
    
-  # def button_reset_click(self, **event_args):
-  #   # Clear the image displayed in the Image component
-  #   self.image_byuser.source = None
-  #   # Clear the image displayed in the Image component
-  #   self.image_detection.source = None
-  #   # Clear the uploaded file from the file loader
-  #   self.file_loader_1.clear()
-  #   self.button_detect.enabled = False
-  #   self.label_status.text = None
-
   def link_User_click(self, **event_args):
     """This method is called when the link is clicked"""
     open_form("Form1")
