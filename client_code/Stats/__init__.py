@@ -152,7 +152,7 @@ class Stats(StatsTemplate):
   def load_speedometer(self):
     # Fetch the average max confidence score from the server
     avg_max_conf_score = anvil.server.call('fetch_avg_max_conf_score')
-    print(f"avg_max_conf_score: {avg_max_conf_score}")
+    # print(f"avg_max_conf_score: {avg_max_conf_score}")
     
     if avg_max_conf_score['status'] == "success":
       value = round(avg_max_conf_score['avg_max_conf_score'], 2)
@@ -233,17 +233,17 @@ class Stats(StatsTemplate):
   def load_pie_plot(self):
     try:
         # Call the server function to get the statistics
-        print("About to call the VSCode")
+        # print("About to call the VSCode")
         response = anvil.server.call("get_pie_plot")
-        print("returning from VSCode")
+        # print("returning from VSCode")
 
         # Check the response status
         if response['status'] == "success":
             # Unpack the data correctly
             total_images, potholes_detected = response['data']
             
-            print(f"Total images: {total_images}")
-            print(f"Total potholes detected: {potholes_detected}")
+            # print(f"Total images: {total_images}")
+            # print(f"Total potholes detected: {potholes_detected}")
 
             # Display the total number of images processed & number of potholes detected
             self.label_feedback_count.text = str(total_images)  # Ensure to convert to str
@@ -323,8 +323,8 @@ class Stats(StatsTemplate):
         counts = [item["total_potholes_count"] for item in data]
 
         # Debug: Print the data
-        print("Dates:", dates)
-        print("Counts:", counts)
+        # print("Dates:", dates)
+        # print("Counts:", counts)
 
         # Create Plotly figure
         fig = go.Figure(data=go.Scatter(x=dates, y=counts, mode="lines+markers"))

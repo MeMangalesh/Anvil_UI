@@ -46,27 +46,6 @@ class Admin(AdminTemplate):
     self.button_save_n_detect.enabled = False
     self.file_loader_1.enabled = True
 
-  #############
-  ##Replaced with below
-  #############
-  # def button_activate(self):
-  #   # Enable buttons and prepare UI for the next action after image upload
-  #   self.image_detection.source = None
-  #   self.outlined_button_reset.enabled = True
-  #   self.button_save_n_detect.enabled = True
-  #   self.file_loader_1.enabled = False
-
-  # def button_deactivate(self):
-  #   # Reset the form to its initial state
-  #   self.image_detection.source = None
-  #   self.file_loader_1.clear()  # Clear the uploaded file
-  #   self.label_1.text = None
-  #   self.label_2.text = None
-  #   self.label_message.text = "Upload image to view detection result"  # Reset label
-  #   self.outlined_button_reset.enabled = False
-  #   self.button_save_n_detect.enabled = False
-  #   self.file_loader_1.enabled = True
-
   def load_data(self):
     # Fetch data from the server
     response = anvil.server.call("get_data")
@@ -90,13 +69,13 @@ class Admin(AdminTemplate):
         # If the DataGrid is hidden, show it and load data
         self.data_grid_1.visible = True
         self.load_data()  # Assuming you have a function to load the data
-        # self.button_show_data.text = "HIDE DATA"  # Change button text to 'HIDE DATA'
-        # self.button_show_data.visible = True      # Show the 'Hide Data' button below the DataGrid
-    else:
-        # If the DataGrid is visible, hide it and reset the button
-        self.data_grid_1.visible = False
-        # self.button_show_data.text = "SHOW DATA"  # Change button text back to 'SHOW DATA'
-        # self.button_show_data.visible = False 
+    #     # self.button_show_data.text = "HIDE DATA"  # Change button text to 'HIDE DATA'
+    #     # self.button_show_data.visible = True      # Show the 'Hide Data' button below the DataGrid
+    # else:
+    #     # If the DataGrid is visible, hide it and reset the button
+    #     self.data_grid_1.visible = False
+    #     # self.button_show_data.text = "SHOW DATA"  # Change button text back to 'SHOW DATA'
+    #     # self.button_show_data.visible = False 
   
 
   ##############
@@ -158,7 +137,7 @@ class Admin(AdminTemplate):
     else:
         self.label_result.text = "No potholes detected."
         self.label_result.foreground = "green"
-        self.timer_1.enabled = False  # No blinking for 'No potholes detected'
+        # self.timer_1.enabled = False  # No blinking for 'No potholes detected'
         self.label_result.visible = True  # Ensure text is visible in green
   
   # Timer event to make the text blink
@@ -184,7 +163,7 @@ class Admin(AdminTemplate):
       self.update_message(pothole_detected)
        
       self.label_1.text = f"{potholes_count}"
-      self.label_2.text = f"{max_conf_score:.2f}%"
+      self.label_2.text = f"{max_conf_score * 100:.2f}%"
       self.label_ID.text = f"{image_id}"
                  
       # self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
