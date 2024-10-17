@@ -155,12 +155,14 @@ class Stats(StatsTemplate):
     # print(f"avg_max_conf_score: {avg_max_conf_score}")
     
     if avg_max_conf_score['status'] == "success":
-      value = round(avg_max_conf_score['avg_max_conf_score'], 2)
-
+      value = round(avg_max_conf_score['avg_max_conf_score'], 1)
+      
       # Create a speedometer (gauge chart) using Plotly
       fig = go.Figure(go.Indicator(
         mode="gauge+number",
         value=value,  # Set the needle value to the avg max confidence score
+        # number={'valueformat': ".2%", 'suffix': " %"},  # Format as percentage with two decimal places
+        number={'valueformat': ".1%"},  # Format as percentage with two decimal places
         # title={'text': "Average Max Confidence Score", 'font': {'size': 24}},
         gauge={
                 'axis': {'range': [0, 1], 'tickvals': [0, 0.33, 0.66, 1], 'ticktext': ['Low', 'Medium', 'High', 'Max'], 'ticks': "outside"},

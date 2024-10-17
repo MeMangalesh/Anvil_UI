@@ -40,11 +40,11 @@ components:
       - event_bindings: {click: outlined_button_reset_click}
         layout_properties: {grid_position: 'RCDDWK,UATVLY'}
         name: outlined_button_reset
-        properties: {role: outlined-button, text: RESET}
+        properties: {background: 'theme:On Primary', bold: true, foreground: 'theme:Primary', role: outlined-button, text: RESET}
         type: Button
-      layout_properties: {grid_position: 'ZKHEGQ,BNUDEY'}
+      layout_properties: {full_width_row: true, grid_position: 'ZKHEGQ,BNUDEY'}
       name: outlined_card_7
-      properties: {role: null}
+      properties: {background: 'theme:On Primary Container', role: null}
       type: ColumnPanel
     - components:
       - layout_properties: {full_width_row: true, grid_position: 'YLYSPG,ORMEIR'}

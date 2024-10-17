@@ -11,7 +11,7 @@ class Admin(AdminTemplate):
     
     #Initialize form with default 
     self.label_message.text = "Upload image to view detection result"
-    self.button_deactivate(self)
+    # self.button_deactivate(self)
 
   def file_loader_1_change(self, file, **event_args):
     # Display this file in an Image component
@@ -19,7 +19,7 @@ class Admin(AdminTemplate):
     self.button_activate(self) 
 
   def button_activate (self, file, **event_args):
-    self.image_detection.source = None
+    # self.image_detection.source = None
     # Clear the uploaded file from the file loader
     #self.file_loader_1.clear()
     # self.label_1.text = None
@@ -86,13 +86,13 @@ class Admin(AdminTemplate):
     if file:
       filename = file.name
       file_data = file.get_bytes()
-      print(f"Filename: {filename}")
+      # print(f"Filename: {filename}")
       #Deactivate button
       self.button_deactivate(self)
 
       # Encode the file in base64
       encoded_image = base64.b64encode(file_data).decode("utf-8")
-      print("Image encoded for saving")
+      # print("Image encoded for saving")
 
       # Call the Anvil server function to detect potholes
       result = anvil.server.call('detect_potholes', encoded_image, filename)
@@ -123,7 +123,8 @@ class Admin(AdminTemplate):
       self.trigger_pothole_detection(image_id)
     else:
       self.label_message.text = "Failed to save image."
-  
+
+    self.button_activate(self)
 
   ########
   ## Added text display effect 
@@ -141,9 +142,9 @@ class Admin(AdminTemplate):
         self.label_result.visible = True  # Ensure text is visible in green
   
   # Timer event to make the text blink
-  def timer_1_tick(self, **event_args):
-    # Toggle visibility to create a blinking effect
-    self.label_result.visible = not self.label_result.visible
+  # def timer_1_tick(self, **event_args):
+  #   # Toggle visibility to create a blinking effect
+  #   self.label_result.visible = not self.label_result.visible
 
   #########
 
@@ -191,6 +192,11 @@ class Admin(AdminTemplate):
     # Disable the save & detect button
     self.button_save_n_detect.enabled = False
     # self.label_status.text = None
+    #Clear the summary details
+    self.label_result.text = ""
+    self.label_ID.text = ""
+    self.label_1.text = ""
+    self.label_2.text = ""
    
   def link_User_click(self, **event_args):
     """This method is called when the link is clicked"""

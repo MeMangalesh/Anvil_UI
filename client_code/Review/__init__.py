@@ -28,7 +28,7 @@ class Review(ReviewTemplate):
     date_from = self.date_picker_from.date  # Access the date property
     date_to = self.date_picker_to.date  # Access the date property
 
-    print(f"Start Date: {date_from}, End Date: {date_to}")
+    # print(f"Start Date: {date_from}, End Date: {date_to}")
     
     # If no dates are selected, read all data in the database
     if not date_from and not date_to:
@@ -46,7 +46,7 @@ class Review(ReviewTemplate):
   def load_undetected_images_by_date(self, date_from, date_to):
     try:
         # Call the server function to get images
-        print("Inside the load_undetected_images_by_date function in Anvil Form")
+        # print("Inside the load_undetected_images_by_date function in Anvil Form")
         image_data_list = anvil.server.call('get_data_by_date', date_from, date_to)
   
         # Check the status of the response
@@ -70,7 +70,7 @@ class Review(ReviewTemplate):
   def load_undetected_images(self):
       try:
           # Call the server function to get images
-          print("Inside the load_undetected_images function in Anvil Form")
+          # print("Inside the load_undetected_images function in Anvil Form")
           image_data_list = anvil.server.call('get_images')
   
           # Check the status of the response

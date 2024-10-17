@@ -57,7 +57,7 @@ components:
     type: ColumnPanel
   layout_properties: {slot: default}
   name: content_panel
-  properties: {col_spacing: huge}
+  properties: {col_spacing: huge, spacing_above: none}
   type: ColumnPanel
 - components:
   - event_bindings: {click: link_home1_click}
@@ -110,7 +110,8 @@ components:
     name: link_review
     properties: {bold: true, icon: 'fa:edit', text: Review}
     type: Link
-  - layout_properties: {grid_position: 'DATYUQ,URQADR'}
+  - event_bindings: {click: link_dashboard_click}
+    layout_properties: {grid_position: 'DATYUQ,URQADR'}
     name: link_dashboard
     properties: {bold: true, icon: 'fa:line-chart', text: Dashboard}
     type: Link
@@ -120,7 +121,7 @@ components:
   type: ColumnPanel
 - layout_properties: {slot: title}
   name: label_1
-  properties: {text: PoDS...by Ministry of Works}
+  properties: {bold: true, text: PoDS...by Ministry of Works}
   type: Label
 container:
   properties: {html: '@theme:standard-page.html'}
