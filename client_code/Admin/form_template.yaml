@@ -97,7 +97,7 @@ components:
         - event_bindings: {click: button_show_data_click}
           layout_properties: {}
           name: button_show_data
-          properties: {align: right, background: 'theme:On Primary', text: SHOW DATA, visible: false}
+          properties: {align: right, background: 'theme:On Primary', text: SHOW DATA, visible: true}
           type: Button
         layout_properties: {grid_position: 'SPVWQU,NVWTCL'}
         name: flow_panel_2

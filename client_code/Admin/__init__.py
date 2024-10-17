@@ -89,7 +89,7 @@ class Admin(AdminTemplate):
     if not self.data_grid_1.visible:
         # If the DataGrid is hidden, show it and load data
         self.data_grid_1.visible = True
-        #self.load_data()  # Assuming you have a function to load the data
+        self.load_data()  # Assuming you have a function to load the data
         # self.button_show_data.text = "HIDE DATA"  # Change button text to 'HIDE DATA'
         # self.button_show_data.visible = True      # Show the 'Hide Data' button below the DataGrid
     else:
