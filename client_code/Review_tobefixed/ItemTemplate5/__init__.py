@@ -14,7 +14,6 @@ class ItemTemplate5(ItemTemplate5Template):
     self.image_display.source = "data:image/png;base64," + self.item['image_base64']
     self.label_id.text = str(self.item['id'])  # Assuming you have another Label component for the ID
        
- 
   def button_save_click(self, **event_args):
     checkbox = self.check_box_pothole_exist
     label = self.label_id       
@@ -35,6 +34,7 @@ class ItemTemplate5(ItemTemplate5Template):
               # if hasattr(parent_form, 'load_undetected_images'):
               #     parent_form.load_undetected_images()  # Call the load_undetected_images method
               if hasattr(parent_form, 'load_undetected_images_by_date'):
+                print("if hasattr")
                 parent_form.load_undetected_images_by_date(None,None) # Refresh the page with dates
               
           else:
