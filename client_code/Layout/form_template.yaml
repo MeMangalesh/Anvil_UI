@@ -70,7 +70,8 @@ components:
     name: link_demo1
     properties: {icon: 'fa:play-circle', text: Demo}
     type: Link
-  - layout_properties: {}
+  - event_bindings: {click: link_Admin1_click}
+    layout_properties: {}
     name: link_Admin1
     properties: {icon: 'fa:gear', text: Admin}
     type: Link

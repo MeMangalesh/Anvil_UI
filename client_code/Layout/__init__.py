@@ -83,7 +83,7 @@ class Layout(LayoutTemplate):
     open_form(layout_form)  # Open the Layout form
 
   def link_Admin1_click(self, **event_args):
-    layout_form = Layout()  # Create an instance of the Layout form
+    layout_form = Layout() # Create an instance of the Layout form
     layout_form.load_child_form(Admin())  # Load DashboardForm into the content slot
     open_form(layout_form)  # Open the Layout form
 
