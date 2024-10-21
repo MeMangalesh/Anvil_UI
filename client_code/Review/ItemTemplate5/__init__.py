@@ -28,14 +28,16 @@ class ItemTemplate5(ItemTemplate5Template):
               print("Reviewed image updated successfully.")
               # Show a success message to the user
               alert("Review saved successfully.", title="Success", large=True)
-              
+              print("Just saved image review")
+            
               # Refresh the parent form (Review) to omit the reviewed image
               parent_form = get_open_form()  # Get the parent form (Review)
-              # if hasattr(parent_form, 'load_undetected_images'):
-              #     parent_form.load_undetected_images()  # Call the load_undetected_images method
-              if hasattr(parent_form, 'load_undetected_images_by_date'):
+              if hasattr(parent_form, 'load_undetected_images'):
                 print("if hasattr")
-                parent_form.load_undetected_images_by_date(None,None) # Refresh the page with dates
+                parent_form.load_undetected_images()  # Call the load_undetected_images method
+              # if hasattr(parent_form, 'load_undetected_images_by_date'):
+              #   print("if hasattr")
+              #   parent_form.load_undetected_images_by_date(None,None) # Refresh the page with dates
               
           else:
               # Handle error response from the server

@@ -109,7 +109,7 @@ class Admin(AdminTemplate):
       self.image_detection.source = f"data:image/png;base64,{processed_image_base64}"
       #self.label_message.text = "Potholes detected."
     else:
-        self.label_message.text = "No potholes detected."
+      self.label_message.text = "No potholes detected."
     # else:
     #     self.label_message.text = "No file selected."
 

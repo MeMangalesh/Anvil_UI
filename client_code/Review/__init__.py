@@ -18,8 +18,7 @@ class Review(ReviewTemplate):
     # Call the method to load images
     # self.load_undetected_images()
     self.load_undetected_images_by_date(None, None)
-    
-    
+      
 #####
 # Filter records by processed date
 #####
@@ -44,18 +43,21 @@ class Review(ReviewTemplate):
 
   
   def load_undetected_images_by_date(self, date_from, date_to):
+    print(f"Loading undetected images from {date_from} to {date_to}")
+
     try:
         # Call the server function to get images
-        # print("Inside the load_undetected_images_by_date function in Anvil Form")
+        print("Inside the load_undetected_images_by_date function in Anvil Form")
         image_data_list = anvil.server.call('get_data_by_date', date_from, date_to)
   
         # Check the status of the response
         if image_data_list['status'] == 'success':
+           print(f"Data returned: {image_data_list['data']}")  # <-- Add this print statement
           # Set the repeating panel with the list of image data
-          self.repeating_panel_1.items = image_data_list['data']
+           self.repeating_panel_1.items = image_data_list['data']
         else:
             # Handle errors, e.g., show an alert
-            alert(image_data_list['message'])
+          alert(image_data_list['message'])
     except Exception as e:
         alert(f"An error occurred: {e}")
 
