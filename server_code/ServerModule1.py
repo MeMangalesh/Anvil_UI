@@ -6,7 +6,7 @@ import plotly.express as px
 import pandas as pd
 import anvil.media
 import io
-anvil.plotly_templates.set_default("rally")
+#anvil.plotly_templates.set_default("rally")
 ###########ADDED FOR STATS##########
 
 # This is a server module. It runs on the Anvil server,
